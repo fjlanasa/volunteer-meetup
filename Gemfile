@@ -13,10 +13,12 @@ group :development, :test do
   gem 'pry-rails'
   gem 'shoulda'
   gem 'valid_attribute'
+  gem 'dotenv-rails'
 end
 
 group :test do
   gem 'launchy', require: false
+  gem 'coveralls', require: false
 end
 
 group :production do

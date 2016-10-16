@@ -13,5 +13,11 @@
 !/log/.keep
 !/tmp/.keep
 
+/coverage
+
+.env
+
+/node_modules
+
 # Ignore Byebug command history file.
 .byebug_history
