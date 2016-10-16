@@ -18,6 +18,8 @@
 .env
 
 /node_modules
+/app/assets/javascripts/bundle.js
+/react/coverage
 
 # Ignore Byebug command history file.
 .byebug_history
