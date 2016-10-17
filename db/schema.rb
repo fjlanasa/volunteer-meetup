@@ -10,17 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161017163745) do
+ActiveRecord::Schema.define(version: 20161017183908) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "signups", force: :cascade do |t|
+    t.integer "volunteer_id", null: false
+    t.integer "team_id",      null: false
+  end
+
   create_table "sites", force: :cascade do |t|
-    t.string "location",        null: false
-    t.string "contact_name",    null: false
-    t.string "contact_phone",   null: false
-    t.string "square_footage",  null: false
-    t.text   "special_details"
+    t.string  "location",        null: false
+    t.string  "contact_name",    null: false
+    t.string  "contact_phone",   null: false
+    t.string  "square_footage",  null: false
+    t.text    "special_details"
+    t.integer "user_id",         null: false
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.integer "user_id",          null: false
+    t.string  "meeting_location", null: false
+    t.string  "meeting_time",     null: false
+    t.integer "workers_needs",    null: false
+    t.integer "supplies_needed",  null: false
+    t.index ["user_id"], name: "index_teams_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -44,12 +59,9 @@ ActiveRecord::Schema.define(version: 20161017163745) do
   end
 
   create_table "volunteers", force: :cascade do |t|
-    t.string  "first_name",                   null: false
-    t.string  "last_name",                    null: false
-    t.string  "email",                        null: false
-    t.string  "phone_number",                 null: false
-    t.boolean "labor",        default: false
-    t.boolean "supplies",     default: false
+    t.boolean "labor",    default: false
+    t.boolean "supplies", default: false
+    t.integer "user_id",                  null: false
   end
 
 end

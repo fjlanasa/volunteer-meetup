@@ -6,4 +6,9 @@ FactoryGirl.define do
     first_name 'Frank'
     last_name 'LaNasa'
   end
+
+  # factory :team do
+  #   user
+  #
+  # end
 end
