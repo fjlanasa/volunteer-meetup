@@ -13,6 +13,11 @@
     <%= f.text_field :last_name, autofocus: true, class: 'input-group-field' %>
   </div>
 
+  <div class="input-group phone_number">
+    <%= f.label :phone_number, "Phone Number" %>
+    <%= f.text_field :phone_number, autofocus: true, class: 'input-group-field', placeholder: '###-###-####' %>
+  </div>
+
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
