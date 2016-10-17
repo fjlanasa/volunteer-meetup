@@ -1,6 +1,6 @@
 function initMap() {
-  console.log('hey!');
-
-  var siteAutocomplete = new google.maps.places.Autocomplete(
-            document.getElementById('sites-text'));
+  if(document.getElementById('sites-text') != null){
+    var siteAutocomplete = new google.maps.places.Autocomplete(
+      document.getElementById('sites-text'));
+  }
 }
