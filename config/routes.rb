@@ -4,11 +4,11 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :sites do
-      resources :teams
+      resources :teams, only: [:show]
     end
     resources :volunteers
     resources :teams
   end
 
-  resources :sites
+  resources :sites, only: [:index]
 end
