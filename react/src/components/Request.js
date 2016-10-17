@@ -8,8 +8,8 @@ class Request extends Component {
     }
   }
 
+
   render () {
-    initMap();
     return (
       <div>
         <h1>Request!</h1>
