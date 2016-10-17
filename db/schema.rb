@@ -10,13 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161016152318) do
+ActiveRecord::Schema.define(version: 20161017162306) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "sites", force: :cascade do |t|
-    t.string "location", null: false
+    t.string "location",        null: false
+    t.string "contact_name",    null: false
+    t.string "contact_phone",   null: false
+    t.string "square_footage",  null: false
+    t.text   "special_details"
   end
 
   create_table "users", force: :cascade do |t|
@@ -34,6 +38,7 @@ ActiveRecord::Schema.define(version: 20161016152318) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "phone_number",                        null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
