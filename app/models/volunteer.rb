@@ -6,4 +6,7 @@ class Volunteer < ActiveRecord::Base
   validates :phone_number, format: { with: /\A[0-9]{3}-[0-9]{3}-[0-9]{4}\z/, message: 'must be in format ###-###-####' }
   validates_inclusion_of :labor, in: [true, false]
   validates_inclusion_of :supplies, in: [true, false]
+
+  has_many :signups
+  has_many :teams, through: :signups
 end
