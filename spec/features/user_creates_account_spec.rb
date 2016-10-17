@@ -15,25 +15,13 @@ feature 'user can create an account' do
 
     fill_in 'First Name', with: 'Frank'
     fill_in 'Last Name', with: 'LaNasa'
-    fill_in 'Email', with: 'fjlanasa@gmail.com'
-    fill_in 'Password', with: 'password1!'
-    fill_in 'Password confirmation', with: 'password1!'
-
-    click_button 'Sign up'
-
-    expect(page).to have_content 'Welcome! You have signed up successfully.'
-  end
-  scenario 'user successfully creates new account' do
-    visit '/users/sign_up'
-
-    fill_in 'First Name', with: 'Frank'
-    fill_in 'Last Name', with: 'LaNasa'
+    fill_in 'Phone Number', with: '504-111-2323'
     fill_in 'Email', with: 'fjlanasa@gmail.com'
     fill_in 'Password', with: 'password1!'
     fill_in 'Password confirmation', with: 'password1!'
     click_button 'Sign up'
-    expect(page).to have_content 'Welcome! You have signed up successfully.'
     user = User.last
+    expect(page).to have_content 'Welcome! You have signed up successfully.'
     expect(user.first_name).to eq('Frank')
     expect(user.email).to eq('fjlanasa@gmail.com')
   end
@@ -46,6 +34,7 @@ feature 'user can create an account' do
 
     fill_in 'First Name', with: 'Krystal'
     fill_in 'Last Name', with: 'Cantos'
+    fill_in 'Phone Number', with: '504-111-2323'
     fill_in 'Email', with: user.email
     fill_in 'Password', with: 'password'
     fill_in 'Password confirmation', with: 'password'
