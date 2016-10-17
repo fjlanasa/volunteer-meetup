@@ -8,6 +8,9 @@ class Request extends Component {
     }
   }
 
+  componentDidMount(){
+    initMap([]);
+  }
 
   render () {
     return (

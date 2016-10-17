@@ -10,9 +10,9 @@ class App extends Component {
     }
   }
 
-  componentDidUpdate() {
-    initMap();
-  }
+  // componentDidUpdate() {
+  //   initMap();
+  // }
 
   render () {
     return (

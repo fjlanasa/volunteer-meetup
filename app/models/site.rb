@@ -11,7 +11,7 @@ class Site < ActiveRecord::Base
 
   belongs_to :user
 
-  def position
+  def geolocate
     formatted_address = location.gsub(/\s/, '+')
     url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{formatted_address}&key=#{ENV['GOOGLE_MAPS_KEY']}"
     url = URI.parse(url)

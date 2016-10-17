@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161017183908) do
+ActiveRecord::Schema.define(version: 20161017210521) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 20161017183908) do
     t.string  "square_footage",  null: false
     t.text    "special_details"
     t.integer "user_id",         null: false
+    t.float   "lat"
+    t.float   "lng"
   end
 
   create_table "teams", force: :cascade do |t|

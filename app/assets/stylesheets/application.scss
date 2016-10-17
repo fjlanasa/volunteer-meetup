@@ -22,7 +22,11 @@ input {
 }
 
 #map {
-  width: 80%;
-  height: 80%;
-  margin: auto;
+  width: 70%;
+  height: 50%;
+  margin: 50px auto;
+}
+
+#map div {
+  height: auto;
 }

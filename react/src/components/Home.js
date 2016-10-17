@@ -6,10 +6,9 @@ class Home extends Component {
     this.state = {
       sites: []
     }
-    this.getSites = this.getSites.bind(this)
   }
 
-  getSites() {
+  componentDidMount() {
     $.ajax({
       url: '/api/sites',
       contentType: 'application/json'
@@ -20,12 +19,12 @@ class Home extends Component {
     })
   }
 
-  componentDidMount() {
-
-  }
-
   render () {
-
+    debugger;
+    if(this.state.sites.length != 0){
+      debugger;
+      initMap(this.state.sites);
+    }
     return (
       <div>
         <h1>Home!</h1>
