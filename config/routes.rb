@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :teams
     end
     resources :volunteers
+    resources :teams
   end
 
   resources :sites
