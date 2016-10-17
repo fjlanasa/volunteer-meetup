@@ -10,13 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161017124312) do
+ActiveRecord::Schema.define(version: 20161017163745) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "sites", force: :cascade do |t|
-    t.string "location", null: false
+    t.string "location",        null: false
+    t.string "contact_name",    null: false
+    t.string "contact_phone",   null: false
+    t.string "square_footage",  null: false
+    t.text   "special_details"
   end
 
   create_table "users", force: :cascade do |t|
@@ -37,6 +41,15 @@ ActiveRecord::Schema.define(version: 20161017124312) do
     t.string   "phone_number",                        null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  end
+
+  create_table "volunteers", force: :cascade do |t|
+    t.string  "first_name",                   null: false
+    t.string  "last_name",                    null: false
+    t.string  "email",                        null: false
+    t.string  "phone_number",                 null: false
+    t.boolean "labor",        default: false
+    t.boolean "supplies",     default: false
   end
 
 end

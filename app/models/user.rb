@@ -7,4 +7,8 @@ class User < ApplicationRecord
   validates :phone_number, format: { with: /\A[0-9]{3}-[0-9]{3}-[0-9]{4}\z/, message: 'must be in format ###-###-####' }
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  def full_name
+    "#{:first_name} #{:last_name}"
+  end
 end
