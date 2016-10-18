@@ -8,12 +8,18 @@ const VolunteerForm = props => {
       <div className='small-12 medium-6 large-6 columns'>
         <form onSubmit={props.handleSubmit} id="volunteer-form">
           <div className='small-12 medium-6 large-6 columns'>
-          <div className='volunteer-form-row'>
-            <label><input id="labor" type="checkbox" onClick={props.handleClick} name="labor" value="true" defaultChecked={props.labor}/>{labor}</label>
-          </div>
-          <div className='volunteer-form-row'>
-            <label><input id="supplies" type="checkbox" name="supplies" value="true" defaultChecked={props.supplies}/>{supplies}</label>
-          </div>
+            <div className='volunteer-form-row'>
+              <label><input id="labor" type="checkbox" onClick={props.handleClick} name="labor" value="true" defaultChecked={props.labor}/>{labor}</label>
+            </div>
+            <div className='volunteer-form-row'>
+              <label><input id="supplies" type="checkbox" onClick={props.handleClick}name="supplies" value="true" defaultChecked={props.supplies}/>{supplies}</label>
+            </div>
+            <div className='volunteer-form-row'>
+              <select>
+                <option value='5'>5</option>
+                <option value='10'>10</option>
+              </select>
+            </div>
             <div className="input-group-button">
               <input type="submit" className="button" value="Update Volunteer Profile"/>
             </div>

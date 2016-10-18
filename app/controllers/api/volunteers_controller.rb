@@ -1,7 +1,11 @@
 class Api::VolunteersController < ApiController
   def index
     all_volunteers = Volunteer.all
-    current_volunteer = Volunteer.find(current_user.id)
-    render json: { message: 'hello', all_volunteers: all_volunteers, current_volunteer: current_volunteer }, status: :ok
+    if !current_user.nil?
+      current_volunteer = Volunteer.find(current_user.id)
+    else
+      current_volunteer = nil
+    end
+    render json: { message: 'hello', all_volunteers: all_volunteers, current_volunteer: current_volunteer , current_user: current_user}, status: :ok
   end
 end

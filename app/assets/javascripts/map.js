@@ -15,7 +15,6 @@ function initMap(data_sites) {
 
     let largeInfowindow = new google.maps.InfoWindow();
     let bounds = new google.maps.LatLngBounds();
-
     for(let i = 0; i < sites.length; i++){
       let position = {lat: sites[i].lat, lng: sites[i].lng}
       let title = sites[i].location

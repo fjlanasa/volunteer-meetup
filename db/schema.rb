@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161017210521) do
+ActiveRecord::Schema.define(version: 20161018181936) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,9 +61,10 @@ ActiveRecord::Schema.define(version: 20161017210521) do
   end
 
   create_table "volunteers", force: :cascade do |t|
-    t.boolean "labor",    default: false
-    t.boolean "supplies", default: false
-    t.integer "user_id",                  null: false
+    t.boolean "labor",      default: false
+    t.boolean "supplies",   default: false
+    t.integer "user_id",                    null: false
+    t.integer "max_milage", default: 9999,  null: false
   end
 
 end
