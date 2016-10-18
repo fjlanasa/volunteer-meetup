@@ -19,7 +19,7 @@ class Request extends Component {
 
   handleSubmit(event){
     event.preventDefault();
-    const path = '/'
+    const indexPath = '/'
     let location = this.state.location;
     if($('#request-form').find("input[name='location']").val() != this.state.location){
       location = $('#request-form').find("input[name='location']").val();
@@ -32,7 +32,7 @@ class Request extends Component {
                                     contact_phone: this.state.contact_phone, square_footage: this.state.square_footage,
                                     special_details: this.state.special_details, user_id: this.state.user.id}})
     }).done((data)=>{
-      hashHistory.push(path);
+      hashHistory.push(indexPath);
     })
   }
 

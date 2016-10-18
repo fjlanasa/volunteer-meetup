@@ -8,4 +8,14 @@ class Api::VolunteersController < ApiController
     end
     render json: { message: 'hello', all_volunteers: all_volunteers, current_volunteer: current_volunteer , current_user: current_user}, status: :ok
   end
+
+  def update
+    volunteer = Volunteer.find(params[:id])
+    volunteer.update_attributes(volunteer_params)
+    render json: { message: 'hello'}, status: :ok
+  end
+
+  def volunteer_params
+    params.require(:volunteer).permit(:location, :labor, :supplies, :max_milage, :user_id)
+  end
 end

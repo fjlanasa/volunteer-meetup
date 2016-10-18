@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { hashHistory } from 'react-router'
 import VolunteerForm from './VolunteerForm';
 
 class Volunteer extends Component {
@@ -8,12 +9,32 @@ class Volunteer extends Component {
       labor: null,
       supplies: null,
       max_milage: null,
-      current_user: null
+      current_user: null,
+      location: null,
+      current_volunteer: null
     }
     this.handleLaborClick = this.handleLaborClick.bind(this)
     this.handleSuppliesClick = this.handleSuppliesClick.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleSelect = this.handleSelect.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.getVolInfo = this.getVolInfo.bind(this)
+  }
+
+  getVolInfo() {
+    $.ajax({
+      type: "GET",
+      url: '/api/volunteers',
+      contentType: 'application/json',
+    })
+    .done((data)=>{
+      if(data.current_volunteer != null){
+        this.setState({current_user: data.current_user, current_volunteer: data.current_volunteer,
+                      labor: data.current_volunteer.labor, location: data.current_volunteer.location,
+                      supplies: data.current_volunteer.supplies,
+                      max_milage: data.current_volunteer.max_milage});
+      }
+    })
   }
 
   handleSelect(event){
@@ -21,8 +42,30 @@ class Volunteer extends Component {
     this.setState({max_milage: max_milage})
   }
 
-  handleSubmit(){
+  handleChange(event){
+    let nextState={}
+    nextState[event.target.name] = event.target.value
+    this.setState(nextState)
+  }
 
+  handleSubmit(event){
+    event.preventDefault();
+    const volunteerPath = '/volunteer'
+    let location = this.state.location;
+    if($('#volunteer-form').find("input[name='location']").val() != this.state.location){
+      location = $('#volunteer-form').find("input[name='location']").val();
+    }
+    $.ajax({
+      type: "PATCH",
+      url: `api/volunteers/${this.state.current_volunteer.id}`,
+      contentType: 'application/json',
+      data: JSON.stringify({volunteer: {location: location, labor: this.state.labor,
+                                        supplies: this.state.supplies,
+                                        max_milage: this.state.max_milage}})
+    }).done((data)=>{
+      alert(data.message);
+      this.getVolInfo();
+    })
   }
 
   handleSuppliesClick(event){
@@ -38,18 +81,7 @@ class Volunteer extends Component {
   }
 
   componentDidMount() {
-    $.ajax({
-      type: "GET",
-      url: '/api/volunteers',
-      contentType: 'application/json',
-    })
-    .done((data)=>{
-      if(data.current_volunteer != null){
-        this.setState({current_user: data.current_user, labor: data.current_volunteer.labor,
-                                    supplies: data.current_volunteer.supplies,
-                                    max_milage: data.current_volunteer.max_milage});
-      }
-    })
+    this.getVolInfo();
   }
 
   componentDidUpdate() {
@@ -65,7 +97,7 @@ class Volunteer extends Component {
       form = <VolunteerForm handleSubmit={this.handleSubmit} labor={this.state.labor}
               supplies={this.state.supplies} max_milage={this.state.max_milage}
               handleSuppliesClick={this.handleSuppliesClick} handleSelect={this.handleSelect}
-              handleLaborClick={this.handleLaborClick}/>;
+              handleLaborClick={this.handleLaborClick} location={this.state.location}/>;
     } else {
       form = <div>Please <a href='/users/sign_in'>sign in</a> to volunteer</div>;
     }
