@@ -4,6 +4,12 @@ function initMap(data_sites) {
     let siteAutocomplete = new google.maps.places.Autocomplete(
       document.getElementById('sites-text'));
   }
+
+  if(document.getElementById('volunteer-loc-text') != null){
+    let volunteerAutocomplete = new google.maps.places.Autocomplete(
+      document.getElementById('volunteer-loc-text'));
+  }
+
   if(document.getElementById('map') != null && data_sites != null){
     let map;
     let sites = data_sites;

@@ -33,6 +33,10 @@ class Volunteer extends Component {
     })
   }
 
+  componentDidUpdate() {
+    initMap([]);
+  }
+
   handleClick(event){
     alert('clicked!');
   }
@@ -44,7 +48,7 @@ class Volunteer extends Component {
       let contact_phone = this.state.contact_phone;
       form = <VolunteerForm handleSubmit={this.handleSubmit} labor={this.state.labor}
               supplies={this.state.supplies} max_milage={this.state.max_milage}
-              handleClick={this.handleClick}/>
+              handleClick={this.handleClick}/>;
     } else {
       form = <div>Please <a href='/users/sign_in'>sign in</a> to volunteer</div>;
     }

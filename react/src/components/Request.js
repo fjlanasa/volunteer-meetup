@@ -52,8 +52,11 @@ class Request extends Component {
       if(data.user != null){
         this.setState({user: data.user, contact_name: `${data.user.first_name} ${data.user.last_name}`, contact_phone: data.user.phone_number})
       }
-      initMap([]);
     })
+  }
+
+  componentDidUpdate() {
+    initMap([]);
   }
 
   render () {
