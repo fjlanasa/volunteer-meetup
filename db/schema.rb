@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161018181936) do
+ActiveRecord::Schema.define(version: 20161018201500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20161018181936) do
     t.boolean "supplies",   default: false
     t.integer "user_id",                    null: false
     t.integer "max_milage", default: 9999,  null: false
+    t.string  "location"
   end
 
 end

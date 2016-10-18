@@ -10,12 +10,31 @@ class Volunteer extends Component {
       max_milage: null,
       current_user: null
     }
-    this.handleClick = this.handleClick.bind(this)
+    this.handleLaborClick = this.handleLaborClick.bind(this)
+    this.handleSuppliesClick = this.handleSuppliesClick.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSelect = this.handleSelect.bind(this)
+  }
+
+  handleSelect(event){
+    let max_milage = event.target.value;
+    this.setState({max_milage: max_milage})
   }
 
   handleSubmit(){
 
+  }
+
+  handleSuppliesClick(event){
+    this.setState({supplies: !this.state.supplies})
+  }
+
+  handleLaborClick(event){
+    if(this.state.labor == true ){
+      this.setState({labor: false})
+    } else {
+      this.setState({labor: true})
+    }
   }
 
   componentDidMount() {
@@ -34,11 +53,8 @@ class Volunteer extends Component {
   }
 
   componentDidUpdate() {
+    console.log('updated');
     initMap([]);
-  }
-
-  handleClick(event){
-    alert('clicked!');
   }
 
   render () {
@@ -48,7 +64,8 @@ class Volunteer extends Component {
       let contact_phone = this.state.contact_phone;
       form = <VolunteerForm handleSubmit={this.handleSubmit} labor={this.state.labor}
               supplies={this.state.supplies} max_milage={this.state.max_milage}
-              handleClick={this.handleClick}/>;
+              handleSuppliesClick={this.handleSuppliesClick} handleSelect={this.handleSelect}
+              handleLaborClick={this.handleLaborClick}/>;
     } else {
       form = <div>Please <a href='/users/sign_in'>sign in</a> to volunteer</div>;
     }
