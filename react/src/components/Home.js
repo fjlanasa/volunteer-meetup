@@ -20,9 +20,7 @@ class Home extends Component {
   }
 
   render () {
-    debugger;
     if(this.state.sites.length != 0){
-      debugger;
       initMap(this.state.sites);
     }
     return (
