@@ -11,8 +11,12 @@ class Site < ActiveRecord::Base
 
   require 'open-uri'
   require 'json'
+  def formatted_address
+    location.gsub(/\s/, '+')
+  end
+
   def geolocate
-    formatted_address = location.gsub(/\s/, '+')
+    formatted_address = self.formatted_address
     url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{formatted_address}&key=#{ENV['GOOGLE_MAPS_KEY']}"
     url = URI.parse(url)
     str = url.read
