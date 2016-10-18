@@ -7,6 +7,7 @@ class Site < ActiveRecord::Base
   validates :user_id, presence: true
 
   belongs_to :user
+  belongs_to :team, optional: true
 
   require 'open-uri'
   require 'json'

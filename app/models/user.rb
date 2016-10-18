@@ -9,6 +9,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  after_create do
+    Volunteer.create(user_id: id, labor: false, supplies: false)
+  end
+
   def full_name
     "#{first_name} #{last_name}"
   end
