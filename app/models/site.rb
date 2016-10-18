@@ -1,3 +1,6 @@
+require 'open-uri'
+require 'json'
+
 class Site < ActiveRecord::Base
   validates :location, presence: true
   validates :contact_name, presence: true
@@ -7,4 +10,13 @@ class Site < ActiveRecord::Base
   validates :user_id, presence: true
 
   belongs_to :user
+
+  def geolocate
+    formatted_address = location.gsub(/\s/, '+')
+    url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{formatted_address}&key=#{ENV['GOOGLE_MAPS_KEY']}"
+    url = URI.parse(url)
+    str = url.read
+    data = JSON.parse(str)
+    data['results'][0]['geometry']['location']
+  end
 end

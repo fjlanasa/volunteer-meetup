@@ -1,5 +1,6 @@
 class Api::SitesController < ApiController
   def index
-    render json: { message: 'hello' }, status: :ok
+    sites = Site.all
+    render json: { sites: sites, user: current_user }, status: :ok
   end
 end
