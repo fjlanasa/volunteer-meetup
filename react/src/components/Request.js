@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { hashHistory } from 'react-router'
 import RequestForm from './RequestForm';
 
 class Request extends Component {
@@ -6,8 +7,6 @@ class Request extends Component {
     super(props);
     this.state = {
       user: null,
-      user_name: null,
-      user_phone: null,
       location: null,
       contact_name: null,
       contact_phone: null,
@@ -20,7 +19,21 @@ class Request extends Component {
 
   handleSubmit(event){
     event.preventDefault();
-    alert('SUBMIT!');
+    const path = '/'
+    let location = this.state.location;
+    if($('#request-form').find("input[name='location']").val() != this.state.location){
+      location = $('#request-form').find("input[name='location']").val();
+    }
+    $.ajax({
+      type: "POST",
+      url: '/api/sites',
+      contentType: 'application/json',
+      data: JSON.stringify({site: {location: location, contact_name: this.state.contact_name,
+                                    contact_phone: this.state.contact_phone, square_footage: this.state.square_footage,
+                                    special_details: this.state.special_details, user_id: this.state.user.id}})
+    }).done((data)=>{
+      hashHistory.push(path);
+    })
   }
 
   handleChange(event){
@@ -30,12 +43,13 @@ class Request extends Component {
   }
 
   componentDidMount(){
+    console.log(this.state.user_name)
     $.ajax({
       url: '/api/sites',
       contentType: 'application/json'
     })
     .done(data=> {
-      this.setState({user: data.user, user_name: `${data.user.first_name} ${data.user.last_name}`, user_phone: data.user.phone_number})
+      this.setState({user: data.user, contact_name: `${data.user.first_name} ${data.user.last_name}`, contact_phone: data.user.phone_number})
       initMap([]);
     })
   }
@@ -43,10 +57,10 @@ class Request extends Component {
   render () {
     let form;
     if(this.state.user != null){
-      let user_name = this.state.user_name;
-      let user_phone = this.state.user_phone;
+      let contact_name = this.state.contact_name;
+      let contact_phone = this.state.contact_phone;
       form = <RequestForm handleChange={this.handleChange}
-              handleSubmit={this.handleSubmit} user_name={user_name} user_phone={user_phone}/>
+              handleSubmit={this.handleSubmit} contact_name={contact_name} contact_phone={contact_phone}/>
     } else {
       form = <div>Please <a href='/users/sign_in'>sign in</a> to make a request for help</div>;
     }

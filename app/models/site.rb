@@ -1,6 +1,3 @@
-require 'open-uri'
-require 'json'
-
 class Site < ActiveRecord::Base
   validates :location, presence: true
   validates :contact_name, presence: true
@@ -11,6 +8,8 @@ class Site < ActiveRecord::Base
 
   belongs_to :user
 
+  require 'open-uri'
+  require 'json'
   def geolocate
     formatted_address = location.gsub(/\s/, '+')
     url = "https://maps.googleapis.com/maps/api/geocode/json?address=#{formatted_address}&key=#{ENV['GOOGLE_MAPS_KEY']}"
