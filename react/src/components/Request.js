@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { hashHistory } from 'react-router'
 import RequestForm from './RequestForm';
+import MyRequestCollection from './MyRequestCollection'
 
 class Request extends Component {
   constructor(props) {
@@ -11,10 +12,27 @@ class Request extends Component {
       contact_name: null,
       contact_phone: null,
       square_footage: null,
-      special_details: null
+      special_details: null,
+      user_sites: []
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.getState = this.getState.bind(this);
+  }
+
+  getState(){
+    $.ajax({
+      url: '/api/sites',
+      contentType: 'application/json'
+    })
+    .done(data=> {
+      if(data.user != null){
+        this.setState({user_sites: data.user_sites, user: data.user,
+                      contact_name: `${data.user.first_name} ${data.user.last_name}`
+                      , contact_phone: data.user.phone_number, location: null,
+                      square_footage: null, special_details: null})
+      }
+    })
   }
 
   handleSubmit(event){
@@ -32,7 +50,7 @@ class Request extends Component {
                                     contact_phone: this.state.contact_phone, square_footage: this.state.square_footage,
                                     special_details: this.state.special_details, user_id: this.state.user.id}})
     }).done((data)=>{
-      hashHistory.push(indexPath);
+      this.getState();
     })
   }
 
@@ -43,15 +61,7 @@ class Request extends Component {
   }
 
   componentDidMount(){
-    $.ajax({
-      url: '/api/sites',
-      contentType: 'application/json'
-    })
-    .done(data=> {
-      if(data.user != null){
-        this.setState({user: data.user, contact_name: `${data.user.first_name} ${data.user.last_name}`, contact_phone: data.user.phone_number})
-      }
-    })
+    this.getState();
   }
 
   componentDidUpdate() {
@@ -60,11 +70,13 @@ class Request extends Component {
 
   render () {
     let form;
+    let myRequests;
     if(this.state.user != null){
       let contact_name = this.state.contact_name;
       let contact_phone = this.state.contact_phone;
       form = <RequestForm handleChange={this.handleChange}
               handleSubmit={this.handleSubmit} contact_name={contact_name} contact_phone={contact_phone}/>
+      myRequests = <MyRequestCollection requests={this.state.user_sites}/>
     } else {
       form = <div>Please <a href='/users/sign_in'>sign in</a> to make a request for help</div>;
     }
@@ -72,7 +84,11 @@ class Request extends Component {
       <div>
         <h1>Request!</h1>
         {form}
-  </div>
+        <div className='small-12 medium-5 large-5 columns'>
+          <p>My Requests:</p>
+          {myRequests}
+        </div>
+      </div>
     );
   }
 }

@@ -2,16 +2,19 @@ class Api::VolunteersController < ApiController
   include SiteHelper
   def index
     all_volunteers = Volunteer.all
-    if !current_user.nil?
-      current_volunteer = Volunteer.find(current_user.id)
-      current_volunteer_potential_sites = potential_sites(current_volunteer)
+    user = current_user
+    if !user.nil?
+      current_volunteer = Volunteer.find(user.id)
+      current_volunteer_potential_sites = potential_sites(current_volunteer).reverse
 
     else
-      current_volunteer = nil
+      current_volunteer = nil.to_json
+      user = nil.to_json
+      current_volunteer_potential_sites = []
     end
     render json: { message: 'hello', all_volunteers: all_volunteers,
       current_volunteer: current_volunteer, current_volunteer_potential_sites:
-      current_volunteer_potential_sites, current_user: current_user}, status: :ok
+      current_volunteer_potential_sites, current_user: user}, status: :ok
   end
 
   def update
