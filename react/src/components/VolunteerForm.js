@@ -35,7 +35,6 @@ class VolunteerForm extends Component {
       location_input.required = false;
     }
     return (
-      <div>
         <div className='small-12 medium-4 large-3 columns callout'>
           <form onSubmit={this.props.handleSubmit} id="volunteer-form">
             <div className='small-12 medium-8'>
@@ -71,8 +70,6 @@ class VolunteerForm extends Component {
             </div>
           </form>
         </div>
-        <div className='small-0 medium-6 large-6'></div>
-      </div>
     );
   }
 };

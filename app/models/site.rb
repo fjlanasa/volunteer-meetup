@@ -1,3 +1,6 @@
+require 'open-uri'
+require 'json'
+
 class Site < ActiveRecord::Base
   validates :location, presence: true
   validates :contact_name, presence: true
@@ -9,8 +12,6 @@ class Site < ActiveRecord::Base
   belongs_to :user
   belongs_to :team, optional: true
 
-  require 'open-uri'
-  require 'json'
   def formatted_address
     location.gsub(/\s/, '+')
   end

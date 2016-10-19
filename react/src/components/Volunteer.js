@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { hashHistory } from 'react-router'
 import VolunteerForm from './VolunteerForm';
+import PotentialSitesList from './PotentialSitesList';
 
 class Volunteer extends Component {
   constructor(props) {
@@ -11,7 +12,8 @@ class Volunteer extends Component {
       max_milage: null,
       current_user: null,
       location: null,
-      current_volunteer: null
+      current_volunteer: null,
+      potential_sites: []
     }
     this.handleLaborClick = this.handleLaborClick.bind(this)
     this.handleSuppliesClick = this.handleSuppliesClick.bind(this)
@@ -32,7 +34,8 @@ class Volunteer extends Component {
         this.setState({current_user: data.current_user, current_volunteer: data.current_volunteer,
                       labor: data.current_volunteer.labor, location: data.current_volunteer.location,
                       supplies: data.current_volunteer.supplies,
-                      max_milage: data.current_volunteer.max_milage});
+                      max_milage: data.current_volunteer.max_milage,
+                      potential_sites: data.current_volunteer_potential_sites});
       }
     })
   }
@@ -63,7 +66,6 @@ class Volunteer extends Component {
                                         supplies: this.state.supplies,
                                         max_milage: this.state.max_milage}})
     }).done((data)=>{
-      alert(data.message);
       this.getVolInfo();
     })
   }
@@ -91,6 +93,7 @@ class Volunteer extends Component {
 
   render () {
     let form;
+    let potentialSites;
     if(this.state.current_user != null){
       let labor = this.state.labor;
       let contact_phone = this.state.contact_phone;
@@ -98,8 +101,10 @@ class Volunteer extends Component {
               supplies={this.state.supplies} max_milage={this.state.max_milage}
               handleSuppliesClick={this.handleSuppliesClick} handleSelect={this.handleSelect}
               handleLaborClick={this.handleLaborClick} location={this.state.location}/>;
+      potentialSites = <PotentialSitesList potentialSites={this.state.potential_sites}/>;
     } else {
       form = <div>Please <a href='/users/sign_in'>sign in</a> to volunteer</div>;
+      potentialSites = <span></span>
     }
 
 
@@ -107,6 +112,9 @@ class Volunteer extends Component {
       <div>
         <h1>Volunteer!</h1>
         {form}
+        <div className='small-12 medium-4 columns'>
+          {potentialSites}
+        </div>
       </div>
     );
   }
