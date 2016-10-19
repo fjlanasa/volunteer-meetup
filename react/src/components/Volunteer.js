@@ -117,7 +117,7 @@ class Volunteer extends Component {
       <div>
         <h1>Volunteer!</h1>
         {form}
-        <div className='small-12 medium-4 columns'>
+        <div className='small-12 medium-6 columns'>
           {potentialSites}
         </div>
       </div>
