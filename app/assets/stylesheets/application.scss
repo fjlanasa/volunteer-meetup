@@ -18,6 +18,11 @@ textarea.input-group-field{
   height: 100%;
 }
 
+img {
+  display: block;
+}
+
+
 #app {
   height: 100%;
 }
@@ -38,4 +43,17 @@ textarea.input-group-field{
 
 .input-group{
   display: block;
+}
+
+#volunteer-form .input-group {
+  display: inline-block;
+}
+
+.form {
+  margin: auto;
+  float: none;
+}
+
+.hidden {
+  display: none;
 }

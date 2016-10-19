@@ -1,9 +1,15 @@
 
 function initMap(data_sites) {
   if(document.getElementById('sites-text') != null){
-    var siteAutocomplete = new google.maps.places.Autocomplete(
+    let siteAutocomplete = new google.maps.places.Autocomplete(
       document.getElementById('sites-text'));
   }
+
+  if(document.getElementById('volunteer-loc-text') != null){
+    let volunteerAutocomplete = new google.maps.places.Autocomplete(
+      document.getElementById('volunteer-loc-text'));
+  }
+
   if(document.getElementById('map') != null && data_sites != null){
     let map;
     let sites = data_sites;
@@ -15,7 +21,6 @@ function initMap(data_sites) {
 
     let largeInfowindow = new google.maps.InfoWindow();
     let bounds = new google.maps.LatLngBounds();
-
     for(let i = 0; i < sites.length; i++){
       let position = {lat: sites[i].lat, lng: sites[i].lng}
       let title = sites[i].location

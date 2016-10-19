@@ -2,20 +2,38 @@ import React from 'react';
 
 const RequestForm = props => {
   return (
-    <form onSubmit={props.handleSubmit} id="request-form">
-      <div className='small-12 medium-6 large-6 columns'>
-        <div className='small-12 medium-6 large-6 columns input-group'>
-          <input id="sites-text" className="input-group-field" type="text" name="location" onChange={props.handleChange} placeholder="Full Address"/>
-          <input type="text" className="input-group-field" name="contact_name" onChange={props.handleChange} defaultValue={props.user_name}/>
-          <input type="text" className="input-group-field" name="contact_phone" onChange={props.handleChange} defaultValue={props.user_phone}/>
-          <input type="text" className="input-group-field" name="square_footage" onChange={props.handleChange} placeholder="Square Footage"/>
-          <textarea type="textarea" rows="10" cols="20" wrap="hard" className="input-group-field" name="special_details" onChange={props.handleChange} placeholder="Special details..."/>
-          <div className="input-group-button">
-            <input type="submit" className="button" value="Submit"/>
+    <div>
+      <div className='small-12 medium-6 large-6 columns form'>
+        <form onSubmit={props.handleSubmit} id="request-form">
+          <div className='small-12 medium-6 large-6 columns input-group'>
+            <label htmlFor="sites-text">Full Address</label>
+            <input id="sites-text" type="text" className="input-group-field" name="location"
+             onChange={props.handleChange} placeholder="Number, Street, City, etc..." required/>
+
+            <label htmlFor="contact_name">Primary Contact</label>
+            <input id="contact_name" type="text" className="input-group-field" name="contact_name"
+             onChange={props.handleChange} defaultValue={props.contact_name} required/>
+
+            <label htmlFor="contact_phone">Contact Phone Number</label>
+            <input id="contact_phone" type="text" className="input-group-field" name="contact_phone"
+             onChange={props.handleChange} defaultValue={props.contact_phone} required/>
+
+            <label htmlFor="square_footage">Square Footage of House</label>
+            <input id="square_footage" type="text" className="input-group-field" name="square_footage"
+             onChange={props.handleChange} placeholder="e.g. 1500 square feet" required/>
+
+            <label htmlFor="special_details">Special Details</label>
+            <textarea id="special_details" type="textarea" rows="10" cols="20" wrap="hard" className="input-group-field"
+             name="special_details" onChange={props.handleChange} placeholder="Elderly, Disabled, etc..."/>
+             
+            <div className="input-group-button">
+              <input type="submit" className="button" value="Submit"/>
+            </div>
           </div>
-        </div>
+        </form>
       </div>
-    </form>
+      <div className='small-0 medium-6 large-6'></div>
+    </div>
   );
 };
 
