@@ -20,7 +20,7 @@ module SiteHelper
 
   def potential_sites(volunteer)
     potential_sites = []
-    if !volunteer.location.nil?
+    if !volunteer.location.nil? && volunteer.max_milage != 9999
       Site.all.each do |site|
         distance = calculate_distance(site, volunteer)
         if distance <= volunteer.max_milage
