@@ -24,7 +24,9 @@ module SiteHelper
       Site.all.each do |site|
         distance = calculate_distance(site, volunteer)
         if distance <= volunteer.max_milage
-          potential_sites.push(site)
+          if site.team.nil?
+            potential_sites.push(site)
+          end
         end
       end
     else

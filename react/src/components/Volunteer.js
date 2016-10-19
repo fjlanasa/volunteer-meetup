@@ -10,7 +10,7 @@ class Volunteer extends Component {
       labor: null,
       supplies: null,
       max_milage: null,
-      current_user: null,
+      current_user: 'preset',
       location: null,
       current_volunteer: null,
       potential_sites: []
@@ -96,13 +96,18 @@ class Volunteer extends Component {
     let form;
     let potentialSites;
     if(this.state.current_user != null){
-      let labor = this.state.labor;
-      let contact_phone = this.state.contact_phone;
-      form = <VolunteerForm handleSubmit={this.handleSubmit} labor={this.state.labor}
-              supplies={this.state.supplies} max_milage={this.state.max_milage}
-              handleSuppliesClick={this.handleSuppliesClick} handleSelect={this.handleSelect}
-              handleLaborClick={this.handleLaborClick} location={this.state.location}/>;
-      potentialSites = <PotentialSitesList potentialSites={this.state.potential_sites}/>;
+      if(this.state.current_user == 'preset'){
+        form =<div>Finding potential sites...</div>
+        potentialSites=<span></span>
+      } else {
+        let labor = this.state.labor;
+        let contact_phone = this.state.contact_phone;
+        form = <VolunteerForm handleSubmit={this.handleSubmit} labor={this.state.labor}
+        supplies={this.state.supplies} max_milage={this.state.max_milage}
+        handleSuppliesClick={this.handleSuppliesClick} handleSelect={this.handleSelect}
+        handleLaborClick={this.handleLaborClick} location={this.state.location}/>;
+        potentialSites = <PotentialSitesList potentialSites={this.state.potential_sites}/>;
+      }
     } else {
       form = <div>Please <a href='/users/sign_in'>sign in</a> to volunteer</div>;
       potentialSites = <span></span>
