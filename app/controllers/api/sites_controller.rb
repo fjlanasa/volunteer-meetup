@@ -3,7 +3,11 @@ class Api::SitesController < ApiController
   def index
     sites = Site.all
     user = current_user
-    user_sites = Site.where(user_id: user.id).reverse
+    if !user.nil?
+      user_sites = Site.where(user_id: user.id).reverse
+    else
+      user_sites = []
+    end
     render json: { sites: sites, user: user, user_sites: user_sites}, status: :ok
   end
 
@@ -23,6 +27,15 @@ class Api::SitesController < ApiController
   def show
     site = Site.find(params[:id])
     team = site.team
+    creator = User.find(site.user_id)
+    if !team.nil?
+      organizer = User.find(team.user.id)
+      team_members = team.volunteers
+      team_members = team_members.to_a.map! {|vol| User.find(vol.user_id)}
+    else
+      organizer = nil
+      team_members = nil
+    end
     user = current_user
     if !user.nil?
       volunteer = Volunteer.find(user.id)
@@ -36,7 +49,14 @@ class Api::SitesController < ApiController
     else
       volunteer = nil
     end
-    render json: {site: site, user: user, volunteer: volunteer, team: team, member: member}, status: :ok
+    render json: {site: site, user: user, volunteer: volunteer, team: team,
+      team_members: team_members, organizer: organizer, member: member, creator: creator}, status: :ok
+  end
+
+  def destroy
+    site = Site.find(params[:id])
+    site.destroy
+    head :no_content
   end
 
   private

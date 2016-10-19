@@ -94,7 +94,6 @@ class Volunteer extends Component {
   }
 
   render () {
-    debugger;
     let form;
     let potentialSites;
     if(this.state.current_user != 'null'){
@@ -121,6 +120,7 @@ class Volunteer extends Component {
         <h1>Volunteer!</h1>
         {form}
         <div className='small-12 medium-6 columns'>
+          <p>Potential Volunteer Sites:</p>
           {potentialSites}
         </div>
       </div>

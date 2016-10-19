@@ -17,11 +17,10 @@ class Request extends Component {
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.getInitialState = this.getInitialState.bind(this);
+    this.getState = this.getState.bind(this);
   }
 
-  getInitialState(){
-    debugger;
+  getState(){
     $.ajax({
       url: '/api/sites',
       contentType: 'application/json'
@@ -51,7 +50,7 @@ class Request extends Component {
                                     contact_phone: this.state.contact_phone, square_footage: this.state.square_footage,
                                     special_details: this.state.special_details, user_id: this.state.user.id}})
     }).done((data)=>{
-      this.getInitialState();
+      this.getState();
     })
   }
 
@@ -62,7 +61,7 @@ class Request extends Component {
   }
 
   componentDidMount(){
-    this.getInitialState();
+    this.getState();
   }
 
   componentDidUpdate() {
@@ -70,7 +69,6 @@ class Request extends Component {
   }
 
   render () {
-    debugger;
     let form;
     let myRequests;
     if(this.state.user != null){
@@ -87,6 +85,7 @@ class Request extends Component {
         <h1>Request!</h1>
         {form}
         <div className='small-12 medium-5 large-5 columns'>
+          <p>My Requests:</p>
           {myRequests}
         </div>
       </div>

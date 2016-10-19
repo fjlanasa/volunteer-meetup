@@ -1,6 +1,10 @@
 class Api::TeamsController < ApiController
   def index
+    user = current_user
     render json: { message: 'hello' }, status: :ok
+  end
+
+  def show
   end
 
   def create
