@@ -30,12 +30,14 @@ class Volunteer extends Component {
       contentType: 'application/json',
     })
     .done((data)=>{
-      if(data.current_volunteer != null){
+      if(data.current_volunteer != 'null'){
         this.setState({current_user: data.current_user, current_volunteer: data.current_volunteer,
                       labor: data.current_volunteer.labor, location: data.current_volunteer.location,
                       supplies: data.current_volunteer.supplies,
                       max_milage: data.current_volunteer.max_milage,
                       potential_sites: data.current_volunteer_potential_sites});
+      } else {
+        this.setState({current_user: data.current_user, current_volunteer: data.current_volunteer})
       }
     })
   }
@@ -92,9 +94,10 @@ class Volunteer extends Component {
   }
 
   render () {
+    debugger;
     let form;
     let potentialSites;
-    if(this.state.current_user != null){
+    if(this.state.current_user != 'null'){
       if(this.state.current_user == 'preset'){
         form =<div>Finding potential sites...</div>
         potentialSites=<span></span>

@@ -14,10 +14,24 @@ class Site extends Component {
       special_details: null,
       img_url: '',
       team: null,
+      member: false
     }
     this.handleCreateClick = this.handleCreateClick.bind(this);
+    this.handleJoinClick = this.handleJoinClick.bind(this);
   }
 
+  handleJoinClick(){
+    $.ajax({
+      type: 'POST',
+      url: 'api/signups',
+      contentType: 'application/json',
+      data: JSON.stringify({signup: {volunteer_id: this.state.current_volunteer.id, team_id: this.state.team.id}})
+    })
+    .done(data=>{
+      alert(data.message)
+      this.setState({member: true})
+    })
+  }
   handleCreateClick(){
     $.ajax({
       type: 'POST',
@@ -26,7 +40,7 @@ class Site extends Component {
       data: JSON.stringify({team: {user_id: this.state.current_user.id}, site_id: this.props.params.id})
     })
     .done(data=> {
-      alert(data.message);
+      this.setState({team: data.team, member: true});
     })
   }
 
@@ -40,15 +54,20 @@ class Site extends Component {
                     location: data.site.location, contact_name: data.site.contact_name,
                     contact_phone: data.site.contact_phone, square_footage: data.site.square_footage,
                     special_details: data.site.special_details, team: data.team,
-                    map_url: data.site.static_map_url})
+                    map_url: data.site.static_map_url, member: data.member})
     })
   }
 
   render(){
     let button;
-    if(this.state.team == null && this.state.current_user != null){
-      button = <button type="button" className="button"
-      onClick={this.handleCreateClick}>Create a Team</button>
+    if(this.state.current_user != null){
+      if(this.state.team == null){
+        button = <button type="button" className="button"
+        onClick={this.handleCreateClick}>Create a Team</button>
+      } else if(this.state.team != null && this.state.member == false && this.state.team.open){
+        button= <button type="button" className="button"
+        onClick={this.handleJoinClick}>Join this Team</button>
+      }
     }
     return(
       <div>

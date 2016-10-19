@@ -9,7 +9,7 @@ class Api::TeamsController < ApiController
       site = Site.find(params[:site_id])
       site.update_attribute(:team_id, team.id)
       Signup.create(team_id: team.id, volunteer_id: Volunteer.find(team_params[:user_id]).user.id)
-      render json: {message: 'SAVED!'}
+      render json: {team: team}
     end
   end
 

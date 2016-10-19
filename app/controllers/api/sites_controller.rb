@@ -2,7 +2,9 @@ class Api::SitesController < ApiController
   include SiteHelper
   def index
     sites = Site.all
-    render json: { sites: sites, user: current_user }, status: :ok
+    user = current_user
+    user_sites = Site.where(user_id: user.id).reverse
+    render json: { sites: sites, user: user, user_sites: user_sites}, status: :ok
   end
 
   def create
@@ -21,12 +23,20 @@ class Api::SitesController < ApiController
   def show
     site = Site.find(params[:id])
     team = site.team
-    if !current_user.nil?
-      volunteer = Volunteer.find(current_user.id)
+    user = current_user
+    if !user.nil?
+      volunteer = Volunteer.find(user.id)
+      if !team.nil?
+        if team.volunteers.any? {|vol| vol.id == volunteer.id}
+          member = true
+        else
+          member = false
+        end
+      end
     else
       volunteer = nil
     end
-    render json: {site: site, user: current_user, volunteer: volunteer, team: team}, status: :ok
+    render json: {site: site, user: user, volunteer: volunteer, team: team, member: member}, status: :ok
   end
 
   private

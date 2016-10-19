@@ -27,7 +27,7 @@ class VolunteerForm extends Component {
 
   render(){
     let labor = 'I am willing to work on a demolition crew';
-    let supplies = 'I am willing to bring supplies for a demolision crew';
+    let supplies = 'I am willing to bring supplies for a demolition crew';
     let location_input = document.getElementById('volunteer-loc-text');
     if(this.state.location_class == 'volunteer-form-row' && location_input != null){
       location_input.required = true;
