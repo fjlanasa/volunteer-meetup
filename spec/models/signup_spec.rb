@@ -14,7 +14,7 @@ RSpec.describe Signup, type: :model do
   }
 
   let(:team){
-    Team.create(user_id: user2.id, meeting_location: 'Home', meeting_time: 'Now!', workers_needs: 4, supplies_needed: 4)
+    Team.create(user_id: user2.id, meeting_location: 'Home', meeting_time: 'Now!')
   }
 
   let(:signup){
