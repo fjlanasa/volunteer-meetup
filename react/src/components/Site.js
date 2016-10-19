@@ -19,7 +19,15 @@ class Site extends Component {
   }
 
   handleCreateClick(){
-    alert('CREATE!');
+    $.ajax({
+      type: 'POST',
+      url: 'api/teams/',
+      contentType: 'application/json',
+      data: JSON.stringify({team: {user_id: this.state.current_user.id}, site_id: this.props.params.id})
+    })
+    .done(data=> {
+      alert(data.message);
+    })
   }
 
   componentDidMount(){
@@ -38,7 +46,7 @@ class Site extends Component {
 
   render(){
     let button;
-    if(this.state.team == null){
+    if(this.state.team == null && this.state.current_user != null){
       button = <button type="button" className="button"
       onClick={this.handleCreateClick}>Create a Team</button>
     }

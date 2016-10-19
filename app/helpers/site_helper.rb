@@ -27,13 +27,15 @@ module SiteHelper
           if distance <= volunteer.max_milage
             if site.team.nil?
               potential_sites.push(site)
+            elsif site.team.open
+              potential_sites.push(site)
             end
           end
         end
       else
         potential_sites = Site.all
       end
-    end  
+    end
     potential_sites
   end
 end
