@@ -1,9 +1,12 @@
 import React from 'react';
+import { Link, IndexLink } from 'react-router'
+import NavLink from './NavLink'
 
 const PotentialSite = props => {
+  let path = `/sites/${props.id}`
   return(
     <li className="potential-site">
-      {props.location}
+      <NavLink to={path}>{props.location}</NavLink>
     </li>
   );
 };

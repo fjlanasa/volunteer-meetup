@@ -4,7 +4,7 @@ import PotentialSite from './PotentialSite';
 const PotentialSitesList = props => {
   let potentialSites = props.potentialSites.map(site=>{
     return (
-      <PotentialSite key={site.id} location={site.location}/>
+      <PotentialSite key={site.id} id={site.id} location={site.location}/>
     )
   })
   return (

@@ -9,7 +9,6 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    debugger;
     $.ajax({
       url: '/api/sites',
       contentType: 'application/json'

@@ -18,6 +18,17 @@ class Api::SitesController < ApiController
     end
   end
 
+  def show
+    site = Site.find(params[:id])
+    team = site.team
+    if !current_user.nil?
+      volunteer = Volunteer.find(current_user.id)
+    else
+      volunteer = nil
+    end
+    render json: {site: site, user: current_user, volunteer: volunteer, team: team}, status: :ok
+  end
+
   private
   def site_params
     params.require(:site).permit(:location, :contact_name, :contact_phone, :square_footage, :special_details, :user_id)

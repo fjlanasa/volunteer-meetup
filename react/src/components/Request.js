@@ -43,7 +43,6 @@ class Request extends Component {
   }
 
   componentDidMount(){
-    console.log(this.state.user_name)
     $.ajax({
       url: '/api/sites',
       contentType: 'application/json'
