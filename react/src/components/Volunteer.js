@@ -24,6 +24,7 @@ class Volunteer extends Component {
   }
 
   getVolInfo() {
+    debugger;
     $.ajax({
       type: "GET",
       url: '/api/volunteers',
