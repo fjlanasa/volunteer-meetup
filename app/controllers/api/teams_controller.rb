@@ -1,7 +1,12 @@
 class Api::TeamsController < ApiController
   def index
     user = current_user
-    render json: { message: 'hello' }, status: :ok
+    user_teams = user.teams
+    user_vol_sites = []
+    user_teams.each do |team|
+      user_vol_sites.push(team.site)
+    end
+    render json: { user: user, user_vol_sites: user_vol_sites }, status: :ok
   end
 
   def show

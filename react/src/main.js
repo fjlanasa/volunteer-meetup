@@ -7,6 +7,7 @@ import Home from './components/Home'
 import Request from './components/Request'
 import Volunteer from './components/Volunteer'
 import Site from './components/Site'
+import MyTeamsPage from './components/MyTeamsPage'
 
 $(function() {
   if(document.getElementById('app') != null){
@@ -19,6 +20,7 @@ $(function() {
           <Route path='/request' component={Request}/>
           <Route path='/volunteer' component={Volunteer}/>
           <Route path='/sites/:id' component={Site}/>
+          <Route path='/myteams' component={MyTeamsPage}/>
         </Route>
       </Router>,
       document.getElementById('app')
