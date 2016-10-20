@@ -18,6 +18,7 @@ class Request extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.getState = this.getState.bind(this);
+    this.handleBlur = this.handleBlur.bind(this);
   }
 
   getState(){
@@ -25,12 +26,12 @@ class Request extends Component {
       url: '/api/sites',
       contentType: 'application/json'
     })
-    .done(data=> {
+    .done((data)=> {
       if(data.user != null){
         this.setState({user_sites: data.user_sites, user: data.user,
-                      contact_name: `${data.user.first_name} ${data.user.last_name}`
-                      , contact_phone: data.user.phone_number, location: null,
-                      square_footage: null, special_details: null})
+                      contact_name: `${data.user.first_name} ${data.user.last_name}`,
+                      contact_phone: data.user.phone_number, location: '',
+                      square_footage: '', special_details: ''});
       }
     })
   }
@@ -49,7 +50,7 @@ class Request extends Component {
       data: JSON.stringify({site: {location: location, contact_name: this.state.contact_name,
                                     contact_phone: this.state.contact_phone, square_footage: this.state.square_footage,
                                     special_details: this.state.special_details, user_id: this.state.user.id}})
-    }).done((data)=>{
+    }).done(()=>{
       this.getState();
     })
   }
@@ -58,6 +59,10 @@ class Request extends Component {
     let nextState={}
     nextState[event.target.name] = event.target.value
     this.setState(nextState)
+  }
+
+  handleBlur(event){
+    this.setState({location: event.target.value})
   }
 
   componentDidMount(){
@@ -75,7 +80,11 @@ class Request extends Component {
       let contact_name = this.state.contact_name;
       let contact_phone = this.state.contact_phone;
       form = <RequestForm handleChange={this.handleChange}
-              handleSubmit={this.handleSubmit} contact_name={contact_name} contact_phone={contact_phone}/>
+              handleSubmit={this.handleSubmit} contact_name={contact_name}
+              contact_phone={contact_phone} location = {this.state.location}
+              square_footage = {this.state.square_footage}
+              special_details={this.state.special_details}
+              handleBlur={this.handleBlur}/>
       myRequests = <MyRequestCollection requests={this.state.user_sites}/>
     } else {
       form = <div>Please <a href='/users/sign_in'>sign in</a> to make a request for help</div>;

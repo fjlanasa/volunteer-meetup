@@ -19,15 +19,17 @@ class Home extends Component {
   }
 
   render () {
-    let no_map_text = <span>There are currently no sites seeking help</span>
+    let no_map_text;
     if(this.state.sites.length != 0){
-      no_map_text = <span></span>
+      let no_map_text = null;
       initMap(this.state.sites);
+    } else {
+      let no_map_text = 'There are currently no sites seeking help';
     }
     return (
       <div>
         <h1>Home!</h1>
-        {no_map_text}
+        <p>{no_map_text}</p>
         <div id='map'></div>
       </div>
     );

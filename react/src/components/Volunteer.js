@@ -12,7 +12,6 @@ class Volunteer extends Component {
       max_milage: null,
       current_user: 'preset',
       location: null,
-      current_volunteer: null,
       potential_sites: []
     }
     this.handleLaborClick = this.handleLaborClick.bind(this)
@@ -30,12 +29,12 @@ class Volunteer extends Component {
       contentType: 'application/json',
     })
     .done((data)=>{
-      if(data.current_volunteer != 'null'){
-        this.setState({current_user: data.current_user, current_volunteer: data.current_volunteer,
-                      labor: data.current_volunteer.labor, location: data.current_volunteer.location,
-                      supplies: data.current_volunteer.supplies,
-                      max_milage: data.current_volunteer.max_milage,
-                      potential_sites: data.current_volunteer_potential_sites});
+      if(data.current_user != 'null'){
+        this.setState({current_user: data.current_user,
+                      labor: data.current_user.labor, location: data.current_user.location,
+                      supplies: data.current_user.supplies,
+                      max_milage: data.current_user.max_milage,
+                      potential_sites: data.current_user_potential_sites});
       } else {
         this.setState({current_user: data.current_user, current_volunteer: data.current_volunteer})
       }
@@ -62,9 +61,9 @@ class Volunteer extends Component {
     }
     $.ajax({
       type: "PATCH",
-      url: `api/volunteers/${this.state.current_volunteer.id}`,
+      url: `api/volunteers/${this.state.current_user.id}`,
       contentType: 'application/json',
-      data: JSON.stringify({volunteer: {location: location, labor: this.state.labor,
+      data: JSON.stringify({user: {location: location, labor: this.state.labor,
                                         supplies: this.state.supplies,
                                         max_milage: this.state.max_milage}})
     }).done((data)=>{
