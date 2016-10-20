@@ -76,6 +76,7 @@ class Request extends Component {
   render () {
     let form;
     let myRequests;
+    let noRequestsText;
     if(this.state.user != null){
       let contact_name = this.state.contact_name;
       let contact_phone = this.state.contact_phone;
@@ -89,12 +90,17 @@ class Request extends Component {
     } else {
       form = <div>Please <a href='/users/sign_in'>sign in</a> to make a request for help</div>;
     }
+
+    if(this.state.user != null && this.state.user_sites.length == 0){
+      noRequestsText = 'You have not requested help yet.'
+    }
     return (
       <div>
         <h1>Request!</h1>
         {form}
         <div className='small-12 medium-5 large-5 columns'>
           <p>My Requests:</p>
+          <p>{noRequestsText}</p>
           {myRequests}
         </div>
       </div>

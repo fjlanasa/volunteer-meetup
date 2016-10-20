@@ -95,6 +95,7 @@ class Volunteer extends Component {
   render () {
     let form;
     let potentialSites;
+    let noSitesText;
     if(this.state.current_user != 'null'){
       if(this.state.current_user == 'preset'){
         form =<div>Finding potential sites...</div>
@@ -113,6 +114,10 @@ class Volunteer extends Component {
       potentialSites = <span></span>
     }
 
+    if(this.state.current_user != null && this.state.potential_sites.length == 0){
+      noSitesText = 'There are no potential sites based on your criteria';
+    }
+
 
     return (
       <div>
@@ -120,6 +125,7 @@ class Volunteer extends Component {
         {form}
         <div className='small-12 medium-6 columns'>
           <p>Potential Volunteer Sites:</p>
+          <p>{noSitesText}</p>
           {potentialSites}
         </div>
       </div>

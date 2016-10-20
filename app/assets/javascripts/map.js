@@ -39,7 +39,7 @@ function initMap(data_sites) {
           populateInfoWindow(this, largeInfowindow);
         });
         if(markers[i] != null){
-          bounds.extend(markers[i].position);          
+          bounds.extend(markers[i].position);
         }
       }
     }
