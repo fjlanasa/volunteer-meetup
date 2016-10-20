@@ -10,6 +10,11 @@ function initMap(data_sites) {
       document.getElementById('volunteer-loc-text'));
   }
 
+  if(document.getElementById('team-loc-text') != null){
+    let volunteerAutocomplete = new google.maps.places.Autocomplete(
+      document.getElementById('team-loc-text'));
+  }
+
   if(document.getElementById('map') != null && data_sites != null){
     let map;
     let sites = data_sites;

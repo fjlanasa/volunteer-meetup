@@ -8,18 +8,21 @@ class Api::TeamsController < ApiController
   end
 
   def create
-    binding.pry
     team = Team.new(team_params)
     if team.save
-      site = Site.find(params[:site_id])
-      site.update_attribute(:team_id, team.id)
       Signup.create(team_id: team.id, user_id: team_params[:organizer_id])
       render json: {team: team}
     end
   end
 
+  def update
+    team = Team.find(params[:id])
+    team.update_attributes(team_params)
+    render json: { message: 'hello'}, status: :ok
+  end
+
   private
   def team_params
-    params.require(:team).permit(:organizer_id)
+    params.require(:team).permit(:organizer_id, :site_id, :meeting_time, :meeting_location, :open, :total_supplies, :total_workers)
   end
 end

@@ -29,7 +29,7 @@ class Volunteer extends Component {
       contentType: 'application/json',
     })
     .done((data)=>{
-      if(data.current_user != 'null'){
+      if(data.current_user != 'null' && data.current_user != null){
         this.setState({current_user: data.current_user,
                       labor: data.current_user.labor, location: data.current_user.location,
                       supplies: data.current_user.supplies,
@@ -96,7 +96,7 @@ class Volunteer extends Component {
     let form;
     let potentialSites;
     let noSitesText;
-    if(this.state.current_user != 'null'){
+    if(this.state.current_user != 'null' && this.state.current_user != null){
       if(this.state.current_user == 'preset'){
         form =<div>Finding potential sites...</div>
         potentialSites=<span></span>

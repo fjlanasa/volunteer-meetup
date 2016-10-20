@@ -17,12 +17,56 @@ class Site extends Component {
       organizer: null,
       team_members: null,
       member: false,
-      creator: null
+      creator: null,
     }
     this.handleCreateClick = this.handleCreateClick.bind(this);
     this.handleJoinClick = this.handleJoinClick.bind(this);
     this.handleDeleteClick = this.handleDeleteClick.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleOpenClick = this.handleOpenClick.bind(this);
+    this.handleBlur = this.handleBlur.bind(this);
     this.getState = this.getState.bind(this);
+    this.handleTeamUpdate = this.handleTeamUpdate.bind(this);
+  }
+
+  handleChange(event){
+    let nextState={}
+    nextState[event.target.name] = event.target.value
+    this.setState(nextState)
+  }
+
+  handleOpenClick(){
+    if(this.state.team.open == true ){
+      let newTeam = this.state.team
+      newTeam.open = false
+      this.setState({team: newTeam})
+    } else {
+      let newTeam = this.state.team
+      newTeam.open = true
+      this.setState({team: newTeam})
+    }
+  }
+
+  handleBlur(event){
+    let nextState={}
+    nextState[event.target.name] = event.target.value
+    this.setState(nextState)
+  }
+
+  handleTeamUpdate(event){
+    event.preventDefault();
+    $.ajax({
+      type: "PATCH",
+      url: `api/teams/${this.state.team.id}`,
+      contentType: 'application/json',
+      data: JSON.stringify({team: {meeting_location: this.state.meeting_location,
+                                  meeting_time: this.state.meeting_time,
+                                  total_workers: this.state.total_workers,
+                                  total_supplies: this.state.total_supplies,
+                                  open: this.state.team.open}})
+    }).done((data)=>{
+      this.getState();
+    })
   }
 
   getState(){
@@ -37,7 +81,7 @@ class Site extends Component {
                     special_details: data.site.special_details, team: data.team,
                     map_url: data.site.static_map_url, member: data.member,
                     team_members: data.team_members, organizer: data.organizer,
-                    creator: data.creator})
+                    creator: data.creator});
     })
   }
 
@@ -46,7 +90,7 @@ class Site extends Component {
       type: 'POST',
       url: 'api/signups',
       contentType: 'application/json',
-      data: JSON.stringify({signup: {user_id: this.state.current_user.id, team_id: this.state.team.id}})
+      data: JSON.stringify({signup: {user_id: this.state.current_user.id, team_id: this.state.team.id, site_id: this.props.params.id}})
     })
     .done(data=>{
       this.getState();
@@ -57,7 +101,7 @@ class Site extends Component {
       type: 'POST',
       url: 'api/teams/',
       contentType: 'application/json',
-      data: JSON.stringify({team: {organizer_id: this.state.current_user.id}, site_id: this.props.params.id})
+      data: JSON.stringify({team: {organizer_id: this.state.current_user.id, site_id: this.props.params.id}})
     })
     .done(data=> {
       this.getState();
@@ -79,12 +123,16 @@ class Site extends Component {
     this.getState();
   }
 
+  componentDidUpdate() {
+    initMap([]);
+  }
+
   render(){
     let button;
     let teamPage;
     let deleteButton;
     if(this.state.current_user != null){
-      if(this.state.team == null && this.state.current_user.id != this.state.creator.id){
+      if(this.state.team == null){
         button = <button type="button" className="button"
         onClick={this.handleCreateClick}>Create a Team</button>
       } else if(this.state.team != null && this.state.member == false && this.state.team.open){
@@ -95,11 +143,13 @@ class Site extends Component {
         deleteButton = <button type="button" className="button"
         onClick={this.handleDeleteClick}>Close this Site</button>
       }
-    }
-    if(this.state.team != null){
-      teamPage = <TeamPage team={this.state.team} user={this.state.user}
-                  organizer={this.state.organizer}
-                  team_members={this.state.team_members}/>
+      if(this.state.team != null){
+        teamPage = <TeamPage team={this.state.team} user={this.state.current_user}
+        organizer={this.state.organizer}
+        team_members={this.state.team_members}
+        handleChange={this.handleChange} handleOpenClick={this.handleOpenClick}
+        handleBlur={this.handleBlur} handleTeamUpdate={this.handleTeamUpdate}/>
+      }
     }
     return(
       <div>

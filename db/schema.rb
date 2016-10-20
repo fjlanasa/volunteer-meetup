@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161020164952) do
+ActiveRecord::Schema.define(version: 20161020175928) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,8 +36,6 @@ ActiveRecord::Schema.define(version: 20161020164952) do
     t.string  "meeting_location"
     t.string  "meeting_time"
     t.boolean "open",             default: true, null: false
-    t.integer "workers",          default: 0,    null: false
-    t.integer "supplies",         default: 0,    null: false
     t.integer "organizer_id",                    null: false
     t.integer "total_workers",    default: 0,    null: false
     t.integer "total_supplies",   default: 0,    null: false
