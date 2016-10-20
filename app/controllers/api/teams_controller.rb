@@ -8,6 +8,7 @@ class Api::TeamsController < ApiController
   end
 
   def create
+    binding.pry
     team = Team.new(team_params)
     if team.save
       site = Site.find(params[:site_id])
