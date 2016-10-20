@@ -22,22 +22,26 @@ function initMap(data_sites) {
     let largeInfowindow = new google.maps.InfoWindow();
     let bounds = new google.maps.LatLngBounds();
     for(let i = 0; i < sites.length; i++){
-      let position = {lat: sites[i].lat, lng: sites[i].lng}
-      let title = sites[i].location
+      if(sites[i].lat != null && sites[i].lng != null){
+        let position = {lat: sites[i].lat, lng: sites[i].lng}
+        let title = sites[i].location
 
-      let marker = new google.maps.Marker({
-        map: map,
-        position: position,
-        title: title,
-        animation: google.maps.Animation.DROP,
-        id: i
-      });
-      markers.push(marker);
+        let marker = new google.maps.Marker({
+          map: map,
+          position: position,
+          title: title,
+          animation: google.maps.Animation.DROP,
+          id: i
+        });
+        markers.push(marker);
 
-      marker.addListener('click', function(){
-        populateInfoWindow(this, largeInfowindow);
-      });
-      bounds.extend(markers[i].position);
+        marker.addListener('click', function(){
+          populateInfoWindow(this, largeInfowindow);
+        });
+        if(markers[i] != null){
+          bounds.extend(markers[i].position);          
+        }
+      }
     }
 
     function populateInfoWindow(marker, infowindow) {

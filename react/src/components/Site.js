@@ -7,7 +7,6 @@ class Site extends Component {
     super(props);
     this.state = {
       current_user: null,
-      current_volunteer: null,
       location: null,
       contact_name: null,
       contact_phone: null,
@@ -32,8 +31,8 @@ class Site extends Component {
       contentType: 'application/json'
     })
     .done(data=>{
-      this.setState({current_user: data.user, current_volunteer: data.volunteer,
-                    location: data.site.location, contact_name: data.site.contact_name,
+      this.setState({current_user: data.user, location: data.site.location,
+                    contact_name: data.site.contact_name,
                     contact_phone: data.site.contact_phone, square_footage: data.site.square_footage,
                     special_details: data.site.special_details, team: data.team,
                     map_url: data.site.static_map_url, member: data.member,
@@ -47,7 +46,7 @@ class Site extends Component {
       type: 'POST',
       url: 'api/signups',
       contentType: 'application/json',
-      data: JSON.stringify({signup: {volunteer_id: this.state.current_volunteer.id, team_id: this.state.team.id}})
+      data: JSON.stringify({signup: {user_id: this.state.current_user.id, team_id: this.state.team.id}})
     })
     .done(data=>{
       this.getState();
@@ -58,7 +57,7 @@ class Site extends Component {
       type: 'POST',
       url: 'api/teams/',
       contentType: 'application/json',
-      data: JSON.stringify({team: {user_id: this.state.current_user.id}, site_id: this.props.params.id})
+      data: JSON.stringify({team: {organizer_id: this.state.current_user.id}, site_id: this.props.params.id})
     })
     .done(data=> {
       this.getState();
@@ -99,7 +98,7 @@ class Site extends Component {
     }
     if(this.state.team != null){
       teamPage = <TeamPage team={this.state.team} user={this.state.user}
-                  organizer={this.state.organizer} vol={this.state.current_volunteer}
+                  organizer={this.state.organizer}
                   team_members={this.state.team_members}/>
     }
     return(

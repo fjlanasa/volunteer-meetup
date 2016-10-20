@@ -29,28 +29,24 @@ class Api::SitesController < ApiController
     team = site.team
     creator = User.find(site.user_id)
     if !team.nil?
-      organizer = User.find(team.user.id)
-      team_members = team.volunteers
-      team_members = team_members.to_a.map! {|vol| User.find(vol.user_id)}
+      organizer = User.find(team.organizer_id)
+      team_members = team.users
     else
       organizer = nil
       team_members = nil
     end
     user = current_user
     if !user.nil?
-      volunteer = Volunteer.find(user.id)
       if !team.nil?
-        if team.volunteers.any? {|vol| vol.id == volunteer.id}
+        if team.users.any? {|vol| vol.id == user.id}
           member = true
         else
           member = false
         end
       end
-    else
-      volunteer = nil
     end
-    render json: {site: site, user: user, volunteer: volunteer, team: team,
-      team_members: team_members, organizer: organizer, member: member, creator: creator}, status: :ok
+    render json: {site: site, user: user, team: team, team_members: team_members,
+      organizer: organizer, member: member, creator: creator}, status: :ok
   end
 
   def destroy

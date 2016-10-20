@@ -10,6 +10,6 @@ class Api::SignupsController < ApiController
 
   private
   def signup_params
-    params.require(:signup).permit(:team_id, :volunteer_id)
+    params.require(:signup).permit(:team_id, :user_id)
   end
 end

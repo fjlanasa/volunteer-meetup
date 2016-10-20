@@ -12,13 +12,13 @@ class Api::TeamsController < ApiController
     if team.save
       site = Site.find(params[:site_id])
       site.update_attribute(:team_id, team.id)
-      Signup.create(team_id: team.id, volunteer_id: Volunteer.find(team_params[:user_id]).user.id)
+      Signup.create(team_id: team.id, user_id: team_params[:organizer_id])
       render json: {team: team}
     end
   end
 
   private
   def team_params
-    params.require(:team).permit(:user_id)
+    params.require(:team).permit(:organizer_id)
   end
 end

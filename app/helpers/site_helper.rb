@@ -22,9 +22,9 @@ module SiteHelper
     potential_sites = []
     if volunteer.labor || volunteer.supplies
       Site.all.each do |site|
-        if site.user.id != volunteer.user.id
+        if site.user.id != volunteer.id
           if !site.team.nil?
-            if !site.team.volunteers.any? {|vol| vol.id == volunteer.id} && site.team.open
+            if !site.team.users.any? {|vol| vol.id == volunteer.id} && site.team.open
               if !volunteer.location.nil? && volunteer.max_milage != 9999
                 distance = calculate_distance(site, volunteer)
                 if distance <= volunteer.max_milage
