@@ -13,8 +13,7 @@ class App extends Component {
   render () {
     return (
       <div>
-        <h1>Hey!</h1>
-        <ul role='nav'>
+        <ul role='nav' className='nav-links'>
           <li><IndexLink to='/' activeStyle={{color: 'red' }}>Home</IndexLink></li>
           <li><NavLink to='/request'>Request</NavLink></li>
           <li><NavLink to='/volunteer'>Volunteer</NavLink></li>

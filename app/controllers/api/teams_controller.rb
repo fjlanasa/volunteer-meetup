@@ -26,6 +26,12 @@ class Api::TeamsController < ApiController
     render json: { message: 'hello'}, status: :ok
   end
 
+  def destroy
+    team = Team.find(params[:id])
+    team.destroy
+    render json: {message: 'deleted'}, status: :ok
+  end
+
   private
   def team_params
     params.require(:team).permit(:organizer_id, :site_id, :meeting_time, :meeting_location, :open, :total_supplies, :total_workers)
