@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+gituimport React, {Component} from 'react';
 import { hashHistory } from 'react-router';
 import TeamPage from './TeamPage'
 
@@ -37,12 +37,10 @@ class Site extends Component {
     })
     .done(data=>{
       this.setState({current_user: data.user, location: data.site.location,
-        contact_name: data.site.contact_name,
-        contact_phone: data.site.contact_phone, square_footage: data.site.square_footage,
-        special_details: data.site.special_details, team: data.team,
-        map_url: data.site.static_map_url, member: data.member,
-        team_members: data.team_members, organizer: data.organizer,
-        creator: data.creator});
+        contact_name: data.site.contact_name, contact_phone: data.site.contact_phone,
+        square_footage: data.site.square_footage, special_details: data.site.special_details,
+        team: data.team, map_url: data.site.static_map_url, member: data.member,
+        team_members: data.team_members, organizer: data.organizer, creator: data.creator});
     })
   }
 
@@ -85,10 +83,8 @@ class Site extends Component {
       url: `api/teams/${this.state.team.id}`,
       contentType: 'application/json',
       data: JSON.stringify({team: {meeting_location: this.state.meeting_location,
-                                  meeting_time: this.state.meeting_time,
-                                  total_workers: this.state.total_workers,
-                                  total_supplies: this.state.total_supplies,
-                                  open: this.state.team.open}})
+            meeting_time: this.state.meeting_time, total_workers: this.state.total_workers,
+            total_supplies: this.state.total_supplies, open: this.state.team.open}})
     }).done((data)=>{
       this.getState();
     })
