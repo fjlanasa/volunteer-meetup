@@ -22,7 +22,6 @@ RSpec.describe Signup, type: :model do
   }
 
   it 'has the expected properties' do
-    binding.pry
     expect(signup.user.first_name).to eq('Frank')
     expect(signup.user.last_name).to eq('LaNasa')
     expect(signup.user.email).to eq('fjl@gmail.com')
