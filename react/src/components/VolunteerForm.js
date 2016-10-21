@@ -26,8 +26,8 @@ class VolunteerForm extends Component {
 
 
   render(){
-    let labor = 'I am willing to work on a demolition crew';
-    let supplies = 'I am willing to bring supplies for a demolition crew';
+    let labor = 'I am willing to work on a cleanup crew';
+    let supplies = 'I am willing to bring supplies for a cleanup crew';
     let location_input = document.getElementById('volunteer-loc-text');
     if(this.state.location_class == 'volunteer-form-row' && location_input != null){
       location_input.required = true;
@@ -43,7 +43,8 @@ class VolunteerForm extends Component {
               </div>
 
               <div className='volunteer-form-row'>
-                <label><input id="supplies" type="checkbox" onClick={this.props.handleSuppliesClick} name="supplies" value="true" defaultChecked={this.props.supplies}/>{supplies}</label>
+                <label htmlFor='supplies'>{supplies}</label>
+                <input type='number' name='supplies' min='0' onChange={this.props.handleChange} defaultValue={this.props.supplies}/>
               </div>
 
               <div className='volunteer-form-row'>

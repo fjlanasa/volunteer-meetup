@@ -1,4 +1,4 @@
-gituimport React, {Component} from 'react';
+import React, {Component} from 'react';
 import { hashHistory } from 'react-router';
 import TeamPage from './TeamPage'
 
@@ -96,7 +96,9 @@ class Site extends Component {
       type: 'POST',
       url: 'api/signups',
       contentType: 'application/json',
-      data: JSON.stringify({signup: {user_id: this.state.current_user.id, team_id: this.state.team.id, site_id: this.props.params.id}})
+      data: JSON.stringify({signup: {user_id: this.state.current_user.id,
+        team_id: this.state.team.id, site_id: this.props.params.id,
+        labor: this.state.current_user.labor, supplies: this.state.current_user.supplies}})
     })
     .done(data=>{
       this.getState();
@@ -107,7 +109,9 @@ class Site extends Component {
       type: 'POST',
       url: 'api/teams/',
       contentType: 'application/json',
-      data: JSON.stringify({team: {organizer_id: this.state.current_user.id, site_id: this.props.params.id}})
+      data: JSON.stringify({team: {organizer_id: this.state.current_user.id,
+        site_id: this.props.params.id}, labor: this.state.current_user.labor,
+        supplies: this.state.current_user.supplies})
     })
     .done(data=> {
       this.getState();

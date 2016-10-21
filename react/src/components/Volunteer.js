@@ -8,14 +8,13 @@ class Volunteer extends Component {
     super(props);
     this.state = {
       labor: null,
-      supplies: null,
+      supplies: 0,
       max_milage: null,
       current_user: 'preset',
       location: null,
       potential_sites: []
     }
     this.handleLaborClick = this.handleLaborClick.bind(this)
-    this.handleSuppliesClick = this.handleSuppliesClick.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleSelect = this.handleSelect.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -71,10 +70,6 @@ class Volunteer extends Component {
     })
   }
 
-  handleSuppliesClick(event){
-    this.setState({supplies: !this.state.supplies})
-  }
-
   handleLaborClick(event){
     if(this.state.labor == true ){
       this.setState({labor: false})
@@ -103,10 +98,13 @@ class Volunteer extends Component {
       } else {
         let labor = this.state.labor;
         let contact_phone = this.state.contact_phone;
+
         form = <VolunteerForm handleSubmit={this.handleSubmit} labor={this.state.labor}
         supplies={this.state.supplies} max_milage={this.state.max_milage}
         handleSuppliesClick={this.handleSuppliesClick} handleSelect={this.handleSelect}
-        handleLaborClick={this.handleLaborClick} location={this.state.location}/>;
+        handleLaborClick={this.handleLaborClick} location={this.state.location}
+        handleChange={this.handleChange}/>;
+
         potentialSites = <PotentialSitesList potentialSites={this.state.potential_sites}/>;
       }
     } else {

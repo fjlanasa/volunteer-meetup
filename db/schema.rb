@@ -10,14 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161020175928) do
+ActiveRecord::Schema.define(version: 20161021163731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "signups", force: :cascade do |t|
-    t.integer "team_id", null: false
-    t.integer "user_id", null: false
+    t.integer "team_id",                  null: false
+    t.integer "user_id",                  null: false
+    t.boolean "labor",    default: false
+    t.integer "supplies", default: 0
   end
 
   create_table "sites", force: :cascade do |t|
@@ -59,9 +61,9 @@ ActiveRecord::Schema.define(version: 20161020175928) do
     t.datetime "updated_at",                             null: false
     t.string   "phone_number",                           null: false
     t.boolean  "labor",                  default: false
-    t.boolean  "supplies",               default: false
     t.integer  "max_milage",             default: 9999,  null: false
     t.string   "location"
+    t.integer  "supplies",               default: 0
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
