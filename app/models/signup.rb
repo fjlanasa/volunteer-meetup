@@ -7,28 +7,16 @@ class Signup < ActiveRecord::Base
   belongs_to :user
   belongs_to :team
 
-  after_create :update_team_after_signup
+  after_save :update_team_after_signup
   after_destroy :update_team_after_leave
 
   def update_team_after_signup
     team = Team.find(team_id)
-    user = User.find(user_id)
-    if labor
-      team.increment!(:total_workers, by = 1)
-    end
-    if supplies > 0
-      team.increment!(:total_supplies, by = supplies)
-    end
+    team.update_totals
   end
 
   def update_team_after_leave
     team = Team.find(team_id)
-    user = User.find(user_id)
-    if labor
-      team.decrement!(:total_workers, by = 1)
-    end
-    if supplies > 0
-      team.decrement!(:total_supplies, by = supplies)
-    end
+    team.update_totals
   end
 end

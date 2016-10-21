@@ -8,9 +8,13 @@ class Api::SignupsController < ApiController
     end
   end
 
+  def update
+    signup = Signup.find(params[:id])
+    signup.update_attributes(signup_params)
+  end
+
   def destroy
     signup = Signup.where(user_id: params[:id], team_id: params[:team_id])[0]
-
     Signup.destroy(signup.id)
   end
 

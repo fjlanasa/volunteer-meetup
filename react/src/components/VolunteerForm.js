@@ -66,7 +66,7 @@ class VolunteerForm extends Component {
               </div>
 
               <div className="input-group-button">
-                <input type="submit" className="button" value="Update Volunteer Profile"/>
+                <input type="submit" className="button" value="Update Profile"/>
               </div>
             </div>
           </form>

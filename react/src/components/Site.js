@@ -18,6 +18,11 @@ class Site extends Component {
       team_members: null,
       member: false,
       creator: null,
+      team_update_clicked: false,
+      vol_update_clicked: false,
+      signup: null,
+      labor: null,
+      supplies: null
     }
     this.handleCreateClick = this.handleCreateClick.bind(this);
     this.handleJoinClick = this.handleJoinClick.bind(this);
@@ -29,6 +34,8 @@ class Site extends Component {
     this.handleTeamUpdate = this.handleTeamUpdate.bind(this);
     this.handleDeleteTeamClick = this.handleDeleteTeamClick.bind(this);
     this.handleLeaveTeamClick = this.handleLeaveTeamClick.bind(this);
+    this.handleEditVolSubmit = this.handleEditVolSubmit.bind(this);
+    this.handleLaborClick = this.handleLaborClick.bind(this);
   }
   getState(){
     $.ajax({
@@ -36,11 +43,18 @@ class Site extends Component {
       contentType: 'application/json'
     })
     .done(data=>{
+      let labor;
+      let supplies;
+      if(data.signup != null){
+        labor = data.signup.labor;
+        supplies = data.signup.supplies;
+      }
       this.setState({current_user: data.user, location: data.site.location,
         contact_name: data.site.contact_name, contact_phone: data.site.contact_phone,
         square_footage: data.site.square_footage, special_details: data.site.special_details,
         team: data.team, map_url: data.site.static_map_url, member: data.member,
-        team_members: data.team_members, organizer: data.organizer, creator: data.creator});
+        team_members: data.team_members, organizer: data.organizer, creator: data.creator,
+        signup: data.signup, labor: labor, supplies: supplies});
     })
   }
 
@@ -56,6 +70,28 @@ class Site extends Component {
     let nextState={}
     nextState[event.target.name] = event.target.value
     this.setState(nextState)
+  }
+
+  handleLaborClick(event){
+    if(this.state.labor == true){
+
+      this.setState({labor: false})
+    } else {
+      this.setState({labor: true})
+    }
+  }
+
+  handleEditVolSubmit(event){
+    event.preventDefault();
+    $.ajax({
+      type: "PATCH",
+      url: `api/signups/${this.state.signup.id}`,
+      contentType: 'application/json',
+      data: JSON.stringify({signup: {labor: this.state.labor,
+            supplies: this.state.supplies}})
+    }).done((data)=>{
+      this.getState();
+    })
   }
 
   handleOpenClick(){
@@ -83,8 +119,7 @@ class Site extends Component {
       url: `api/teams/${this.state.team.id}`,
       contentType: 'application/json',
       data: JSON.stringify({team: {meeting_location: this.state.meeting_location,
-            meeting_time: this.state.meeting_time, total_workers: this.state.total_workers,
-            total_supplies: this.state.total_supplies, open: this.state.team.open}})
+            meeting_time: this.state.meeting_time, open: this.state.team.open}})
     }).done((data)=>{
       this.getState();
     })
@@ -157,13 +192,14 @@ class Site extends Component {
     let button;
     let teamPage;
     let deleteButton;
+    console.log(this.state)
     if(this.state.current_user != null){
       if(this.state.team == null){
         button = <button type="button" className="button"
-        onClick={this.handleCreateClick}>Create a Team</button>
+        onClick={this.handleCreateClick}>Create Team</button>
       } else if(this.state.team != null && this.state.member == false && this.state.team.open){
         button= <button type="button" className="button"
-        onClick={this.handleJoinClick}>Join this Team</button>
+        onClick={this.handleJoinClick}>Join Team</button>
       }
       if(this.state.current_user.id == this.state.creator.id){
         deleteButton = <button type="button" className="button"
@@ -174,9 +210,15 @@ class Site extends Component {
         organizer={this.state.organizer} member={this.state.member}
         team_members={this.state.team_members} handleChange={this.handleChange}
         handleOpenClick={this.handleOpenClick} handleBlur={this.handleBlur}
-        handleTeamUpdate={this.handleTeamUpdate}
+        handleTeamUpdate={this.handleTeamUpdate} signup={this.state.signup}
         handleDeleteTeamClick={this.handleDeleteTeamClick}
-        handleLeaveTeamClick={this.handleLeaveTeamClick}/>
+        handleLeaveTeamClick={this.handleLeaveTeamClick}
+        team_update_clicked={this.state.team_update_clicked}
+        vol_update_clicked={this.state.vol_update_clicked}
+        edit_vol={this.handleEditVolSubmit}
+        handleLaborClick={this.handleLaborClick}
+        handleEditVolSubmit={this.handleEditVolSubmit}
+        labor={this.state.labor} supplies={this.state.supplies}/>
       }
     }
     return(

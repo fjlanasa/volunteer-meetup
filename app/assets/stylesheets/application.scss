@@ -29,6 +29,26 @@ img {
   margin-bottom: 20px;
 }
 
+label {
+  display: block;
+  padding-left: 15px;
+  text-indent: -15px;
+}
+input[type='checkbox'] {
+  width: 13px;
+  height: 13px;
+  padding: 0;
+  margin:0;
+  vertical-align: bottom;
+  position: relative;
+  top: -1px;
+  *overflow: hidden;
+}
+
+.fa-pencil-square-o:hover {
+  color: red;
+}
+
 .nav-links li {
   display: inline;
   margin: 10px;
@@ -53,8 +73,9 @@ img {
 }
 
 .button {
-  display: block;
-  margin: 10px auto;
+  margin: 10px;
+  width: 25%;
+  min-width: 100px;
 }
 #map div {
   height: auto;
@@ -62,6 +83,17 @@ img {
 
 .input-group{
   display: block;
+}
+
+.columns {
+  margin: 50px auto;
+}
+
+
+input.button{
+  min-width: 100px;
+  width: 25%;
+  height: auto;
 }
 
 #volunteer-form .input-group {
