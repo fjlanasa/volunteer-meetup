@@ -10,7 +10,7 @@ class Site < ActiveRecord::Base
   validates :user_id, presence: true
 
   belongs_to :user
-  belongs_to :team, optional: true
+  has_one :team, dependent: :destroy
 
   def formatted_address
     location.gsub(/\s/, '+')

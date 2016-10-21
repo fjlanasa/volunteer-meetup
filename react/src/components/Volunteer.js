@@ -29,7 +29,7 @@ class Volunteer extends Component {
       contentType: 'application/json',
     })
     .done((data)=>{
-      if(data.current_user != 'null'){
+      if(data.current_user != 'null' && data.current_user != null){
         this.setState({current_user: data.current_user,
                       labor: data.current_user.labor, location: data.current_user.location,
                       supplies: data.current_user.supplies,
@@ -95,7 +95,8 @@ class Volunteer extends Component {
   render () {
     let form;
     let potentialSites;
-    if(this.state.current_user != 'null'){
+    let noSitesText;
+    if(this.state.current_user != 'null' && this.state.current_user != null){
       if(this.state.current_user == 'preset'){
         form =<div>Finding potential sites...</div>
         potentialSites=<span></span>
@@ -113,6 +114,10 @@ class Volunteer extends Component {
       potentialSites = <span></span>
     }
 
+    if(this.state.current_user != null && this.state.potential_sites.length == 0){
+      noSitesText = 'There are no potential sites based on your criteria';
+    }
+
 
     return (
       <div>
@@ -120,6 +125,7 @@ class Volunteer extends Component {
         {form}
         <div className='small-12 medium-6 columns'>
           <p>Potential Volunteer Sites:</p>
+          <p>{noSitesText}</p>
           {potentialSites}
         </div>
       </div>

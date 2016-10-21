@@ -10,6 +10,11 @@ function initMap(data_sites) {
       document.getElementById('volunteer-loc-text'));
   }
 
+  if(document.getElementById('team-loc-text') != null){
+    let volunteerAutocomplete = new google.maps.places.Autocomplete(
+      document.getElementById('team-loc-text'));
+  }
+
   if(document.getElementById('map') != null && data_sites != null){
     let map;
     let sites = data_sites;
@@ -39,7 +44,7 @@ function initMap(data_sites) {
           populateInfoWindow(this, largeInfowindow);
         });
         if(markers[i] != null){
-          bounds.extend(markers[i].position);          
+          bounds.extend(markers[i].position);
         }
       }
     }

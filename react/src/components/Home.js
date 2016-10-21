@@ -21,10 +21,10 @@ class Home extends Component {
   render () {
     let no_map_text;
     if(this.state.sites.length != 0){
-      let no_map_text = null;
+      no_map_text = null;
       initMap(this.state.sites);
     } else {
-      let no_map_text = 'There are currently no sites seeking help';
+      no_map_text = 'There are currently no sites seeking help';
     }
     return (
       <div>
