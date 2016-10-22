@@ -45,8 +45,14 @@ class Api::SitesController < ApiController
         end
       end
     end
+    if !user.nil? && !team.nil?
+      signup = Signup.where(user_id: user.id, team_id: team.id)
+      signup = signup[0]
+    else
+      signup = nil
+    end
     render json: {site: site, user: user, team: team, team_members: team_members,
-      organizer: organizer, member: member, creator: creator}, status: :ok
+      organizer: organizer, member: member, creator: creator, signup: signup}, status: :ok
   end
 
   def destroy

@@ -5,7 +5,7 @@ import NavLink from './NavLink'
 const TeamMember = props => {
   return(
     <li className="potential-site">
-      {props.first_name}
+      {props.member.first_name} {props.member.last_name} ({props.member.phone_number})
     </li>
   );
 };

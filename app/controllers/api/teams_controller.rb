@@ -15,7 +15,8 @@ class Api::TeamsController < ApiController
   def create
     team = Team.new(team_params)
     if team.save
-      Signup.create(team_id: team.id, user_id: team_params[:organizer_id])
+      Signup.create(team_id: team.id, user_id: team_params[:organizer_id],
+      supplies: params[:supplies], labor: params[:labor])
       render json: {team: team}
     end
   end
@@ -34,6 +35,7 @@ class Api::TeamsController < ApiController
 
   private
   def team_params
-    params.require(:team).permit(:organizer_id, :site_id, :meeting_time, :meeting_location, :open, :total_supplies, :total_workers)
+    params.require(:team).permit(:organizer_id, :site_id, :meeting_time,
+    :meeting_location, :open, :total_supplies, :total_workers)
   end
 end

@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :phone_number, presence: true
   validates :phone_number, format: { with: /\A[0-9]{3}-[0-9]{3}-[0-9]{4}\z/, message: 'must be in format ###-###-####' }
   validates_inclusion_of :labor, in: [true, false]
-  validates_inclusion_of :supplies, in: [true, false]
+  validates :supplies, numericality: {greater_than_or_equal_to: 0}
 
   has_many :sites
   has_many :signups, dependent: :destroy

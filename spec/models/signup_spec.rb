@@ -28,7 +28,7 @@ RSpec.describe Signup, type: :model do
     expect(signup.user.phone_number).to eq('111-111-1111')
     expect(signup.user.full_name).to eq('Frank LaNasa')
     expect(signup.user.labor).to eq(false)
-    expect(signup.user.supplies).to eq(false)
+    expect(signup.user.supplies).to eq(0)
     expect(signup.team.meeting_location).to eq('Home')
   end
 end

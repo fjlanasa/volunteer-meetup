@@ -20,7 +20,7 @@ module SiteHelper
 
   def potential_sites(volunteer)
     potential_sites = []
-    if volunteer.labor || volunteer.supplies
+    if volunteer.labor || volunteer.supplies >= 1
       Site.all.each do |site|
         if site.user.id != volunteer.id
           if !site.team.nil?

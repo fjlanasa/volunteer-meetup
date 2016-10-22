@@ -10,6 +10,10 @@ ul.hmenu li {
   margin: 10px;
 }
 
+ul {
+  list-style: none;
+}
+
 input {
   width: 100%;
 }
@@ -23,10 +27,53 @@ img {
   display: block;
 }
 
+.create {
+  background-color: #2eb82e;
+}
+
+.create:hover {
+  background-color: #1f7a1f;
+}
+
+.destroy {
+  background-color: #ff0000;
+}
+
+.destroy:hover {
+  background-color: #b30000;
+}
+
+.team_members {
+  max-height: 200px;
+  overflow: scroll;
+  border: 1px solid #f2f2f2;
+  list-style: none;
+}
+
 .nav-links {
   display: inline;
   list-style: none;
   margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  padding-left: 15px;
+  text-indent: -15px;
+}
+input[type='checkbox'] {
+  width: 13px;
+  height: 13px;
+  padding: 0;
+  margin:0;
+  vertical-align: bottom;
+  position: relative;
+  top: -1px;
+  *overflow: hidden;
+}
+
+.fa-pencil-square-o:hover {
+  color: red;
 }
 
 .nav-links li {
@@ -53,8 +100,9 @@ img {
 }
 
 .button {
-  display: block;
   margin: 10px auto;
+  width: 75%;
+  min-width: 100px;
 }
 #map div {
   height: auto;
@@ -64,9 +112,25 @@ img {
   display: block;
 }
 
-#volunteer-form .input-group {
-  display: inline-block;
+.input-group-button{
+  display: block;
+  margin: 10px auto;
+  width: 100%;
 }
+
+.columns {
+  margin: 50px auto;
+}
+
+
+input.button{
+  min-width: 100px;
+  width: 75%;
+  height: auto;
+  margin: 10px auto;
+}
+
+
 
 .form {
   margin: auto;

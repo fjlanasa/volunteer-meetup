@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { hashHistory } from 'react-router';
 
 const TeamDetails = props => {
-  console.log(props.team)
   return (
     <div>
       <p>Total Workers: {props.team.total_workers}</p>

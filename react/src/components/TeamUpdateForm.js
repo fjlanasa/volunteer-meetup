@@ -9,9 +9,10 @@ class TeamUpdateForm extends Component {
 
   render(){
     return (
-      <div>
+      <div className='small-12 columns callout'>
+        <h5>Update team info</h5>
         <form id='team-form' onSubmit={this.props.handleTeamUpdate}>
-          <div className='small-12'>
+          <div>
             <div className='volunteer-form-row'>
               <label htmlFor="team-loc-text">Meeting Location</label>
               <input id="team-loc-text" type="text" name="meeting_location" onBlur={this.props.handleBlur}
@@ -25,22 +26,18 @@ class TeamUpdateForm extends Component {
             </div>
 
             <div className='volunteer-form-row'>
-              <label htmlFor="total_workers">Total Workers</label>
-              <input type="number" name="total_workers" min="0" onChange={this.props.handleChange} defaultValue={this.props.team.total_workers}/>
-            </div>
-
-            <div className='volunteer-form-row'>
-              <label htmlFor='total_supplies'>Total Supplies</label>
-              <input type='number' name='total_supplies' min='0' onChange={this.props.handleChange} defaultValue={this.props.team.total_supplies}/>
-            </div>
-
-            <div className='volunteer-form-row'>
               <label><input id="open" type="checkbox" onClick={this.props.handleOpenClick}
               name="open" value="true" defaultChecked={this.props.team.open}/>This Team is Open</label>
             </div>
 
             <div className="input-group-button">
               <input type="submit" className="button" value="Update"/>
+            </div>
+
+            <div className="input-group-button">
+              <button type="button" className="destroy button" onClick={this.props.handleDeleteTeamClick}>
+                Delete Team
+              </button>
             </div>
           </div>
         </form>
