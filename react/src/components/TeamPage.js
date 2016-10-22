@@ -79,8 +79,8 @@ class TeamPage extends Component {
       <div className='small-12 medium-7 large-8 columns'>
         <div className='small-12 medium-6 columns'>
           {edit_team_button}
-          <p>Organizer: {this.props.organizer.first_name}
-             {this.props.organizer.last_name}
+          <p>
+            Organizer: {this.props.organizer.first_name} {this.props.organizer.last_name}
           </p>
           {team_members}
           {details}
