@@ -10,6 +10,10 @@ ul.hmenu li {
   margin: 10px;
 }
 
+ul {
+  list-style: none;
+}
+
 input {
   width: 100%;
 }
@@ -43,6 +47,7 @@ img {
   max-height: 200px;
   overflow: scroll;
   border: 1px solid #f2f2f2;
+  list-style: none;
 }
 
 .nav-links {
