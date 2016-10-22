@@ -23,6 +23,28 @@ img {
   display: block;
 }
 
+.create {
+  background-color: #2eb82e;
+}
+
+.create:hover {
+  background-color: #1f7a1f;
+}
+
+.destroy {
+  background-color: #ff0000;
+}
+
+.destroy:hover {
+  background-color: #b30000;
+}
+
+.team_members {
+  max-height: 200px;
+  overflow: scroll;
+  border: 1px solid #f2f2f2;
+}
+
 .nav-links {
   display: inline;
   list-style: none;
@@ -73,8 +95,8 @@ input[type='checkbox'] {
 }
 
 .button {
-  margin: 10px;
-  width: 25%;
+  margin: 10px auto;
+  width: 75%;
   min-width: 100px;
 }
 #map div {
@@ -85,6 +107,12 @@ input[type='checkbox'] {
   display: block;
 }
 
+.input-group-button{
+  display: block;
+  margin: 10px auto;
+  width: 100%;
+}
+
 .columns {
   margin: 50px auto;
 }
@@ -92,13 +120,12 @@ input[type='checkbox'] {
 
 input.button{
   min-width: 100px;
-  width: 25%;
+  width: 75%;
   height: auto;
+  margin: 10px auto;
 }
 
-#volunteer-form .input-group {
-  display: inline-block;
-}
+
 
 .form {
   margin: auto;

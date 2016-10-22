@@ -45,6 +45,7 @@ class TeamPage extends Component {
     let vol_details;
     let vol_form;
     let edit_vol_button;
+    let team_members;
     if(this.props.user != null){
       if(this.props.organizer.id == this.props.user.id){
         edit_team_button = <i className="fa fa-pencil-square-o" aria-hidden="true"
@@ -59,6 +60,10 @@ class TeamPage extends Component {
         edit_vol_button = <i className="fa fa-pencil-square-o" aria-hidden="true"
         onClick={this.handleEditVolClick}><h5>Your Contribution</h5></i>
         vol_details = <VolDetails signup={this.props.signup}/>
+        team_members = <div className='team_members'>
+                          <p>Team Members:</p>
+                          <TeamMemberCollection members={this.props.team_members}/>
+                        </div>
 
         if(this.state.update_vol_clicked == true){
           vol_form = <VolUpdateForm handleEditVolSubmit={this.props.edit_vol}
@@ -74,9 +79,10 @@ class TeamPage extends Component {
       <div className='small-12 medium-7 large-8 columns'>
         <div className='small-12 medium-6 columns'>
           {edit_team_button}
-          <p>Organizer: {this.props.organizer.first_name}</p>
-          Team members:
-          <TeamMemberCollection members={this.props.team_members}/>
+          <p>Organizer: {this.props.organizer.first_name}
+             {this.props.organizer.last_name}
+          </p>
+          {team_members}
           {details}
           {form}
           {delete_button}

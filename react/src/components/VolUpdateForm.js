@@ -14,14 +14,14 @@ class VolUpdateForm extends Component {
     let leave_button;
     if(this.props.user_id != this.props.organizer_id){
       leave_button = <div className="input-group-button">
-                        <button type="button" className="button"
+                        <button type="button" className="destroy button"
                         onClick={this.props.handleLeaveTeamClick}>
                           Leave Team
                         </button>
                       </div>
     }
     return(
-      <div className='small-12 callout'>
+      <div className='small-12 callout input-group'>
         <form onSubmit={this.props.handleEditVolSubmit} id="volunteer-form">
           <div className='small-12'>
             <div className='volunteer-form-row'>

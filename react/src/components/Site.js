@@ -195,15 +195,15 @@ class Site extends Component {
     console.log(this.state)
     if(this.state.current_user != null){
       if(this.state.team == null){
-        button = <button type="button" className="button"
-        onClick={this.handleCreateClick}>Create Team</button>
+        button = <div className='input-group-button'><button type="button"
+        className="create button" onClick={this.handleCreateClick}>Create Team</button></div>
       } else if(this.state.team != null && this.state.member == false && this.state.team.open){
-        button= <button type="button" className="button"
-        onClick={this.handleJoinClick}>Join Team</button>
+        button= <div className='input-group-button'><button type="button"
+        className="create button" onClick={this.handleJoinClick}>Join Team</button></div>
       }
       if(this.state.current_user.id == this.state.creator.id){
-        deleteButton = <button type="button" className="button"
-        onClick={this.handleDeleteClick}>Delete this Site</button>
+        deleteButton = <div className='input-group-button'><button type="button"
+        className="destroy button"onClick={this.handleDeleteClick}>Delete Site</button></div>
       }
       if(this.state.team != null){
         teamPage = <TeamPage team={this.state.team} user={this.state.current_user}

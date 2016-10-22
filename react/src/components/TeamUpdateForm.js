@@ -35,8 +35,8 @@ class TeamUpdateForm extends Component {
             </div>
 
             <div className="input-group-button">
-              <button type="button" className="button" onClick={this.props.handleDeleteTeamClick}>
-                Delete
+              <button type="button" className="destroy button" onClick={this.props.handleDeleteTeamClick}>
+                Delete Team
               </button>
             </div>
           </div>
