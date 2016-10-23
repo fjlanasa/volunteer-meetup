@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :volunteers
     resources :teams
     resources :signups
+    resources :posts
   end
 
   resources :sites, only: [:index]

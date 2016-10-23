@@ -10,6 +10,7 @@ class User < ApplicationRecord
   validates :supplies, numericality: {greater_than_or_equal_to: 0}
 
   has_many :sites
+  has_many :posts
   has_many :signups, dependent: :destroy
   has_many :teams, through: :signups
   devise :database_authenticatable, :registerable,

@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import { browserHistory } from 'react-router';
 import TeamPage from './TeamPage'
+import PostCollection from './PostCollection'
+import PostForm from './PostForm'
 
 class Site extends Component {
   constructor(props) {
@@ -22,7 +24,9 @@ class Site extends Component {
       vol_update_clicked: false,
       signup: null,
       labor: null,
-      supplies: null
+      supplies: null,
+      posts: [],
+      post_text: ''
     }
     this.handleCreateClick = this.handleCreateClick.bind(this);
     this.handleJoinClick = this.handleJoinClick.bind(this);
@@ -36,6 +40,8 @@ class Site extends Component {
     this.handleLeaveTeamClick = this.handleLeaveTeamClick.bind(this);
     this.handleEditVolSubmit = this.handleEditVolSubmit.bind(this);
     this.handleLaborClick = this.handleLaborClick.bind(this);
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.deletePost = this.deletePost.bind(this);
   }
   getState(){
     $.ajax({
@@ -55,7 +61,8 @@ class Site extends Component {
           square_footage: data.site.square_footage, special_details: data.site.special_details,
           team: data.team, map_url: data.site.static_map_url, member: data.member,
           team_members: data.team_members, organizer: data.organizer, creator: data.creator,
-          signup: data.signup, labor: labor, supplies: supplies});
+          signup: data.signup, labor: labor, supplies: supplies, posts: data.posts,
+          post_text: ''});
       }
     })
   }
@@ -74,9 +81,35 @@ class Site extends Component {
     this.setState(nextState)
   }
 
+  deletePost(event){
+    event.preventDefault();
+    let postId = event.target.elements['postId'].value;
+    $.ajax({
+      type: 'DELETE',
+      url: `/api/posts/${postId}`,
+      contentType: 'application/json'
+    })
+    .done((data)=>{
+      this.getState();
+    })
+  }
+
+  handleFormSubmit(event){
+    event.preventDefault();
+    $.ajax({
+      type: 'POST',
+      url: '/api/posts',
+      contentType: 'application/json',
+      data: JSON.stringify({post: {user_id: this.state.current_user.id,
+        team_id: this.state.team.id, body: this.state.post_text}})
+    })
+    .done((data)=>{
+      this.getState();
+    })
+  }
+
   handleLaborClick(event){
     if(this.state.labor == true){
-
       this.setState({labor: false})
     } else {
       this.setState({labor: true})
@@ -137,7 +170,7 @@ class Site extends Component {
         team_id: this.state.team.id, site_id: this.props.params.id,
         labor: this.state.current_user.labor, supplies: this.state.current_user.supplies}})
     })
-    .done(data=>{
+    .done((data)=>{
       this.getState();
     })
   }
@@ -150,7 +183,7 @@ class Site extends Component {
         site_id: this.props.params.id}, labor: this.state.current_user.labor,
         supplies: this.state.current_user.supplies})
     })
-    .done(data=> {
+    .done((data)=> {
       this.getState();
     })
   }
@@ -194,6 +227,8 @@ class Site extends Component {
     let button;
     let teamPage;
     let deleteButton;
+    let postCollection;
+    let postForm;
     console.log(this.state)
     if(this.state.current_user != null){
       if(this.state.team == null){
@@ -221,6 +256,11 @@ class Site extends Component {
         handleLaborClick={this.handleLaborClick}
         handleEditVolSubmit={this.handleEditVolSubmit}
         labor={this.state.labor} supplies={this.state.supplies}/>
+      } if(this.state.member == true || this.state.current_user.id == this.state.creator.id){
+        postCollection = <PostCollection posts={this.state.posts} deletePost={this.deletePost}
+        current_user={this.state.current_user}/>;
+        postForm = <PostForm onChange={this.handleChange} current_user={this.state.current_user}
+        post_text={this.state.post_text} onSubmit={this.handleFormSubmit}/>
       }
     }
     return(
@@ -241,6 +281,10 @@ class Site extends Component {
           </div>
         </div>
         {teamPage}
+        <div className='small-12 columns'>
+          {postForm}
+          {postCollection}
+        </div>
       </div>
     )
   }
