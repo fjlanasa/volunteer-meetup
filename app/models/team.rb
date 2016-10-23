@@ -8,7 +8,7 @@ class Team < ActiveRecord::Base
   validates :total_supplies, numericality: {greater_than_or_equal_to: 0}
 
   belongs_to :site
-  has_many :posts
+  has_many :posts, dependent: :destroy
   has_many :signups, dependent: :destroy
   has_many :users, through: :signups
 
