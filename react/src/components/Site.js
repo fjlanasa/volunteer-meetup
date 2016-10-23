@@ -256,11 +256,12 @@ class Site extends Component {
         handleLaborClick={this.handleLaborClick}
         handleEditVolSubmit={this.handleEditVolSubmit}
         labor={this.state.labor} supplies={this.state.supplies}/>
-      } if(this.state.member == true || this.state.current_user.id == this.state.creator.id){
-        postCollection = <PostCollection posts={this.state.posts} deletePost={this.deletePost}
-        current_user={this.state.current_user}/>;
-        postForm = <PostForm onChange={this.handleChange} current_user={this.state.current_user}
-        post_text={this.state.post_text} onSubmit={this.handleFormSubmit}/>
+        if(this.state.member == true || this.state.current_user.id == this.state.creator.id){
+          postCollection = <PostCollection posts={this.state.posts} deletePost={this.deletePost}
+          current_user={this.state.current_user}/>;
+          postForm = <PostForm onChange={this.handleChange} current_user={this.state.current_user}
+          post_text={this.state.post_text} onSubmit={this.handleFormSubmit}/>
+        }
       }
     }
     return(

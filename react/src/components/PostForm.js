@@ -6,7 +6,7 @@ const PostForm = props => {
       <form onSubmit={props.onSubmit} id='post-form'>
         <div className='input group'>
           <label htmlFor="post-text">Leave a Post</label>
-          <textarea id="post-text" type="textarea" rows="5" cols="20" wrap="hard"
+          <textarea id="post-text" type="textarea" rows="3" cols="20" wrap="hard"
            className="input-group-field" name="post_text" onChange={props.onChange}
            value={props.post_text}/>
           <div className="input-group-button">
