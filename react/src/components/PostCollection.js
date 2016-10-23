@@ -10,7 +10,7 @@ const PostCollection = props => {
   })
   return (
     <div>
-      <p>Posts:</p>
+      <p> Posts:</p>
       <ul className="potential-sites">
         {posts}
       </ul>
