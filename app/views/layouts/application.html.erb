@@ -15,11 +15,10 @@
 
   <body>
     <ul class="hmenu">
+      <li><%= link_to 'Volunteer Meetup', sites_path %></li>
       <%= render 'devise/menu/registration_items' %>
       <%= render 'devise/menu/signin_items' %>
     </ul>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>
