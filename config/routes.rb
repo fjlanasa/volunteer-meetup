@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   end
 
   resources :sites, only: [:index]
+
+  match '*path' => 'sites#index', via: :get
 end

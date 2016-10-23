@@ -28,7 +28,7 @@ class Home extends Component {
     }
     return (
       <div>
-        <h1>Home!</h1>
+        <h1>About!</h1>
         <p>{no_map_text}</p>
         <div id='map'></div>
       </div>

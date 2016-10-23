@@ -19,7 +19,8 @@ feature 'user updates account information' do
     fill_in 'First Name', with: 'NewName'
     fill_in 'Current password', with: user.password
     click_button 'Update'
-    expect(page).to have_content 'Your account has been updated successfully'
+    click_link 'Edit Profile'
+    expect(page).to have_selector("input[value='NewName']")
   end
 
   scenario 'user edits account and leaves required field blank' do

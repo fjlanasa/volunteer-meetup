@@ -9,9 +9,12 @@ const MyRequestCollection = props => {
     debugger;
   })
   return (
-    <ul className="potential-sites">
-      {requests}
-    </ul>
+    <div>
+      <p>My Requests:</p>
+      <ul className="potential-sites">
+        {requests}
+      </ul>
+    </div>
   )
 }
 

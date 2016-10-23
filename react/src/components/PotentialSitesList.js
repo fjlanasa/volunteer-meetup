@@ -8,9 +8,12 @@ const PotentialSitesList = props => {
     )
   })
   return (
-    <ul className="potential-sites">
-      {potentialSites}
-    </ul>
+    <div>
+      <p>Potential Volunteer Sites:</p>
+      <ul className="potential-sites">
+        {potentialSites}
+      </ul>
+    </div>
   )
 }
 

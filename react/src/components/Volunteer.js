@@ -60,7 +60,7 @@ class Volunteer extends Component {
     }
     $.ajax({
       type: "PATCH",
-      url: `api/volunteers/${this.state.current_user.id}`,
+      url: `/api/volunteers/${this.state.current_user.id}`,
       contentType: 'application/json',
       data: JSON.stringify({user: {location: location, labor: this.state.labor,
                                         supplies: this.state.supplies,
@@ -104,25 +104,22 @@ class Volunteer extends Component {
         handleSuppliesClick={this.handleSuppliesClick} handleSelect={this.handleSelect}
         handleLaborClick={this.handleLaborClick} location={this.state.location}
         handleChange={this.handleChange}/>;
-
-        potentialSites = <PotentialSitesList potentialSites={this.state.potential_sites}/>;
+        if(this.state.potential_sites.length == 0){
+          potentialSites = 'There are no potential sites based on your criteria';
+        } else {
+          potentialSites = <PotentialSitesList potentialSites={this.state.potential_sites}/>;
+        }
       }
     } else {
       form = <div>Please <a href='/users/sign_in'>sign in</a> to volunteer</div>;
       potentialSites = <span></span>
     }
-
-    if(this.state.current_user != null && this.state.potential_sites.length == 0){
-      noSitesText = 'There are no potential sites based on your criteria';
-    }
-
-
+    
     return (
       <div>
         <h1>Volunteer!</h1>
         {form}
         <div className='small-12 medium-6 columns'>
-          <p>Potential Volunteer Sites:</p>
           <p>{noSitesText}</p>
           {potentialSites}
         </div>
