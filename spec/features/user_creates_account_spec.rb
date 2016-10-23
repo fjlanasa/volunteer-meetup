@@ -21,7 +21,6 @@ feature 'user can create an account' do
     fill_in 'Password confirmation', with: 'password1!'
     click_button 'Sign up'
     user = User.last
-    expect(page).to have_content 'Welcome! You have signed up successfully.'
     expect(user.first_name).to eq('Frank')
     expect(user.email).to eq('fjlanasa@gmail.com')
   end

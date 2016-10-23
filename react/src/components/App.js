@@ -14,7 +14,7 @@ class App extends Component {
     return (
       <div>
         <ul role='nav' className='nav-links'>
-          <li><IndexLink to='/' activeStyle={{color: 'red' }}>Home</IndexLink></li>
+          <li><IndexLink to='/' activeStyle={{color: 'red' }}>About</IndexLink></li>
           <li><NavLink to='/request'>Request</NavLink></li>
           <li><NavLink to='/volunteer'>Volunteer</NavLink></li>
           <li><NavLink to='/myteams'>My Teams</NavLink></li>

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { hashHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 import TeamPage from './TeamPage'
 
 class Site extends Component {
@@ -39,22 +39,24 @@ class Site extends Component {
   }
   getState(){
     $.ajax({
-      url: `api/sites/${this.props.params.id}`,
+      url: `/api/sites/${this.props.params.id}`,
       contentType: 'application/json'
     })
     .done(data=>{
-      let labor;
-      let supplies;
-      if(data.signup != null){
-        labor = data.signup.labor;
-        supplies = data.signup.supplies;
+      if(data.site != null){
+        let labor;
+        let supplies;
+        if(data.signup != null){
+          labor = data.signup.labor;
+          supplies = data.signup.supplies;
+        }
+        this.setState({current_user: data.user, location: data.site.location,
+          contact_name: data.site.contact_name, contact_phone: data.site.contact_phone,
+          square_footage: data.site.square_footage, special_details: data.site.special_details,
+          team: data.team, map_url: data.site.static_map_url, member: data.member,
+          team_members: data.team_members, organizer: data.organizer, creator: data.creator,
+          signup: data.signup, labor: labor, supplies: supplies});
       }
-      this.setState({current_user: data.user, location: data.site.location,
-        contact_name: data.site.contact_name, contact_phone: data.site.contact_phone,
-        square_footage: data.site.square_footage, special_details: data.site.special_details,
-        team: data.team, map_url: data.site.static_map_url, member: data.member,
-        team_members: data.team_members, organizer: data.organizer, creator: data.creator,
-        signup: data.signup, labor: labor, supplies: supplies});
     })
   }
 
@@ -85,7 +87,7 @@ class Site extends Component {
     event.preventDefault();
     $.ajax({
       type: "PATCH",
-      url: `api/signups/${this.state.signup.id}`,
+      url: `/api/signups/${this.state.signup.id}`,
       contentType: 'application/json',
       data: JSON.stringify({signup: {labor: this.state.labor,
             supplies: this.state.supplies}})
@@ -116,7 +118,7 @@ class Site extends Component {
     event.preventDefault();
     $.ajax({
       type: "PATCH",
-      url: `api/teams/${this.state.team.id}`,
+      url: `/api/teams/${this.state.team.id}`,
       contentType: 'application/json',
       data: JSON.stringify({team: {meeting_location: this.state.meeting_location,
             meeting_time: this.state.meeting_time, open: this.state.team.open}})
@@ -129,7 +131,7 @@ class Site extends Component {
   handleJoinClick(){
     $.ajax({
       type: 'POST',
-      url: 'api/signups',
+      url: '/api/signups',
       contentType: 'application/json',
       data: JSON.stringify({signup: {user_id: this.state.current_user.id,
         team_id: this.state.team.id, site_id: this.props.params.id,
@@ -142,7 +144,7 @@ class Site extends Component {
   handleCreateClick(){
     $.ajax({
       type: 'POST',
-      url: 'api/teams/',
+      url: '/api/teams/',
       contentType: 'application/json',
       data: JSON.stringify({team: {organizer_id: this.state.current_user.id,
         site_id: this.props.params.id}, labor: this.state.current_user.labor,
@@ -156,34 +158,34 @@ class Site extends Component {
   handleDeleteClick(){
     $.ajax({
       type: 'DELETE',
-      url: `api/sites/${this.props.params.id}`,
+      url: `/api/sites/${this.props.params.id}`,
       contentType: 'application/json'
     })
     .done(()=>{
-      hashHistory.push('/');
+      browserHistory.push('/');
     })
   }
 
   handleLeaveTeamClick(){
     $.ajax({
       type: 'DELETE',
-      url: `api/signups/${this.state.current_user.id}`,
+      url: `/api/signups/${this.state.current_user.id}`,
       contentType: 'application/json',
       data: JSON.stringify({team_id: this.state.team.id})
     })
     .done(()=>{
-      hashHistory.push('/');
+      this.getState();
     })
   }
 
   handleDeleteTeamClick(){
     $.ajax({
       type: 'DELETE',
-      url: `api/teams/${this.state.team.id}`,
+      url: `/api/teams/${this.state.team.id}`,
       contentType: 'application/json'
     })
     .done(()=>{
-      hashHistory.push('/');
+      this.getState();
     })
   }
 

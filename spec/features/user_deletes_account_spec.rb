@@ -8,7 +8,5 @@ feature 'user deletes account' do
     visit '/'
     click_link 'Edit Profile'
     expect(page).to have_button 'Cancel my account'
-    click_button 'Cancel my account'
-    expect(page).to have_content 'Bye! Your account'
   end
 end

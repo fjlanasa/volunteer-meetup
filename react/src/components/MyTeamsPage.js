@@ -13,7 +13,7 @@ class MyTeamsPage extends Component {
 
   componentDidMount(){
     $.ajax({
-      url: 'api/teams',
+      url: '/api/teams',
       contentType: 'application/json'
     })
     .done(data=> {

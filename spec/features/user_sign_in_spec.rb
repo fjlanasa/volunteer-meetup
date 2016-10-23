@@ -22,7 +22,8 @@ feature 'user sign in' do
     fill_in 'Password', with: user.password
 
     click_button 'Sign in'
-    expect(page).to have_content 'Signed in successfully'
+    expect(page).to have_link 'Sign out'
+    expect(page).to have_link 'Edit Profile'
   end
 
   scenario 'user attempts to sign in with blank form' do
@@ -51,7 +52,6 @@ feature 'user sign in' do
     expect(page).to have_content 'Sign out'
 
     click_link 'Sign out'
-    expect(page).to have_content 'Signed out successfully'
     expect(page).to have_link 'Sign up'
     expect(page).to have_link 'Sign in'
   end

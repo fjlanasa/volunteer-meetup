@@ -38,7 +38,6 @@ class Request extends Component {
 
   handleSubmit(event){
     event.preventDefault();
-    const indexPath = '/'
     let location = this.state.location;
     if($('#request-form').find("input[name='location']").val() != this.state.location){
       location = $('#request-form').find("input[name='location']").val();
@@ -86,20 +85,20 @@ class Request extends Component {
               square_footage = {this.state.square_footage}
               special_details={this.state.special_details}
               handleBlur={this.handleBlur}/>
-      myRequests = <MyRequestCollection requests={this.state.user_sites}/>
+      if(this.state.user_sites.length == 0){
+        myRequests = 'You have not requested help yet.'
+      } else {
+        myRequests = <MyRequestCollection requests={this.state.user_sites}/>
+      }
     } else {
       form = <div>Please <a href='/users/sign_in'>sign in</a> to make a request for help</div>;
     }
 
-    if(this.state.user != null && this.state.user_sites.length == 0){
-      noRequestsText = 'You have not requested help yet.'
-    }
     return (
       <div>
         <h1>Request!</h1>
         {form}
         <div className='small-12 medium-5 large-5 columns'>
-          <p>My Requests:</p>
           <p>{noRequestsText}</p>
           {myRequests}
         </div>
