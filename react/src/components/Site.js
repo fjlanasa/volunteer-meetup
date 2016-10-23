@@ -226,17 +226,19 @@ class Site extends Component {
     return(
       <div>
         <div className='small-12 medium-4 large-3 columns'>
-          <h5>Site Info</h5>
-          <ul>
-            <li>Location: {this.state.location}</li>
-            <li>Contact Name: {this.state.contact_name}</li>
-            <li>Contact Phone Number:{this.state.contact_phone}</li>
-            <li>Square Footage: {this.state.square_footage}</li>
-            <li>Special Details: {this.state.special_details}</li>
-          </ul>
-          <img src={this.state.map_url}/>
-          {button}
-          {deleteButton}
+          <div className='small-12 columns'>
+            <h5>Site Info</h5>
+            <ul>
+              <li>Location: {this.state.location}</li>
+              <li>Contact Name: {this.state.contact_name}</li>
+              <li>Contact Phone Number:{this.state.contact_phone}</li>
+              <li>Square Footage: {this.state.square_footage}</li>
+              <li>Special Details: {this.state.special_details}</li>
+            </ul>
+            <img src={this.state.map_url}/>
+            {button}
+            {deleteButton}
+          </div>
         </div>
         {teamPage}
       </div>
