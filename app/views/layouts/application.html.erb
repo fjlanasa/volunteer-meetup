@@ -14,11 +14,13 @@
   </head>
 
   <body>
-    <ul class="hmenu">
-      <li><%= link_to 'Volunteer Meetup', root_path %></li>
-      <%= render 'devise/menu/registration_items' %>
-      <%= render 'devise/menu/signin_items' %>
-    </ul>
+    <div class='rails-nav-bar'>
+      <ul class="hmenu">
+        <li><%= link_to (image_tag 'handvolunteermeetup1.png', class: 'logo'), root_path %></li>
+        <%= render 'devise/menu/registration_items' %>
+        <%= render 'devise/menu/signin_items' %>
+      </ul>
+    </div>
     <%= yield %>
   </body>
 </html>

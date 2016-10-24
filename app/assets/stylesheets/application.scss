@@ -1,8 +1,15 @@
 // @import "*";
+@import 'palette';
+
+body {
+  background-color: $gray;
+  color: $black;
+}
+
 ul.hmenu {
   list-style: none;
   padding: 0;
-  margin: 10px 1.25em;
+  margin: 0 1.25em;
 }
 
 ul.hmenu li {
@@ -14,8 +21,14 @@ ul.hmenu li {
   list-style: none;
 }
 
-.post-section {
-  background-color: #f2f2f2;
+.rails-nav-bar {
+  background-color: $tuscan !important;
+  margin: 0;
+  padding: 10px auto;
+}
+
+.rails-nav-bar a {
+  color: white;
 }
 
 input {
@@ -40,20 +53,12 @@ span.edit h5 {
   font-style: italic;
 }
 
-.create {
-  background-color: #2eb82e;
+.button.destroy {
+  background-color: $jelly-bean;
 }
 
-.create:hover {
-  background-color: #1f7a1f;
-}
-
-.destroy {
-  background-color: #ff0000;
-}
-
-.destroy:hover {
-  background-color: #b30000;
+.button.destroy:hover {
+  background-color: #894335;
 }
 
 .team_members {
@@ -86,12 +91,20 @@ input[type='checkbox'] {
 }
 
 .fa-pencil-square-o:hover {
-  color: red;
+  color: $jelly-bean;
 }
 
 .nav-links li {
   display: inline;
   margin: 10px;
+}
+
+a {
+  color: $charcoal;
+}
+
+a:hover {
+  color: $jelly-bean;
 }
 
 #app {
@@ -112,17 +125,18 @@ input[type='checkbox'] {
   margin: 50px auto;
 }
 
-.button {
-  margin: 10px auto;
-  width: 10%;
-  min-width: 115px;
-}
 #map div {
   height: auto;
 }
 
 .input-group{
   display: block;
+}
+
+.logo {
+  width: 50px;
+  display: inline;
+  color: white;
 }
 
 .input-group-button{
@@ -135,12 +149,23 @@ input[type='checkbox'] {
   margin: 50px auto 0px auto;
 }
 
+.button {
+  margin: 10px auto;
+  width: 10%;
+  min-width: 115px;
+  background-color: $charcoal;
+}
 
 input.button{
   min-width: 115px;
   width: 10%;
   height: auto;
   margin: 10px auto;
+  background-color: $charcoal;
+}
+
+.button:hover {
+  background-color: #2D3647;
 }
 
 .infowindow a {

@@ -12,9 +12,9 @@ class App extends Component {
 
   render () {
     return (
-      <div>
+      <div className='react-nav-bar'>
         <ul role='nav' className='nav-links'>
-          <li><IndexLink to='/' activeStyle={{color: 'red' }}>About</IndexLink></li>
+          <li><IndexLink to='/' activeStyle={{color: '#d66853' }}>About</IndexLink></li>
           <li><NavLink to='/request'>Request</NavLink></li>
           <li><NavLink to='/volunteer'>Volunteer</NavLink></li>
           <li><NavLink to='/myteams'>My Teams</NavLink></li>

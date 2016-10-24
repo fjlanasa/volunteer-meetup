@@ -11,7 +11,7 @@ class NavLink extends Component {
 
   render() {
     return (
-      <Link {...this.props} activeStyle={{ color: 'red' }}/>
+      <Link {...this.props} activeStyle={{ color: '#d66853' }}/>
     )
   }
 }
