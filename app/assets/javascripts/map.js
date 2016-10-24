@@ -36,7 +36,7 @@ function initMap(data_sites) {
           position: position,
           title: title,
           animation: google.maps.Animation.DROP,
-          id: i
+          id: sites[i].id
         });
         markers.push(marker);
 
@@ -52,7 +52,8 @@ function initMap(data_sites) {
     function populateInfoWindow(marker, infowindow) {
       if (infowindow.marker != marker) {
         infowindow.marker = marker;
-        infowindow.setContent("<div class='infowindow'>" + marker.title + '</div>');
+        infowindow.setContent("<div class='infowindow'><a href='/sites/"
+        + marker.id + "'>" + marker.title + "</div>");
         infowindow.open(map, marker);
         infowindow.addListener('closeclick',function(){
           infowindow.marker = null;
