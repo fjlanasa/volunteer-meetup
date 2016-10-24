@@ -28,7 +28,7 @@ class Home extends Component {
       no_map_text = 'There are currently no sites seeking help';
     }
     return (
-      <div>
+      <div className='map-page'>
         <p>{no_map_text}</p>
         <div id='map'></div>
       </div>

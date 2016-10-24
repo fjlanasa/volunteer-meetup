@@ -39,7 +39,8 @@ class VolunteerForm extends Component {
           <form onSubmit={this.props.handleSubmit} id="volunteer-form">
             <div className='small-12'>
               <div className='volunteer-form-row'>
-                <label><input id="labor" type="checkbox" onClick={this.props.handleLaborClick} name="labor" value="true" defaultChecked={this.props.labor}/>{labor}</label>
+                <input id="labor" type="checkbox" onClick={this.props.handleLaborClick} name="labor" value="true" defaultChecked={this.props.labor}/>
+                <label htmlFor="labor" className='inline'>{labor}</label>
               </div>
 
               <div className='volunteer-form-row'>

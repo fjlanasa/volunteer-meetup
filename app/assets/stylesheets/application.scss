@@ -2,19 +2,25 @@
 @import 'palette';
 
 body {
-  background-color: $gray;
-  color: $black;
+  background-color: $off-white;
+  font-family: 'Gudea', sans-serif;
 }
 
 ul.hmenu {
   list-style: none;
   padding: 0;
   margin: 0 1.25em;
+  height: 100%;
 }
 
-ul.hmenu li {
+ul.hmenu div {
   display: inline;
   margin: 10px;
+  height: 100%
+}
+
+.columns.post {
+  margin-top: 10px;
 }
 
 .post-collection ul {
@@ -22,14 +28,22 @@ ul.hmenu li {
 }
 
 .rails-nav-bar {
-  background-color: $tuscan !important;
+  background-color: $cyan !important;
   margin: 0;
   padding: 10px auto;
+  height: auto;
+  min-height: 80px;
 }
 
 .rails-nav-bar a {
-  color: white;
+  color: $white;
 }
+
+.rails-nav-bar .columns {
+  margin: initial;
+  width: auto;
+}
+
 
 input {
   width: 100%;
@@ -58,13 +72,13 @@ span.edit h5 {
 }
 
 .button.destroy:hover {
-  background-color: #894335;
+  background-color: $jelly-bean-hover;
 }
 
 .team_members {
   max-height: 200px;
   overflow: scroll;
-  border: 1px solid #f2f2f2;
+  border: 1px solid $gray;
   list-style: none;
 }
 
@@ -100,7 +114,7 @@ input[type='checkbox'] {
 }
 
 a {
-  color: $charcoal;
+  color: $cyan;
 }
 
 a:hover {
@@ -115,7 +129,7 @@ a:hover {
   height: 100%;
 }
 
-#app>div>div{
+div.map-page{
   height: 100%;
 }
 
@@ -134,7 +148,7 @@ a:hover {
 }
 
 .logo {
-  width: 50px;
+  width: 275px;
   display: inline;
   color: white;
 }
@@ -153,7 +167,7 @@ a:hover {
   margin: 10px auto;
   width: 10%;
   min-width: 115px;
-  background-color: $charcoal;
+  background-color: $cyan;
 }
 
 input.button{
@@ -161,19 +175,27 @@ input.button{
   width: 10%;
   height: auto;
   margin: 10px auto;
-  background-color: $charcoal;
+  background-color: $cyan;
+}
+
+.input.button:active{
+  background-color: $cyan-hover;
 }
 
 .button:hover {
-  background-color: #2D3647;
+  background-color: $cyan-hover;
+}
+
+.button:active{
+  background-color: $cyan-hover;
 }
 
 .infowindow a {
-  color: #0000ff;
+  color: #cyan;
 }
 
 .infowindow a:hover {
-  color: red;
+  color: $jelly-bean;
 }
 
 .form {
@@ -182,4 +204,26 @@ input.button{
 
 .hidden {
   display: none;
+}
+
+::-webkit-scrollbar {
+  background-color: $off-white;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: $off-white
+}
+
+.react-nav-bar {
+  background-color: $gray;
+  height: auto;
+  min-height: 50px;
+}
+
+.react-nav-bar a {
+  color: $green;
+}
+
+.react-nav-bar a:hover{
+  color: $jelly-bean;
 }
