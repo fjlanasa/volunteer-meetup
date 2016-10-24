@@ -8,7 +8,7 @@ const Post = props => {
   if(props.current_user != null && props.current_user.id == props.post.user_id){
     deleteButton = <form className='post-delete-form' onSubmit={props.deletePost}>
                     <input type='hidden' name='postId' value={props.post.id}/>
-                    <input type='submit' className='button destroy' value='Delete'/>
+                    <input type='submit' className='button input-group destroy' value='Delete'/>
                   </form>
   }
   return(

@@ -4,7 +4,8 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      sites: []
+      sites: [],
+      status: 'preset'
     }
   }
 
@@ -14,7 +15,7 @@ class Home extends Component {
       contentType: 'application/json'
     })
     .done(data=> {
-      this.setState({sites: data.sites})
+      this.setState({sites: data.sites, status: ''})
     })
   }
 
@@ -23,12 +24,11 @@ class Home extends Component {
     if(this.state.sites.length != 0){
       no_map_text = null;
       initMap(this.state.sites);
-    } else {
+    } else if (this.state.status != 'preset'){
       no_map_text = 'There are currently no sites seeking help';
     }
     return (
       <div>
-        <h1>About!</h1>
         <p>{no_map_text}</p>
         <div id='map'></div>
       </div>

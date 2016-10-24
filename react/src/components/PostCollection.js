@@ -9,8 +9,7 @@ const PostCollection = props => {
     )
   })
   return (
-    <div>
-      <p> Posts:</p>
+    <div className='small-12 columns post-collection'>
       <ul className="potential-sites">
         {posts}
       </ul>

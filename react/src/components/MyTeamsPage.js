@@ -9,7 +9,8 @@ class MyTeamsPage extends Component {
     this.state={
       user: null,
       user_vol_sites: [],
-      recent_posts: []
+      recent_posts: [],
+      status: 'preset'
     }
   }
 
@@ -26,26 +27,28 @@ class MyTeamsPage extends Component {
   render(){
     let myTeams;
     let posts;
-    let postsExplainer;
+    let postsHeader;
+    let teamsHeader;
     if(this.state.user != null){
       if(this.state.user_vol_sites.length == 0){
         myTeams = <p>You have not signed up for any teams yet</p>
       } else {
         myTeams = <MyTeamsCollection sites = {this.state.user_vol_sites}/>;
         posts = <PostCollection posts={this.state.recent_posts}/>;
-        postsExplainer = <h5>Recent activity related to your teams</h5>
+        postsHeader = <h5>Recent posts related to your teams</h5>
+        teamsHeader = <h5>Your current teams</h5>
       }
-    } else {
+    } else if(this.state.status != 'preset'){
       myTeams = <div>Please <a href='/users/sign_in'>sign in</a> to view your teams</div>;
     }
     return(
       <div>
         <div className='small-12 medium-4 columns'>
-          <h1>My Teams!</h1>
+          {teamsHeader}
           {myTeams}
         </div>
         <div className='small-12 medium-7 columns'>
-          {postsExplainer}
+          {postsHeader}
           {posts}
         </div>
       </div>

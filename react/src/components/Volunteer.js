@@ -114,10 +114,9 @@ class Volunteer extends Component {
       form = <div>Please <a href='/users/sign_in'>sign in</a> to volunteer</div>;
       potentialSites = <span></span>
     }
-    
+
     return (
       <div>
-        <h1>Volunteer!</h1>
         {form}
         <div className='small-12 medium-6 columns'>
           <p>{noSitesText}</p>

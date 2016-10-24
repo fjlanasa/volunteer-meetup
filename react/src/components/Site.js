@@ -282,7 +282,7 @@ class Site extends Component {
           </div>
         </div>
         {teamPage}
-        <div className='small-12 columns'>
+        <div className='small-12 columns post-section'>
           {postForm}
           {postCollection}
         </div>

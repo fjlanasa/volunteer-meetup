@@ -13,7 +13,8 @@ class Request extends Component {
       contact_phone: null,
       square_footage: null,
       special_details: null,
-      user_sites: []
+      user_sites: [],
+      status: 'preset'
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -31,7 +32,7 @@ class Request extends Component {
         this.setState({user_sites: data.user_sites, user: data.user,
                       contact_name: `${data.user.first_name} ${data.user.last_name}`,
                       contact_phone: data.user.phone_number, location: '',
-                      square_footage: '', special_details: ''});
+                      square_footage: '', special_details: '', status: ''});
       }
     })
   }
@@ -90,13 +91,12 @@ class Request extends Component {
       } else {
         myRequests = <MyRequestCollection requests={this.state.user_sites}/>
       }
-    } else {
+    } else if (this.state.status != 'preset'){
       form = <div>Please <a href='/users/sign_in'>sign in</a> to make a request for help</div>;
     }
 
     return (
       <div>
-        <h1>Request!</h1>
         {form}
         <div className='small-12 medium-5 large-5 columns'>
           <p>{noRequestsText}</p>
