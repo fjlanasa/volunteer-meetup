@@ -143,7 +143,13 @@ input.button{
   margin: 10px auto;
 }
 
+.infowindow a {
+  color: #0000ff;
+}
 
+.infowindow a:hover {
+  color: red;
+}
 
 .form {
   margin: auto;
