@@ -6,11 +6,20 @@ body {
   font-family: 'Gudea', sans-serif;
 }
 
+.form-section {
+  background-color: $gray;
+  margin: inherit;
+}
+
 ul.hmenu {
   list-style: none;
   padding: 0;
   margin: 0 1.25em;
   height: 100%;
+}
+
+.columns.post-collection {
+  margin-top: 10px;
 }
 
 ul.hmenu div {
@@ -82,10 +91,17 @@ span.edit h5 {
   list-style: none;
 }
 
-.nav-links {
+.nav-links{
+  width: 80%;
+  margin: auto;
+  text-align: center;
+}
+
+.nav-links ul {
   display: inline;
   list-style: none;
   margin-bottom: 20px;
+  margin: auto;
 }
 
 label {
@@ -110,7 +126,7 @@ input[type='checkbox'] {
 
 .nav-links li {
   display: inline;
-  margin: 10px;
+  margin: 50px;
 }
 
 a {
@@ -191,7 +207,7 @@ input.button{
 }
 
 .infowindow a {
-  color: #cyan;
+  color: $cyan;
 }
 
 .infowindow a:hover {

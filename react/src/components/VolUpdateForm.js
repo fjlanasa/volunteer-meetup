@@ -21,7 +21,7 @@ class VolUpdateForm extends Component {
                       </div>
     }
     return(
-      <div className='small-12 callout input-group'>
+      <div className='small-12 callout form-section input-group'>
         <form onSubmit={this.props.handleEditVolSubmit} id="volunteer-form">
           <div className='small-12'>
             <div className='volunteer-form-row'>

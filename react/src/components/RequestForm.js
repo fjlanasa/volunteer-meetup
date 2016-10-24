@@ -2,7 +2,7 @@ import React from 'react';
 
 const RequestForm = props => {
   return (
-    <div className='small-12 medium-5 large-5 columns callout'>
+    <div className='small-12 medium-5 large-5 columns form-section callout'>
       <form onSubmit={props.handleSubmit} id="request-form">
         <div className='small-12 medium-6 large-6 columns input-group'>
           <label htmlFor="sites-text">Full Address</label>

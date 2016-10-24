@@ -9,7 +9,7 @@ class TeamUpdateForm extends Component {
 
   render(){
     return (
-      <div className='small-12 columns callout'>
+      <div className='small-12 columns callout form-section'>
         <h5>Update team info</h5>
         <form id='team-form' onSubmit={this.props.handleTeamUpdate}>
           <div>
