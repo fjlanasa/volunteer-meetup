@@ -1,0 +1,183 @@
+/* line 2, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+ul.hmenu {
+  list-style: none;
+  padding: 0;
+  margin: 10px 1.25em;
+}
+
+/* line 8, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+ul.hmenu li {
+  display: inline;
+  margin: 10px;
+}
+
+/* line 13, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.post-collection ul {
+  list-style: none;
+}
+
+/* line 17, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.post-section {
+  background-color: #f2f2f2;
+}
+
+/* line 21, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+input {
+  width: 100%;
+}
+
+/* line 25, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+textarea.input-group-field {
+  width: 100%;
+  max-height: 10%;
+}
+
+/* line 30, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+img {
+  display: block;
+}
+
+/* line 34, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+span.edit h5 {
+  display: inline;
+}
+
+/* line 38, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.post-body {
+  margin: 20px;
+  font-style: italic;
+}
+
+/* line 43, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.create {
+  background-color: #2eb82e;
+}
+
+/* line 47, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.create:hover {
+  background-color: #1f7a1f;
+}
+
+/* line 51, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.destroy {
+  background-color: #ff0000;
+}
+
+/* line 55, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.destroy:hover {
+  background-color: #b30000;
+}
+
+/* line 59, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.team_members {
+  max-height: 200px;
+  overflow: scroll;
+  border: 1px solid #f2f2f2;
+  list-style: none;
+}
+
+/* line 66, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.nav-links {
+  display: inline;
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+/* line 72, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+label {
+  display: block;
+  padding-left: 15px;
+  text-indent: -15px;
+}
+
+/* line 77, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+input[type='checkbox'] {
+  width: 13px;
+  height: 13px;
+  padding: 0;
+  margin: 0;
+  vertical-align: bottom;
+  position: relative;
+  top: -1px;
+  *overflow: hidden;
+}
+
+/* line 88, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.fa-pencil-square-o:hover {
+  color: red;
+}
+
+/* line 92, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.nav-links li {
+  display: inline;
+  margin: 10px;
+}
+
+/* line 97, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+#app {
+  height: 100%;
+}
+
+/* line 101, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+#app > div {
+  height: 100%;
+}
+
+/* line 105, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+#app > div > div {
+  height: 100%;
+}
+
+/* line 109, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+#map {
+  width: 80%;
+  height: 60%;
+  margin: 50px auto;
+}
+
+/* line 115, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.button {
+  margin: 10px auto;
+  width: 10%;
+  min-width: 115px;
+}
+
+/* line 120, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+#map div {
+  height: auto;
+}
+
+/* line 124, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.input-group {
+  display: block;
+}
+
+/* line 128, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.input-group-button {
+  display: block;
+  margin: 10px auto;
+  width: 100%;
+}
+
+/* line 134, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.columns {
+  margin: 50px auto 0px auto;
+}
+
+/* line 139, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+input.button {
+  min-width: 115px;
+  width: 10%;
+  height: auto;
+  margin: 10px auto;
+}
+
+/* line 148, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.form {
+  margin: auto;
+}
+
+/* line 152, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.hidden {
+  display: none;
+}
