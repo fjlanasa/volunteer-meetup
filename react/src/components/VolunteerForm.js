@@ -35,7 +35,7 @@ class VolunteerForm extends Component {
       location_input.required = false;
     }
     return (
-        <div className='small-12 medium-6 large-4 columns callout'>
+        <div className='small-12 medium-6 large-4 columns form-section callout'>
           <form onSubmit={this.props.handleSubmit} id="volunteer-form">
             <div className='small-12'>
               <div className='volunteer-form-row'>
