@@ -23,7 +23,6 @@ class Site < ActiveRecord::Base
     str = url.read
     data = JSON.parse(str)
     if !data['results'].empty?
-      binding.pry
       data['results'][0]['geometry']['location']
     else
       nil
