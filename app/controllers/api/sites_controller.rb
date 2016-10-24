@@ -30,31 +30,25 @@ class Api::SitesController < ApiController
     site = Site.find(params[:id])
     team = site.team
     creator = User.find(site.user_id)
+    user = current_user
+    organizer = nil
+    team_members = nil
+    posts = []
+    member = false
+    signup = nil
+
     if !team.nil?
       organizer = User.find(team.organizer_id)
       team_members = team.users
       posts = Post.where(team_id: team.id).order(updated_at: :desc).to_a
       posts.map! {|post| post.attributes.merge({'user_name'=> User.find(post.user_id).full_name, 'team_site' => post.team.site})}
-    else
-      organizer = nil
-      team_members = nil
-      posts = []
-    end
-    user = current_user
-    if !user.nil?
-      if !team.nil?
-        if team.users.any? {|vol| vol.id == user.id}
-          member = true
-        else
-          member = false
-        end
-      end
     end
     if !user.nil? && !team.nil?
+      if team.users.any? {|vol| vol.id == user.id}
+        member = true
+      end
       signup = Signup.where(user_id: user.id, team_id: team.id)
       signup = signup[0]
-    else
-      signup = nil
     end
     render json: {site: site, user: user, team: team, team_members: team_members,
       organizer: organizer, member: member, creator: creator, signup: signup,

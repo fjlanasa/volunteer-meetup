@@ -1,16 +1,15 @@
 class Api::TeamsController < ApiController
   def index
     user = current_user
+    user_vol_sites = []
+    posts = []
     if !user.nil?
       user_teams = user.teams
       user_vol_sites = []
       user_teams.each do |team|
         user_vol_sites.push(team.site)
       end
-    else
-      user_vol_sites = []
     end
-    posts = []
     user.teams.each do |team|
       team.posts.each do |post|
         posts.push(post)
