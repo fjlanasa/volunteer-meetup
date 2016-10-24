@@ -15,7 +15,11 @@ module SiteHelper
     url=URI.parse(url)
     str = url.read
     data=JSON.parse(str)
-    data['rows'][0]['elements'][0]['distance']['text'].split(' ')[0].gsub(',','').to_f
+    if !data['rows'][0]['elements'][0]['distance'].nil?
+      data['rows'][0]['elements'][0]['distance']['text'].split(' ')[0].gsub(',','').to_f
+    else
+      9999
+    end
   end
 
   def potential_sites(volunteer)

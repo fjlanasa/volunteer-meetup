@@ -10,7 +10,16 @@ class Api::TeamsController < ApiController
     else
       user_vol_sites = []
     end
-    render json: { user: user, user_vol_sites: user_vol_sites }, status: :ok
+    posts = []
+    user.teams.each do |team|
+      team.posts.each do |post|
+        posts.push(post)
+      end
+    end
+    posts.sort! {|a,b| b.updated_at <=> a.updated_at}
+    posts = posts.take(10)
+    posts.map! {|post| post.attributes.merge({'user_name' => User.find(post.user_id).full_name, 'team_site' => post.team.site})}
+    render json: { user: user, user_vol_sites: user_vol_sites, recent_posts: posts }, status: :ok
   end
 
   def show

@@ -19,6 +19,7 @@ class App extends Component {
           <li><NavLink to='/volunteer'>Volunteer</NavLink></li>
           <li><NavLink to='/myteams'>My Teams</NavLink></li>
         </ul>
+        <span id='flash'></span>
         {this.props.children}
       </div>
     );

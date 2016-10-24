@@ -14,11 +14,13 @@ class Api::SitesController < ApiController
   def create
     site = Site.new(site_params)
     if site.save
-      site.lat = site.geolocate['lat']
-      site.lng = site.geolocate['lng']
-      formatted_address = site.formatted_address
-      site.static_map_url = get_map_url(site.lat, site.lng, formatted_address)
-      site.save
+      if !site.geolocate.nil?
+        site.lat = site.geolocate['lat']
+        site.lng = site.geolocate['lng']
+        formatted_address = site.formatted_address
+        site.static_map_url = get_map_url(site.lat, site.lng, formatted_address)
+        site.save
+      end
     else
 
     end
@@ -31,9 +33,12 @@ class Api::SitesController < ApiController
     if !team.nil?
       organizer = User.find(team.organizer_id)
       team_members = team.users
+      posts = Post.where(team_id: team.id).order(updated_at: :desc).to_a
+      posts.map! {|post| post.attributes.merge({'user_name'=> User.find(post.user_id).full_name, 'team_site' => post.team.site})}
     else
       organizer = nil
       team_members = nil
+      posts = []
     end
     user = current_user
     if !user.nil?
@@ -52,7 +57,8 @@ class Api::SitesController < ApiController
       signup = nil
     end
     render json: {site: site, user: user, team: team, team_members: team_members,
-      organizer: organizer, member: member, creator: creator, signup: signup}, status: :ok
+      organizer: organizer, member: member, creator: creator, signup: signup,
+      posts: posts}, status: :ok
   end
 
   def destroy

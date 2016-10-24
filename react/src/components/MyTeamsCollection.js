@@ -9,9 +9,11 @@ const MyTeamsCollection = props => {
     debugger;
   })
   return (
-    <ul className="potential-sites">
-      {sites}
-    </ul>
+    <div className='small-12 columns'>
+      <ul className="potential-sites">
+        {sites}
+      </ul>
+    </div>
   )
 }
 

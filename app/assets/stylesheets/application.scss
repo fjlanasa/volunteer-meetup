@@ -10,8 +10,12 @@ ul.hmenu li {
   margin: 10px;
 }
 
-ul {
+.post-collection ul {
   list-style: none;
+}
+
+.post-section {
+  background-color: #f2f2f2;
 }
 
 input {
@@ -29,6 +33,11 @@ img {
 
 span.edit h5 {
   display: inline;
+}
+
+.post-body {
+  margin: 20px;
+  font-style: italic;
 }
 
 .create {
@@ -105,8 +114,8 @@ input[type='checkbox'] {
 
 .button {
   margin: 10px auto;
-  width: 75%;
-  min-width: 100px;
+  width: 10%;
+  min-width: 115px;
 }
 #map div {
   height: auto;
@@ -123,13 +132,13 @@ input[type='checkbox'] {
 }
 
 .columns {
-  margin: 50px auto;
+  margin: 50px auto 0px auto;
 }
 
 
 input.button{
-  min-width: 100px;
-  width: 75%;
+  min-width: 115px;
+  width: 10%;
   height: auto;
   margin: 10px auto;
 }
