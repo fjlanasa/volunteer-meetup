@@ -12,13 +12,15 @@ class App extends Component {
 
   render () {
     return (
-      <div className='react-nav-bar'>
-        <ul role='nav' className='nav-links'>
-          <li><IndexLink to='/' activeStyle={{color: '#d66853' }}>About</IndexLink></li>
-          <li><NavLink to='/request'>Request</NavLink></li>
-          <li><NavLink to='/volunteer'>Volunteer</NavLink></li>
-          <li><NavLink to='/myteams'>My Teams</NavLink></li>
-        </ul>
+      <div>
+        <div className='react-nav-bar'>
+          <ul role='nav' className='nav-links'>
+            <li><IndexLink to='/' activeStyle={{color: '#d66853' }}>About</IndexLink></li>
+            <li><NavLink to='/request'>Request</NavLink></li>
+            <li><NavLink to='/volunteer'>Volunteer</NavLink></li>
+            <li><NavLink to='/myteams'>My Teams</NavLink></li>
+          </ul>
+        </div>
         <span id='flash'></span>
         {this.props.children}
       </div>

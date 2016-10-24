@@ -13,7 +13,7 @@ const Post = props => {
   }
   return(
     <li className="potential-site">
-      <div className='callout small-12 columns'>
+      <div className='callout small-12 columns post'>
         <ul>
           <li>User: {props.post.user_name}</li>
           <li>Site: <Link to={path}>{props.post.team_site.location}</Link></li>

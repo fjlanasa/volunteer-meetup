@@ -22,7 +22,7 @@ function initMap(data_sites) {
 
     map =  new google.maps.Map(document.getElementById('map'), {
     center: {lat: 30.2013549, lng: -90.9480244},
-    zoom: 10});
+    zoom: 9});
 
     let largeInfowindow = new google.maps.InfoWindow();
     let bounds = new google.maps.LatLngBounds();
