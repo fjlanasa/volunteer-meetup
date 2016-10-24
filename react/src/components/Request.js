@@ -33,6 +33,8 @@ class Request extends Component {
                       contact_name: `${data.user.first_name} ${data.user.last_name}`,
                       contact_phone: data.user.phone_number, location: '',
                       square_footage: '', special_details: '', status: ''});
+      } else {
+        this.setState({status: ''})
       }
     })
   }
@@ -92,7 +94,7 @@ class Request extends Component {
         myRequests = <MyRequestCollection requests={this.state.user_sites}/>
       }
     } else if (this.state.status != 'preset'){
-      form = <div>Please <a href='/users/sign_in'>sign in</a> to make a request for help</div>;
+      form = <div className='small-12 columns'>Please <a href='/users/sign_in'>sign in</a> to make a request for help</div>;
     }
 
     return (

@@ -20,7 +20,7 @@ class MyTeamsPage extends Component {
       contentType: 'application/json'
     })
     .done(data=> {
-      this.setState({user: data.user, user_vol_sites: data.user_vol_sites, recent_posts: data.recent_posts})
+      this.setState({user: data.user, user_vol_sites: data.user_vol_sites, recent_posts: data.recent_posts, status: ''})
     })
   }
 

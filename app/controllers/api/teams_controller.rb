@@ -8,11 +8,9 @@ class Api::TeamsController < ApiController
       user_vol_sites = []
       user_teams.each do |team|
         user_vol_sites.push(team.site)
-      end
-    end
-    user.teams.each do |team|
-      team.posts.each do |post|
-        posts.push(post)
+        team.posts.each do |post|
+          posts.push(post)
+        end
       end
     end
     posts.sort! {|a,b| b.updated_at <=> a.updated_at}

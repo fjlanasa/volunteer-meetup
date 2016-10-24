@@ -111,7 +111,7 @@ class Volunteer extends Component {
         }
       }
     } else {
-      form = <div>Please <a href='/users/sign_in'>sign in</a> to volunteer</div>;
+      form = <div className='small-12 columns'>Please <a href='/users/sign_in'>sign in</a> to volunteer</div>;
       potentialSites = <span></span>
     }
 
