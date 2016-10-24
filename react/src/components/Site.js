@@ -49,10 +49,10 @@ class Site extends Component {
       contentType: 'application/json'
     })
     .done(data=>{
-      if(data.site != null){
+      if(data.site !== null){
         let labor;
         let supplies;
-        if(data.signup != null){
+        if(data.signup !== null){
           labor = data.signup.labor;
           supplies = data.signup.supplies;
         }
@@ -109,7 +109,7 @@ class Site extends Component {
   }
 
   handleLaborClick(event){
-    if(this.state.labor == true){
+    if(this.state.labor === true){
       this.setState({labor: false})
     } else {
       this.setState({labor: true})
@@ -130,7 +130,7 @@ class Site extends Component {
   }
 
   handleOpenClick(){
-    if(this.state.team.open == true ){
+    if(this.state.team.open === true ){
       let newTeam = this.state.team
       newTeam.open = false
       this.setState({team: newTeam})
@@ -230,19 +230,21 @@ class Site extends Component {
     let postCollection;
     let postForm;
     console.log(this.state)
-    if(this.state.current_user != null){
-      if(this.state.team == null){
-        button = <div className='input-group-button'><button type="button"
-        className="create button" onClick={this.handleCreateClick}>Create Team</button></div>
-      } else if(this.state.team != null && this.state.member == false && this.state.team.open){
-        button= <div className='input-group-button'><button type="button"
-        className="create button" onClick={this.handleJoinClick}>Join Team</button></div>
-      }
+    if(this.state.current_user !== null){
       if(this.state.current_user.id == this.state.creator.id){
         deleteButton = <div className='input-group-button'><button type="button"
         className="destroy button"onClick={this.handleDeleteClick}>Delete Site</button></div>
       }
-      if(this.state.team != null){
+
+      if(this.state.team === null){
+        button = <div className='input-group-button'><button type="button"
+        className="create button" onClick={this.handleCreateClick}>Create Team</button></div>
+      } else if(this.state.team !== null && this.state.member === false && this.state.team.open){
+        button= <div className='input-group-button'><button type="button"
+        className="create button" onClick={this.handleJoinClick}>Join Team</button></div>
+      }
+
+      if(this.state.team !== null){
         teamPage = <TeamPage team={this.state.team} user={this.state.current_user}
         organizer={this.state.organizer} member={this.state.member}
         team_members={this.state.team_members} handleChange={this.handleChange}
@@ -256,7 +258,8 @@ class Site extends Component {
         handleLaborClick={this.handleLaborClick}
         handleEditVolSubmit={this.handleEditVolSubmit}
         labor={this.state.labor} supplies={this.state.supplies}/>
-        if(this.state.member == true || this.state.current_user.id == this.state.creator.id){
+
+        if(this.state.member === true || this.state.current_user.id === this.state.creator.id){
           postCollection = <PostCollection posts={this.state.posts} deletePost={this.deletePost}
           current_user={this.state.current_user}/>;
           postForm = <PostForm onChange={this.handleChange} current_user={this.state.current_user}
