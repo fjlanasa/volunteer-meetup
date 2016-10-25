@@ -1,7 +1,13 @@
 // @import "*";
 @import 'palette';
 
+html, body {
+  width: 100%;
+}
+
 body {
+  margin: 0px;
+  padding: 0px;
   background-color: $off-white;
   font-family: 'Gudea', sans-serif;
 }
@@ -39,7 +45,7 @@ ul.hmenu div {
 .rails-nav-bar {
   background-color: $cyan !important;
   margin: 0;
-  padding: 10px auto;
+  padding-top: 15px;
   height: auto;
   min-height: 80px;
 }
@@ -120,13 +126,39 @@ input[type='checkbox'] {
   *overflow: hidden;
 }
 
+.callout {
+  border: none;
+}
+
 .fa-pencil-square-o:hover {
   color: $jelly-bean;
 }
 
 .nav-links li {
   display: inline;
-  margin: 50px;
+  margin: 10px;
+}
+
+@media screen and (min-width: 550px) {
+  .devise {
+    padding-top: 12px;
+  }
+}
+
+@media screen and (min-width: 650px) {
+  .nav-links li {
+    margin: 50px;
+  }
+}
+
+@media screen and (min-width: 825px){
+  .nav-links {
+    font-size: 1.25em;
+  }
+
+  .rails-nav-bar {
+    font-size: 1.25em;
+  }
 }
 
 a {
@@ -234,6 +266,7 @@ input.button{
   background-color: $gray;
   height: auto;
   min-height: 50px;
+  padding-top: 10px;
 }
 
 .react-nav-bar a {

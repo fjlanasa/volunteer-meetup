@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -29,6 +30,7 @@ class Home extends Component {
     }
     return (
       <div className='map-page'>
+        <div className='wall'/>
         <p>{no_map_text}</p>
         <div id='map'></div>
       </div>
