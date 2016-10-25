@@ -20,8 +20,14 @@ class TeamUpdateForm extends Component {
             </div>
 
             <div className='volunteer-form-row'>
+              <label htmlFor="meeting_date">Meeting Date</label>
+              <input id="meeting_date" type="date" className="input-group-field" name="meeting_date"
+              onChange={this.props.handleChange} defaultValue={this.props.team.meeting_date} />
+            </div>
+
+            <div className='volunteer-form-row'>
               <label htmlFor="meeting_time">Meeting Time</label>
-              <input id="meeting_time" type="text" className="input-group-field" name="meeting_time"
+              <input id="meeting_time" type="time" className="input-group-field" name="meeting_time"
               onChange={this.props.handleChange} defaultValue={this.props.team.meeting_time} />
             </div>
 

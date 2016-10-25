@@ -149,12 +149,14 @@ class Site extends Component {
 
   handleTeamUpdate(event){
     event.preventDefault();
+    debugger;
     $.ajax({
       type: "PATCH",
       url: `/api/teams/${this.state.team.id}`,
       contentType: 'application/json',
       data: JSON.stringify({team: {meeting_location: this.state.meeting_location,
-            meeting_time: this.state.meeting_time, open: this.state.team.open}})
+            meeting_date: this.state.meeting_date, meeting_time: this.state.meeting_time,
+            open: this.state.team.open}})
     }).done((data)=>{
       this.getState();
     })
@@ -229,7 +231,6 @@ class Site extends Component {
     let deleteButton;
     let postCollection;
     let postForm;
-    console.log(this.state)
     if(this.state.current_user !== null){
       if(this.state.current_user.id == this.state.creator.id){
         deleteButton = <div className='input-group-button'><button type="button"

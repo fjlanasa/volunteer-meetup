@@ -18,6 +18,16 @@ body {
   margin: inherit;
 }
 
+div.devise-container > div.end.columns.small-12.medium-6.devise-form {
+  float: none;
+  margin: auto;
+}
+
+div.post-section div.small-12.form-section {
+  margin: 10px auto;
+  float:none;
+}
+
 ul.hmenu {
   list-style: none;
   padding: 0;
