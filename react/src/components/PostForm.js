@@ -4,7 +4,7 @@ const PostForm = props => {
   return(
     <div className='small-12 columns'>
       <ul>
-        <div className='small-12 columns form-section callout'>
+        <div className='small-12 medium-7 large-7 columns form-section callout'>
           <form onSubmit={props.onSubmit} id='post-form'>
             <div className='input group'>
               <label htmlFor="post-text">Leave a Post</label>

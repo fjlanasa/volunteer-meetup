@@ -51,6 +51,7 @@ class TeamPage extends Component {
         edit_team_button = <span className='edit'><h5>Team Info </h5>
         <i className="fa fa-pencil-square-o" aria-hidden="true"
         onClick={this.handleEditTeamClick}></i></span>
+
         if(this.state.update_team_clicked == true){
           form = <TeamUpdateForm team={this.props.team} handleChange={this.props.handleChange}
           handleOpenClick={this.props.handleOpenClick} handleBlur={this.props.handleBlur}
