@@ -153,7 +153,7 @@ input[type='checkbox'] {
 }
 
 .wall {
-  background-image: url('wallpic.jpg');
+  background-image: image-url('wallpic.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   height: 300px;
@@ -166,7 +166,7 @@ input[type='checkbox'] {
 
 @media screen and (min-width: 900px){
   .wall {
-    background-image: url('wallpic.jpg');
+    background-image: image-url('wallpic.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     height: 400px;
@@ -181,7 +181,7 @@ input[type='checkbox'] {
 
 @media screen and (min-width: 1275px){
   .wall {
-    background-image: url('wallpic.jpg');
+    background-image: image-url('wallpic.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     height: 600px;
