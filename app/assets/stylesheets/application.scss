@@ -9,7 +9,8 @@ body {
   margin: 0px;
   padding: 0px;
   background-color: $off-white;
-  font-family: 'Gudea', sans-serif;
+  font-family: 'Poppins', sans-serif;
+  color: $green;
 }
 
 .form-section {
@@ -98,7 +99,7 @@ span.edit h5 {
 }
 
 .nav-links{
-  width: 80%;
+  width: 95%;
   margin: auto;
   text-align: center;
 }
@@ -151,6 +152,53 @@ input[type='checkbox'] {
   }
 }
 
+.wall {
+  background-image: url('wallpic.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 300px;
+  font-weight: bolder;
+  color: white;
+  text-align: center;
+  padding-top: 25px;
+  margin-bottom: 30px;
+}
+
+@media screen and (min-width: 900px){
+  .wall {
+    background-image: url('wallpic.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 400px;
+    font-size: 54px;
+    font-weight: bolder;
+    color: white;
+    text-align: center;
+    padding-top: 40px;
+    margin-bottom: 50px;
+  }
+}
+
+@media screen and (min-width: 1275px){
+  .wall {
+    background-image: url('wallpic.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 600px;
+    font-size: 64px;
+    font-weight: bolder;
+    color: white;
+    text-align: center;
+    padding-top: 150px;
+    margin-bottom: 70px;
+  }
+}
+
+.wallText {
+  width: 80%;
+  margin: auto;
+}
+
 @media screen and (min-width: 825px){
   .nav-links {
     font-size: 1.25em;
@@ -184,7 +232,7 @@ div.map-page{
 #map {
   width: 80%;
   height: 60%;
-  margin: 50px auto;
+  margin: 50px auto 200px auto;
 }
 
 #map div {
@@ -254,6 +302,12 @@ input.button{
   display: none;
 }
 
+.map-page{
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+}
+
 ::-webkit-scrollbar {
   background-color: $off-white;
 }
@@ -267,6 +321,7 @@ input.button{
   height: auto;
   min-height: 50px;
   padding-top: 10px;
+  border-bottom: 1px solid #7a7771;
 }
 
 .react-nav-bar a {
@@ -275,4 +330,12 @@ input.button{
 
 .react-nav-bar a:hover{
   color: $jelly-bean;
+}
+
+.bottom {
+  height: 50px;
+  position: fixed;
+  bottom: 0;
+  width: 50%;
+  margin-top: 1px solid $gray;
 }

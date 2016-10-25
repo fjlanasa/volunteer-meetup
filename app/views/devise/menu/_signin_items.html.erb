@@ -1,9 +1,9 @@
 <% if user_signed_in? %>
       <div class='small-6 medium-6 columns end'>
-        <%= link_to('Sign out', destroy_user_session_path, :method => :delete) %>
+        <%= link_to('SIGN OUT', destroy_user_session_path, :method => :delete) %>
       </div>
 <% else %>
       <div class='small-6 medium-6 columns end'>
-        <%= link_to('Sign in', new_user_session_path)  %>
+        <%= link_to('SIGN IN', new_user_session_path)  %>
       </div>
 <% end %>

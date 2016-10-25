@@ -30,7 +30,13 @@ class Home extends Component {
     }
     return (
       <div className='map-page'>
-        <div className='wall'/>
+        <div className='wall'>
+          <div className='wallText'>
+            Volunteer Meetup was created to help
+            neighbors help neighbors in their time of need
+          </div>
+        </div>
+        <p>Current Help Requests</p>
         <p>{no_map_text}</p>
         <div id='map'></div>
       </div>
