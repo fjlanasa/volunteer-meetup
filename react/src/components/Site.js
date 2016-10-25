@@ -149,7 +149,6 @@ class Site extends Component {
 
   handleTeamUpdate(event){
     event.preventDefault();
-    debugger;
     $.ajax({
       type: "PATCH",
       url: `/api/teams/${this.state.team.id}`,
