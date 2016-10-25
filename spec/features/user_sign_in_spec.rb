@@ -3,16 +3,16 @@ require 'rails_helper'
 feature 'user sign in' do
   scenario 'user gets to login page from home page' do
     visit '/'
-    click_link 'Sign in'
+    click_link 'SIGN IN'
 
-    expect(page).to have_content 'Sign in'
+    expect(page).to have_content 'SIGN IN'
     expect(page).to have_content 'Email'
     expect(page).to have_content 'Password'
   end
   scenario 'user successfully signs in' do
     visit '/users/sign_in'
 
-    expect(page).to have_content 'Sign in'
+    expect(page).to have_content 'SIGN IN'
     expect(page).to have_content 'Email'
     expect(page).to have_content 'Password'
 
@@ -22,8 +22,8 @@ feature 'user sign in' do
     fill_in 'Password', with: user.password
 
     click_button 'Sign in'
-    expect(page).to have_link 'Sign out'
-    expect(page).to have_link 'Edit Profile'
+    expect(page).to have_link 'SIGN OUT'
+    expect(page).to have_link 'PROFILE'
   end
 
   scenario 'user attempts to sign in with blank form' do
@@ -48,11 +48,11 @@ feature 'user sign in' do
     login_as(user, scope: :user)
 
     visit '/'
-    expect(page).to have_content 'Edit Profile'
-    expect(page).to have_content 'Sign out'
+    expect(page).to have_content 'PROFILE'
+    expect(page).to have_content 'SIGN OUT'
 
-    click_link 'Sign out'
-    expect(page).to have_link 'Sign up'
-    expect(page).to have_link 'Sign in'
+    click_link 'SIGN OUT'
+    expect(page).to have_link 'SIGN UP'
+    expect(page).to have_link 'SIGN IN'
   end
 end

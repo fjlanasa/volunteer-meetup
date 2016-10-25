@@ -6,7 +6,7 @@ feature 'user deletes account' do
     login_as(user, scope: :user)
 
     visit '/'
-    click_link 'Edit Profile'
+    click_link 'PROFILE'
     expect(page).to have_button 'Cancel my account'
   end
 end

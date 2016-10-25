@@ -99,7 +99,7 @@ span.edit h5 {
 }
 
 .nav-links{
-  width: 95%;
+  width: 98%;
   margin: auto;
   text-align: center;
 }
@@ -135,23 +135,6 @@ input[type='checkbox'] {
   color: $jelly-bean;
 }
 
-.nav-links li {
-  display: inline;
-  margin: 10px;
-}
-
-@media screen and (min-width: 550px) {
-  .devise {
-    padding-top: 12px;
-  }
-}
-
-@media screen and (min-width: 650px) {
-  .nav-links li {
-    margin: 50px;
-  }
-}
-
 .wall {
   background-image: image-url('wallpic.jpg');
   background-repeat: no-repeat;
@@ -160,8 +143,60 @@ input[type='checkbox'] {
   font-weight: bolder;
   color: white;
   text-align: center;
-  padding-top: 25px;
+  padding-top: 35px;
   margin-bottom: 30px;
+}
+
+.nav-links li {
+  display: inline;
+  margin: 10px;
+  font-size: .85rem;
+}
+
+@media screen and (min-width: 550px) {
+  .devise {
+    padding-top: 12px;
+  }
+}
+
+@media screen and (min-width: 575px){
+  .map-page{
+    font-size: 32px;
+  }
+
+  .wall{
+    padding-top: 40px;
+  }
+}
+
+@media screen and (min-width: 650px) {
+  .nav-links li {
+    margin: 50px;
+    font-size: 1rem;
+  }
+}
+
+
+@media screen and (min-width: 825px){
+  .nav-links {
+    font-size: 1.25em;
+  }
+
+  .rails-nav-bar {
+    font-size: 1.25em;
+  }
+}
+
+@media screen and (min-width: 625px){
+  .wall {
+    height: 400px;
+    font-size: 40px;
+    font-weight: bolder;
+    color: white;
+    text-align: center;
+    padding-top: 45px;
+    margin-bottom: 50px;
+  }
 }
 
 @media screen and (min-width: 900px){
@@ -174,7 +209,7 @@ input[type='checkbox'] {
     font-weight: bolder;
     color: white;
     text-align: center;
-    padding-top: 40px;
+    padding-top: 45px;
     margin-bottom: 50px;
   }
 }
@@ -194,20 +229,26 @@ input[type='checkbox'] {
   }
 }
 
+@media screen and (min-width: 2000px){
+  .wall {
+    background-image: image-url('wallpic.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 850px;
+    font-size: 72px;
+    font-weight: bolder;
+    color: white;
+    text-align: center;
+    padding-top: 250px;
+    margin-bottom: 70px;
+  }
+}
+
 .wallText {
   width: 80%;
   margin: auto;
 }
 
-@media screen and (min-width: 825px){
-  .nav-links {
-    font-size: 1.25em;
-  }
-
-  .rails-nav-bar {
-    font-size: 1.25em;
-  }
-}
 
 a {
   color: $cyan;
@@ -303,10 +344,11 @@ input.button{
 }
 
 .map-page{
-  font-size: 32px;
+  font-size: 24px;
   font-weight: bold;
   text-align: center;
 }
+
 
 ::-webkit-scrollbar {
   background-color: $off-white;

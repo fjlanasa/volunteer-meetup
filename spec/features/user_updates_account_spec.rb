@@ -7,7 +7,7 @@ feature 'user updates account information' do
 
     visit '/'
 
-    click_link 'Edit Profile'
+    click_link 'PROFILE'
     expect(page).to have_button 'Update'
   end
 
@@ -19,7 +19,7 @@ feature 'user updates account information' do
     fill_in 'First Name', with: 'NewName'
     fill_in 'Current password', with: user.password
     click_button 'Update'
-    click_link 'Edit Profile'
+    click_link 'PROFILE'
     expect(page).to have_selector("input[value='NewName']")
   end
 

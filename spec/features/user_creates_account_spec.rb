@@ -5,7 +5,7 @@ feature 'user can create an account' do
 
     visit '/'
 
-    click_link 'Sign up'
+    click_link 'SIGN UP'
 
     expect(page).to have_content 'Sign up'
   end
