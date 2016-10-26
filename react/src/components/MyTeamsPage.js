@@ -12,9 +12,11 @@ class MyTeamsPage extends Component {
       recent_posts: [],
       status: 'preset'
     }
+    this.getState = this.getState.bind(this);
+    this.myInterval;
   }
 
-  componentDidMount(){
+  getState(){
     $.ajax({
       url: '/api/teams',
       contentType: 'application/json'
@@ -22,6 +24,15 @@ class MyTeamsPage extends Component {
     .done(data=> {
       this.setState({user: data.user, user_vol_sites: data.user_vol_sites, recent_posts: data.recent_posts, status: ''})
     })
+  }
+
+  componentDidMount(){
+    this.getState();
+    this.myInterval = setInterval(this.getState, 5000);
+  }
+
+  componentWillUnmount(){
+    clearInterval(this.myInterval);
   }
 
   render(){

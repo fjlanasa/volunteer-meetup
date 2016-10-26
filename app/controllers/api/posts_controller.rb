@@ -1,6 +1,4 @@
 class Api::PostsController < ApiController
-  def index
-  end
 
   def create
     post = Post.new(post_params)

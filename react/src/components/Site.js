@@ -42,6 +42,8 @@ class Site extends Component {
     this.handleLaborClick = this.handleLaborClick.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.deletePost = this.deletePost.bind(this);
+    this.updatePosts = this.updatePosts.bind(this);
+    this.myInterval;
   }
   getState(){
     $.ajax({
@@ -65,10 +67,15 @@ class Site extends Component {
           post_text: '', meeting_date: '', meeting_location: ''});
       }
     })
+    this.myInterval = setInterval(this.updatePosts, 5000);
   }
 
   componentDidMount(){
     this.getState();
+  }
+
+  componentWillUnmount(){
+    clearInterval(this.myInterval);
   }
 
   componentDidUpdate() {
@@ -79,6 +86,18 @@ class Site extends Component {
     let nextState={}
     nextState[event.target.name] = event.target.value
     this.setState(nextState)
+  }
+
+  updatePosts(){
+    if(this.state.team != null){
+      $.ajax({
+        url: `/api/teams/${this.state.team.id}`,
+        contentType: 'application/json',
+      })
+      .done((data)=>{
+        this.setState({posts: data.posts})
+      })
+    }
   }
 
   deletePost(event){
