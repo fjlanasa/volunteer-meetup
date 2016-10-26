@@ -62,7 +62,7 @@ class Site extends Component {
           team: data.team, map_url: data.site.static_map_url, member: data.member,
           team_members: data.team_members, organizer: data.organizer, creator: data.creator,
           signup: data.signup, labor: labor, supplies: supplies, posts: data.posts,
-          post_text: ''});
+          post_text: '', meeting_date: '', meeting_location: ''});
       }
     })
   }
