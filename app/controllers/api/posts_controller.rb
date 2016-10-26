@@ -5,7 +5,7 @@ class Api::PostsController < ApiController
   def create
     post = Post.new(post_params)
     if post.save
-      message = 'Post successfully created'
+      message = nil
     else
       message = post.errors.full_messages[0]
     end
@@ -15,6 +15,7 @@ class Api::PostsController < ApiController
   def destroy
     post = Post.find(params[:id])
     post.destroy
+    render json: {message: 'Your post has been deleted'}
   end
 
   private

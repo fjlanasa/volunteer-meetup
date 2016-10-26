@@ -52,8 +52,10 @@ class Request extends Component {
       data: JSON.stringify({site: {location: location, contact_name: this.state.contact_name,
                                     contact_phone: this.state.contact_phone, square_footage: this.state.square_footage,
                                     special_details: this.state.special_details, user_id: this.state.user.id}})
-    }).done(()=>{
+    }).done((data)=>{
       this.getState();
+      console.log(data.status)
+      toastr.error(data.message);
     })
   }
 

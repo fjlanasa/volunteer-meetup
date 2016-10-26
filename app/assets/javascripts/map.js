@@ -1,4 +1,3 @@
-
 function initMap(data_sites) {
   if(document.getElementById('sites-text') != null){
     let siteAutocomplete = new google.maps.places.Autocomplete(

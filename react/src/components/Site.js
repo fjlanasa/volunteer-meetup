@@ -105,6 +105,7 @@ class Site extends Component {
     })
     .done((data)=>{
       this.getState();
+      if(data.message != null) {toastr.success(data.message)};
     })
   }
 
@@ -126,6 +127,7 @@ class Site extends Component {
             supplies: this.state.supplies}})
     }).done((data)=>{
       this.getState();
+      toastr.success(data.message);
     })
   }
 
@@ -158,6 +160,7 @@ class Site extends Component {
             open: this.state.team.open}})
     }).done((data)=>{
       this.getState();
+      toastr.success(data.message)
     })
   }
 
@@ -195,8 +198,9 @@ class Site extends Component {
       url: `/api/sites/${this.props.params.id}`,
       contentType: 'application/json'
     })
-    .done(()=>{
+    .done((data)=>{
       browserHistory.push('/');
+      toastr.success(data.message);
     })
   }
 
@@ -207,8 +211,9 @@ class Site extends Component {
       contentType: 'application/json',
       data: JSON.stringify({team_id: this.state.team.id})
     })
-    .done(()=>{
+    .done((data)=>{
       this.getState();
+      toastr.success(data.message);
     })
   }
 
@@ -218,8 +223,9 @@ class Site extends Component {
       url: `/api/teams/${this.state.team.id}`,
       contentType: 'application/json'
     })
-    .done(()=>{
+    .done((data)=>{
       this.getState();
+      toastr.success(data.message);
     })
   }
 

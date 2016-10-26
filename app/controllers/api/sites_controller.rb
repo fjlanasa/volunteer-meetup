@@ -22,7 +22,7 @@ class Api::SitesController < ApiController
         site.save
       end
     else
-
+      render json: {message: site.errors.full_messages[0]}
     end
   end
 
@@ -58,7 +58,7 @@ class Api::SitesController < ApiController
   def destroy
     site = Site.find(params[:id])
     site.destroy
-    head :no_content
+    render json: {message: 'Successfully deleted your request'}
   end
 
   private

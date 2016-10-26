@@ -19,28 +19,31 @@ class Api::TeamsController < ApiController
     render json: { user: user, user_vol_sites: user_vol_sites, recent_posts: posts }, status: :ok
   end
 
-  def show
-  end
-
   def create
     team = Team.new(team_params)
     if team.save
       Signup.create(team_id: team.id, user_id: team_params[:organizer_id],
       supplies: params[:supplies], labor: params[:labor])
-      render json: {team: team}
+      render json: {team: team, message: 'Successfully created a new team!'}, status: :ok
+    else
+      render json: {message: team.errors.full_messages[0]}, status: :ok
     end
   end
 
   def update
     team = Team.find(params[:id])
-    team.update_attributes(team_params)
-    render json: { message: 'hello'}, status: :ok
+    team.assign_attributes(team_params)
+    if team.save
+      render json: { message: 'Successfully updated your team!'}, status: :ok
+    else
+      render json: { message: team.errors.full_messages[0]}, status: :ok
+    end
   end
 
   def destroy
     team = Team.find(params[:id])
     team.destroy
-    render json: {message: 'deleted'}, status: :ok
+    render json: {message: 'Successfully deleted your team'}, status: :ok
   end
 
   private
