@@ -8,14 +8,14 @@ class Api::VolunteersController < ApiController
     else
       current_user_potential_sites = []
     end
-    render json: { message: 'hello', all_users: all_users, current_user_potential_sites:
+    render json: { all_users: all_users, current_user_potential_sites:
       current_user_potential_sites, current_user: user}, status: :ok
   end
 
   def update
     user = User.find(params[:id])
     user.update_attributes(user_params)
-    render json: { message: 'hello'}, status: :ok
+    render json: { message: 'Successfully updated your volunteer preferences'}, status: :ok
   end
 
   def user_params
