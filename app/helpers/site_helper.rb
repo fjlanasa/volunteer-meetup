@@ -8,49 +8,54 @@ module SiteHelper
     "&key=#{ENV['GOOGLE_MAPS_KEY']}"
   end
 
-  def calculate_distance(site1, site2)
+  def calculate_distances(volunteer)
     url = "https://maps.googleapis.com/maps/api/distancematrix/json?" +
-    "origins=#{site1.location}&destinations=#{site2.location}" +
-    "&units=imperial&key=#{ENV['GOOGLE_MAPS_KEY']}"
+    "origins=#{volunteer.location}&destinations="
+    Site.all.each do |site|
+      url += "#{site.location}|"
+    end
+    url += "&units=imperial&key=#{ENV['GOOGLE_MAPS_KEY']}"
     url=URI.parse(url)
     str = url.read
     data=JSON.parse(str)
-    if !data['rows'][0]['elements'][0]['distance'].nil?
-      data['rows'][0]['elements'][0]['distance']['text'].split(' ')[0].gsub(',','').to_f
-    else
-      9999
-    end
   end
+
+  def site_should_display?(volunteer, site)
+    if volunteer.id == site.user.id
+      return false
+    end
+    if !site.team.nil?
+      if site.team.users.any? {|vol| vol.id == volunteer.id} || !site.team.open
+        return false
+      end
+    end
+    true
+  end
+
 
   def potential_sites(volunteer)
     potential_sites = []
     if volunteer.labor || volunteer.supplies >= 1
-      Site.all.each do |site|
-        if site.user.id != volunteer.id
-          if !site.team.nil?
-            if !site.team.users.any? {|vol| vol.id == volunteer.id} && site.team.open
-              if !volunteer.location.nil? && volunteer.max_milage != 9999
-                distance = calculate_distance(site, volunteer)
-                if distance <= volunteer.max_milage
-                  potential_sites.push(site)
-                end
-              else
-                potential_sites.push(site)
-              end
-            end
-          else
-            if !volunteer.location.nil? && volunteer.max_milage != 9999
-              distance = calculate_distance(site, volunteer)
+      if !volunteer.location.nil? && volunteer.max_milage != 9999
+        site_distances = calculate_distances(volunteer)
+        Site.all.each_with_index do |site, index|
+          if site_should_display?(volunteer, site)
+            if !site_distances['rows'][0]['elements'][index]['distance'].nil?
+              distance = site_distances['rows'][0]['elements'][index]['distance']['text'].split(' ')[0].gsub(',','').to_f
               if distance <= volunteer.max_milage
                 potential_sites.push(site)
               end
-            else
-              potential_sites.push(site)
             end
+          end
+        end
+      else
+        Site.all.each do |site|
+          if site_should_display?(volunteer, site)
+            potential_sites.push(site)
           end
         end
       end
     end
-    potential_sites
+    return potential_sites
   end
 end
