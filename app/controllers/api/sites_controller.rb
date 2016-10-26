@@ -4,7 +4,7 @@ class Api::SitesController < ApiController
     sites = Site.all
     user = current_user
     if !user.nil?
-      user_sites = Site.where(user_id: user.id).reverse
+      user_sites = Site.where(user_id: user.id).order(id: :desc)
     else
       user_sites = []
     end
