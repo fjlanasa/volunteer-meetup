@@ -63,6 +63,17 @@ describe Api::TeamsController, type: :controller do
     end
   end
 
+  feature 'get show' do
+    scenario 'gets posts for a team' do
+      team = FactoryGirl.create(:team)
+      posts = FactoryGirl.create_list(:post, 3, team: team)
+      get :show, params: {id: team.id }
+      expect(response.status).to eq(200)
+      res_body = JSON.parse(response.body)
+      expect(res_body['posts'].length).to eq(3)
+    end
+  end
+
   feature 'user edits team' do
     scenario 'user successfully edits team attributes' do
       team = FactoryGirl.create(:team)
