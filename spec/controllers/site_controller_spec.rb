@@ -94,4 +94,31 @@ describe Api::SitesController, type: :controller do
     expect(res_body['signup']['team_id']).to eq(team.id)
     expect(res_body['member']).to eq(true)
   end
+
+  it 'should create site when supplies correct params' do
+    user = FactoryGirl.create(:user)
+    post :create, params: {site: {user_id: user.id, location: 'Location', contact_name: user.full_name,
+    contact_phone: user.phone_number, square_footage: '4000'}}
+    expect(response.status).to eq(201)
+    expect(Site.all.length).to eq(1)
+  end
+
+  it 'should not create site when supplied with incorrect params' do
+    user = FactoryGirl.create(:user)
+    sites = Site.all
+    post :create, params: {site: {user_id: user.id, location: '', contact_name: user.full_name,
+    contact_phone: user.phone_number, square_footage: '4000'}}
+    res_body = JSON.parse(response.body)
+    expect(response.status).to eq(200)
+    expect(Site.all.length).to eq(sites.length)
+    expect(res_body['message']).to eq('Location can\'t be blank')
+  end
+
+  it 'should delete site' do
+    site = FactoryGirl.create(:site)
+    delete :destroy, params: { id: site.id }
+    res_body = JSON.parse(response.body)
+    expect(response.status).to eq(200)
+    expect(res_body['message']).to eq('Successfully deleted your request')
+  end
 end
