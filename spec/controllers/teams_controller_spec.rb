@@ -43,7 +43,23 @@ describe Api::TeamsController, type: :controller do
 
   feature 'user creates new team' do
     scenario 'should create new team if supplied correct params' do
-      
+      user = FactoryGirl.create(:user)
+      site = FactoryGirl.create(:site)
+      post :create, params: {team: {organizer_id: user.id, site_id: site.id}}
+      res_body = JSON.parse(response.body)
+      expect(response.status).to eq(200)
+      expect(res_body['message']).to eq('Successfully created a new team!')
+      expect(Team.all.length).to eq(1)
+    end
+
+    scenario 'user does not provide correct params' do
+      user = FactoryGirl.create(:user)
+      site = FactoryGirl.create(:site)
+      post :create, params: {team: {organizer_id: user.id}}
+      res_body = JSON.parse(response.body)
+      expect(response.status).to eq(200)
+      expect(res_body['message']).to eq('Site must exist')
+      expect(Team.all.length).to eq(0)
     end
   end
 end
