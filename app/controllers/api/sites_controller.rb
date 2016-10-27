@@ -1,14 +1,14 @@
 class Api::SitesController < ApiController
   include SiteHelper
   def index
-    sites = Site.all
-    user = current_user
-    if !user.nil?
-      user_sites = Site.where(user_id: user.id).order(id: :desc)
+    @sites = Site.all
+    @user = current_user
+    if !@user.nil?
+      @user_sites = Site.where(user_id: @user.id).order(id: :desc)
     else
-      user_sites = []
+      @user_sites = []
     end
-    render json: { sites: sites, user: user, user_sites: user_sites}, status: :ok
+    render json: { sites: @sites, user: @user, user_sites: @user_sites}, status: :ok
   end
 
   def create

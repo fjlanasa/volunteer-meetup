@@ -21,7 +21,8 @@ end
 group :test do
   gem 'launchy', require: false
   gem 'coveralls', require: false
-    gem 'database_cleaner'
+  gem 'database_cleaner'
+  gem 'rails-controller-testing'
 end
 
 group :production do

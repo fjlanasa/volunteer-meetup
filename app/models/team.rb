@@ -12,6 +12,14 @@ class Team < ActiveRecord::Base
   has_many :signups, dependent: :destroy
   has_many :users, through: :signups
 
+
+  after_create :signup_organizer
+
+  def signup_organizer
+    Signup.create(team_id: id, user_id: organizer_id,
+    supplies: User.find(organizer_id).supplies, labor: User.find(organizer_id).labor)
+  end
+
   def update_totals
     total_supplies = 0
     total_workers = 0
