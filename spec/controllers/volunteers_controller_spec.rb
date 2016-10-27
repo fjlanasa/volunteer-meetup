@@ -56,5 +56,20 @@ describe Api::VolunteersController, type: :controller, vcr: true do
       expect(res_body['current_user']).to eq(nil)
       expect(res_body['current_user_potential_sites'].length).to eq(0)
     end
+
+    scenario 'authenticated user doesn\'t see sites they already are team members for' do
+      site1 = FactoryGirl.create(:site, location: '11 Villar Road, Gonzales, LA 70737')
+      site2 = FactoryGirl.create(:site, location: '3300 Corinne Drive, Chalmette, LA 70043')
+      user = FactoryGirl.create(:user, labor: true)
+      team = FactoryGirl.create(:team, organizer_id: user.id, site: site1)
+      allow(request.env['warden']).to receive(:authenticate!).and_return(user)
+      allow(controller).to receive(:current_user).and_return(user)
+      login_as(user, scope: :user)
+      get 'index'
+      res_body = JSON.parse(response.body)
+      expect(response.status).to eq(200)
+      expect(res_body['current_user_potential_sites'].length).to eq(1)
+      expect(res_body['current_user_potential_sites'][0]['id']).not_to eq(site1.id)
+    end
   end
 end
