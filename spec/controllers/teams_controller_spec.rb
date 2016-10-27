@@ -62,4 +62,22 @@ describe Api::TeamsController, type: :controller do
       expect(Team.all.length).to eq(0)
     end
   end
+
+  feature 'user edits team' do
+    scenario 'user successfully edits team attributes' do
+      team = FactoryGirl.create(:team)
+      patch :update, params: {team: {meeting_location: 'My house'}, id: team.id}
+      res_body = JSON.parse(response.body)
+      expect(response.status).to eq(200)
+      expect(res_body['message']).to eq('Successfully updated your team!')
+    end
+
+    scenario 'user unsuccessfully edits team attributes by removing required field' do
+      team = FactoryGirl.create(:team)
+      patch :update, params: {team: {meeting_location: 'My house', site_id: ''}, id: team.id}
+      res_body = JSON.parse(response.body)
+      expect(response.status).to eq(200)
+      expect(res_body['message']).to eq('Site must exist')
+    end
+  end
 end
