@@ -78,4 +78,14 @@ describe Api::VolunteersController, type: :controller, vcr: true do
       expect(res_body['current_user_potential_sites'][1]['id']).not_to eq(site3.id)
     end
   end
+
+  feature 'user updates volunteer attributes' do
+    scenario 'user successfully updates volunteer attributes' do
+      user = FactoryGirl.create(:user)
+      patch :update, params: {user: {labor: true }, id: user.id}
+      res_body = JSON.parse(response.body)
+      expect(response.status).to eq(200)
+      expect(res_body['message']).to eq('Successfully updated your volunteer preferences')
+    end
+  end
 end
