@@ -21,7 +21,7 @@ FactoryGirl.define do
   end
 
   factory :team do
-    organizer_id 1
+    organizer_id 50
     total_supplies 0
     total_workers 0
     meeting_location '11 Villar Road Gonzales LA 70737'

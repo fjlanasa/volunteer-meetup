@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Api::SitesController, type: :controller do
+describe Api::SitesController, type: :controller, vcr: true do
   it 'should get index' do
     get 'index'
     expect(response.status).to eq(200)
@@ -28,7 +28,6 @@ describe Api::SitesController, type: :controller do
     expect(assigns(:sites)).to eq(sites + user_site)
     expect(assigns(:user)).to  eq(user)
     expect(assigns(:user_sites)).to eq(user_site)
-    res_body = JSON.parse(response.body)
   end
 
   it 'should get show' do
@@ -97,10 +96,23 @@ describe Api::SitesController, type: :controller do
 
   it 'should create site when supplies correct params' do
     user = FactoryGirl.create(:user)
-    post :create, params: {site: {user_id: user.id, location: 'Location', contact_name: user.full_name,
+    post :create, params: {site: {user_id: user.id,
+      location: "40487 Fox Run Drive, Gonzales, LA, United States", contact_name: user.full_name,
     contact_phone: user.phone_number, square_footage: '4000'}}
     expect(response.status).to eq(201)
     expect(Site.all.length).to eq(1)
+    expect(Site.first.lat).to eq(30.285043)
+    expect(Site.first.lng).to eq(-90.923277)
+  end
+
+  it 'should not create lat/lng for site with nonidentifiable address' do
+    user = FactoryGirl.create(:user)
+    post :create, params: {site: {user_id: user.id,
+      location: "alskdjfasidfa", contact_name: user.full_name,
+    contact_phone: user.phone_number, square_footage: '4000'}}
+    expect(response.status).to eq(201)
+    expect(Site.all.length).to eq(1)
+    expect(Site.first.lat).to eq(nil)
   end
 
   it 'should not create site when supplied with incorrect params' do

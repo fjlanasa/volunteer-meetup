@@ -10,6 +10,7 @@ gem 'foundation-rails'
 gem 'devise'
 group :development, :test do
   gem 'capybara'
+  gem 'capybara-webkit'
   gem 'factory_girl_rails'
   gem 'rspec-rails', '~> 3.0'
   gem 'pry-rails'
@@ -23,6 +24,8 @@ group :test do
   gem 'coveralls', require: false
   gem 'database_cleaner'
   gem 'rails-controller-testing'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :production do
