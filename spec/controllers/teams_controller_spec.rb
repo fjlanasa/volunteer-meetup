@@ -80,4 +80,14 @@ describe Api::TeamsController, type: :controller do
       expect(res_body['message']).to eq('Site must exist')
     end
   end
+
+  feature 'user deletes team' do
+    scenario 'user successfully deletes team' do
+      team = FactoryGirl.create(:team)
+      delete :destroy, params: { id: team.id }
+      res_body = JSON.parse(response.body)
+      expect(response.status).to eq(200)
+      expect(res_body['message']).to eq('Successfully deleted your team')
+    end
+  end
 end
