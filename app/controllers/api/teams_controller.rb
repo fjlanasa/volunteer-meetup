@@ -29,7 +29,7 @@ class Api::TeamsController < ApiController
   end
 
   def show
-    post = []
+    posts = []
     posts = Post.where(team_id: params[:id]).order(updated_at: :desc).to_a
     posts.map! {|post| post.attributes.merge({'user_name'=> User.find(post.user_id).full_name, 'team_site' => post.team.site})}
     render json: {posts: posts}

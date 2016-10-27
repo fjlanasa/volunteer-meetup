@@ -54,8 +54,9 @@ class Request extends Component {
                                     special_details: this.state.special_details, user_id: this.state.user.id}})
     }).done((data)=>{
       this.getState();
-      console.log(data.status)
-      toastr.error(data.message);
+      if(data.message != null){
+        toastr.error(data.message);        
+      }
     })
   }
 

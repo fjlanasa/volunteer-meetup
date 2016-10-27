@@ -1,0 +1,83 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/distancematrix/json?destinations=11%20Villar%20Road,%20Gonzales,%20LA%2070737%7C3300%20Corinne%20Drive,%20Chalmette,%20LA%2070043%7C&key=<HIDDEN
+      API KEY>&origins=40487%20Fox%20Run%20Dr,%20Gonzales,%20LA%2070737&units=imperial
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Thu, 27 Oct 2016 21:00:54 GMT
+      Expires:
+      - Fri, 28 Oct 2016 21:00:54 GMT
+      Cache-Control:
+      - public, max-age=86400
+      Vary:
+      - Accept-Language
+      Server:
+      - mafe
+      Content-Length:
+      - '294'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="36,35,34"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "destination_addresses" : [
+              "Villar Rd, Gonzales, LA 70737, USA",
+              "3300 Corinne Dr, Chalmette, LA 70043, USA"
+           ],
+           "origin_addresses" : [ "40487 Fox Run Dr, Gonzales, LA 70737, USA" ],
+           "rows" : [
+              {
+                 "elements" : [
+                    {
+                       "distance" : {
+                          "text" : "1.0 mi",
+                          "value" : 1606
+                       },
+                       "duration" : {
+                          "text" : "3 mins",
+                          "value" : 181
+                       },
+                       "status" : "OK"
+                    },
+                    {
+                       "distance" : {
+                          "text" : "69.8 mi",
+                          "value" : 112276
+                       },
+                       "duration" : {
+                          "text" : "1 hour 25 mins",
+                          "value" : 5096
+                       },
+                       "status" : "OK"
+                    }
+                 ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Thu, 27 Oct 2016 21:00:54 GMT
+recorded_with: VCR 3.0.3

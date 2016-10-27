@@ -21,8 +21,9 @@ class Api::SitesController < ApiController
         site.static_map_url = get_map_url(site.lat, site.lng, formatted_address)
         site.save
       end
+      head(status: :created)
     else
-      render json: {message: site.errors.full_messages[0]}
+      render json: {message: site.errors.full_messages[0]}, status: :ok
     end
   end
 
@@ -58,7 +59,7 @@ class Api::SitesController < ApiController
   def destroy
     site = Site.find(params[:id])
     site.destroy
-    render json: {message: 'Successfully deleted your request'}
+    render json: {message: 'Successfully deleted your request'}, status: :ok
   end
 
   private
