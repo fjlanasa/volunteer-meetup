@@ -22,8 +22,6 @@ class Api::TeamsController < ApiController
   def create
     team = Team.new(team_params)
     if team.save
-      Signup.create(team_id: team.id, user_id: team_params[:organizer_id],
-      supplies: params[:supplies], labor: params[:labor])
       render json: {team: team, message: 'Successfully created a new team!'}, status: :ok
     else
       render json: {message: team.errors.full_messages[0]}, status: :ok
