@@ -46,8 +46,8 @@ class MyTeamsPage extends Component {
       } else {
         myTeams = <MyTeamsCollection sites = {this.state.user_vol_sites}/>;
         posts = <PostCollection posts={this.state.recent_posts}/>;
-        postsHeader = <h5>Recent posts related to your teams</h5>
-        teamsHeader = <h5>Your current teams</h5>
+        postsHeader = <p>Recent posts related to your teams:</p>
+        teamsHeader = <p>Your current teams:</p>
       }
     } else if(this.state.status != 'preset'){
       myTeams = <div>Please <a href='/users/sign_in'>sign in</a> to view your teams</div>;
