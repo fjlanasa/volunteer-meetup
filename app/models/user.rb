@@ -5,7 +5,6 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :max_milage, presence: true
   validates :phone_number, presence: true
-  validates :phone_number, format: { with: /\A[0-9]{3}-[0-9]{3}-[0-9]{4}\z/, message: 'must be in format ###-###-####' }
   validates_inclusion_of :labor, in: [true, false]
   validates :supplies, numericality: {greater_than_or_equal_to: 0}
 

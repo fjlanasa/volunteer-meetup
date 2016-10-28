@@ -58,7 +58,7 @@ class MyTeamsPage extends Component {
           {teamsHeader}
           {myTeams}
         </div>
-        <div className='small-12 medium-7 columns'>
+        <div className='small-12 medium-7 columns my-teams-posts'>
           {postsHeader}
           {posts}
         </div>

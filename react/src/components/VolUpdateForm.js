@@ -10,7 +10,7 @@ class VolUpdateForm extends Component {
   render(){
     console.log(this.props.supplies);
     let labor = 'I am willing to work on a cleanup crew';
-    let supplies = 'I am willing to bring supplies for a cleanup crew';
+    let supplies = 'I am willing to bring the following number of supplies for a cleanup crew';
     let leave_button;
     if(this.props.user_id != this.props.organizer_id){
       leave_button = <div className="input-group-button">
@@ -25,9 +25,9 @@ class VolUpdateForm extends Component {
         <form onSubmit={this.props.handleEditVolSubmit} id="volunteer-form">
           <div className='small-12'>
             <div className='volunteer-form-row'>
-              <label><input id="labor" type="checkbox" onClick={this.props.handleLaborClick} name="labor" value="true" defaultChecked={this.props.labor}/>{labor}</label>
+              <label className='inline'><input id="labor" type="checkbox" onClick={this.props.handleLaborClick} name="labor" value="true" defaultChecked={this.props.labor}/><span>{labor}</span></label>
             </div>
-
+            <p></p>
             <div className='volunteer-form-row'>
               <label htmlFor='supplies'>{supplies}</label>
               <input type='number' name='supplies' min='0' onChange={this.props.handleChange} defaultValue={this.props.supplies}/>

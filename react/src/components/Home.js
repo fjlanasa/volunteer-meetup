@@ -32,8 +32,8 @@ class Home extends Component {
       <div className='map-page'>
         <div className='wall'>
           <div className='wallText'>
-            Volunteer Meetup was created to help
-            neighbors help neighbors in their time of need
+            Volunteer Meetup was created to help users quickly
+            and efficiently support victims of flooding
           </div>
         </div>
         <p>Current Help Requests</p>
