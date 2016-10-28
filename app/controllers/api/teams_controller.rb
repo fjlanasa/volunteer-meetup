@@ -16,7 +16,6 @@ class Api::TeamsController < ApiController
     posts.sort! {|a,b| b.updated_at <=> a.updated_at}
     posts = posts.take(10)
     posts.map! {|post| post.attributes.merge({'user_name' => User.find(post.user_id).full_name, 'team_site' => post.team.site})}
-    binding.pry
     render json: { user: user, user_vol_sites: user_vol_sites, recent_posts: posts }, status: :ok
   end
 
