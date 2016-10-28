@@ -1,6 +1,7 @@
 import { shallow, mount } from 'enzyme';
 import jasmineEnzyme from 'jasmine-enzyme';
 import React from 'react';
+import { Link, IndexLink } from 'react-router'
 import $ from 'jquery';
 import 'jasmine-ajax';
 
@@ -9,6 +10,7 @@ Object.assign(global, {
   mount,
   React,
   shallow,
+  Link,
   $
 });
 
