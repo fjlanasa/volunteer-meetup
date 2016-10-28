@@ -1,0 +1,472 @@
+/* Coolors Exported Palette - coolors.co/11151c-212d40-364156-7d4e57-d66853 */
+/* HSL */
+/* line 4, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+html, body {
+  width: 100%;
+}
+
+/* line 8, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+body {
+  margin: 0px;
+  padding: 0px;
+  background-color: #F7F4ED;
+  font-family: 'Poppins', sans-serif;
+  color: #222A2E;
+}
+
+/* line 16, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.toast-info {
+  background-color: #d66853;
+}
+
+/* line 20, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.form-section {
+  background-color: #DEDACF;
+  margin: inherit;
+}
+
+/* line 25, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+div.form-section div.input-group {
+  margin-top: 0;
+}
+
+/* line 29, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+div.devise-container > div.end.columns.small-12.medium-6.devise-form {
+  float: none;
+  margin: auto;
+}
+
+/* line 34, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+div.post-section div.small-12.form-section {
+  margin: 10px auto;
+  float: none;
+}
+
+/* line 39, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+ul.hmenu {
+  list-style: none;
+  padding: 0;
+  margin: 0 1.25em;
+  height: 100%;
+}
+
+/* line 46, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.columns.post-collection {
+  margin-top: 10px;
+}
+
+/* line 50, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+ul.hmenu div {
+  display: inline;
+  margin: 10px;
+  height: 100%;
+}
+
+/* line 56, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.columns.post {
+  margin-top: 10px;
+}
+
+/* line 60, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.post-collection ul {
+  list-style: none;
+}
+
+/* line 64, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.rails-nav-bar {
+  background-color: #1B8C8E !important;
+  margin: 0;
+  padding-top: 15px;
+  height: auto;
+  min-height: 80px;
+}
+
+/* line 72, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.rails-nav-bar a {
+  color: #efefef;
+}
+
+/* line 76, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.rails-nav-bar .columns {
+  margin: initial;
+  width: auto;
+}
+
+/* line 82, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+input {
+  width: 100%;
+}
+
+/* line 86, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+textarea.input-group-field {
+  width: 100%;
+  max-height: 10%;
+}
+
+/* line 91, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+img {
+  display: block;
+}
+
+/* line 95, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+span.edit h5 {
+  display: inline;
+}
+
+/* line 99, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.post-body {
+  margin: 20px;
+  font-style: italic;
+}
+
+/* line 104, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.button.destroy {
+  background-color: #d66853;
+}
+
+/* line 108, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.button.destroy:hover {
+  background-color: #894335;
+}
+
+/* line 112, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.team_members {
+  max-height: 200px;
+  overflow: scroll;
+  border: 1px solid #DEDACF;
+  list-style: none;
+}
+
+/* line 119, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.nav-links {
+  width: 98%;
+  margin: auto;
+  text-align: center;
+}
+
+/* line 125, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.nav-links ul {
+  display: inline;
+  list-style: none;
+  margin-bottom: 20px;
+  margin: auto;
+}
+
+/* line 132, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+label {
+  display: block;
+  padding-left: 15px;
+  text-indent: -15px;
+}
+
+/* line 137, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+input[type='checkbox'] {
+  width: 13px;
+  height: 13px;
+  padding: 0;
+  margin: 0;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+  *overflow: hidden;
+}
+
+/* line 148, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.callout {
+  border: none;
+}
+
+/* line 152, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.fa-pencil-square-o:hover {
+  color: #d66853;
+}
+
+/* line 156, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.wall {
+  background-image: url(/assets/wallpic-7ad8332c481d792f5d0957dd586633b960a567c7a424cd9fe31801a4e3322204.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 300px;
+  font-weight: bolder;
+  color: white;
+  text-align: center;
+  padding-top: 35px;
+  margin-bottom: 30px;
+}
+
+/* line 168, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.nav-links li {
+  display: inline;
+  margin: 10px;
+  font-size: .85rem;
+}
+
+@media screen and (min-width: 550px) {
+  /* line 175, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+  .devise {
+    padding-top: 12px;
+  }
+}
+@media screen and (min-width: 575px) {
+  /* line 181, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+  .map-page {
+    font-size: 32px;
+  }
+
+  /* line 185, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+  .wall {
+    padding-top: 40px;
+  }
+}
+@media screen and (min-width: 650px) {
+  /* line 191, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+  .nav-links li {
+    margin: 50px;
+    font-size: 1rem;
+  }
+}
+@media screen and (min-width: 825px) {
+  /* line 199, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+  .nav-links {
+    font-size: 1.25em;
+  }
+
+  /* line 203, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+  .rails-nav-bar {
+    font-size: 1.25em;
+  }
+}
+@media screen and (min-width: 625px) {
+  /* line 209, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+  .wall {
+    height: 400px;
+    font-size: 40px;
+    font-weight: bolder;
+    color: white;
+    text-align: center;
+    padding-top: 45px;
+    margin-bottom: 50px;
+  }
+}
+@media screen and (min-width: 900px) {
+  /* line 221, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+  .wall {
+    background-image: url(/assets/wallpic-7ad8332c481d792f5d0957dd586633b960a567c7a424cd9fe31801a4e3322204.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 400px;
+    font-size: 54px;
+    font-weight: bolder;
+    color: white;
+    text-align: center;
+    padding-top: 45px;
+    margin-bottom: 50px;
+  }
+}
+@media screen and (min-width: 1275px) {
+  /* line 236, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+  .wall {
+    background-image: url(/assets/wallpic-7ad8332c481d792f5d0957dd586633b960a567c7a424cd9fe31801a4e3322204.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 600px;
+    font-size: 64px;
+    font-weight: bolder;
+    color: white;
+    text-align: center;
+    padding-top: 150px;
+    margin-bottom: 70px;
+  }
+}
+@media screen and (min-width: 2000px) {
+  /* line 251, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+  .wall {
+    background-image: url(/assets/wallpic-7ad8332c481d792f5d0957dd586633b960a567c7a424cd9fe31801a4e3322204.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 850px;
+    font-size: 72px;
+    font-weight: bolder;
+    color: white;
+    text-align: center;
+    padding-top: 250px;
+    margin-bottom: 70px;
+  }
+}
+/* line 265, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.wallText {
+  width: 80%;
+  margin: auto;
+}
+
+/* line 271, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+a {
+  color: #1B8C8E;
+}
+
+/* line 275, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+a:hover {
+  color: #d66853;
+}
+
+/* line 279, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+#app {
+  height: 100%;
+}
+
+/* line 283, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+#app > div {
+  height: 100%;
+}
+
+/* line 287, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+div.map-page {
+  height: 100%;
+}
+
+/* line 291, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+#map {
+  width: 80%;
+  height: 60%;
+  margin: 50px auto 150px auto;
+}
+
+/* line 297, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+#map div {
+  height: auto;
+}
+
+/* line 301, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.input-group {
+  display: block;
+}
+
+/* line 305, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.logo {
+  width: 275px;
+  display: inline;
+  color: white;
+}
+
+/* line 311, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.input-group-button {
+  display: block;
+  margin: 10px auto;
+  width: 100%;
+}
+
+/* line 317, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.columns {
+  margin: 50px auto 0px auto;
+}
+
+/* line 321, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.button {
+  margin: 10px auto;
+  width: 10%;
+  min-width: 115px;
+  background-color: #1B8C8E;
+}
+
+/* line 328, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+input.button {
+  min-width: 115px;
+  width: 10%;
+  height: auto;
+  margin: 10px auto;
+  background-color: #1B8C8E;
+}
+
+/* line 336, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.input.button:active {
+  background-color: #146668;
+}
+
+/* line 340, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.button:hover {
+  background-color: #146668;
+}
+
+/* line 344, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.button:active {
+  background-color: #146668;
+}
+
+/* line 348, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.infowindow a {
+  color: #1B8C8E;
+}
+
+/* line 352, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.infowindow a:hover {
+  color: #d66853;
+}
+
+/* line 356, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.form {
+  margin: auto;
+}
+
+/* line 360, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.hidden {
+  display: none;
+}
+
+/* line 364, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.map-page {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* line 370, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* line 374, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+::-webkit-scrollbar-corner {
+  background-color: #F7F4ED;
+}
+
+/* line 378, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #F7F4ED;
+}
+
+/* line 384, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  background-color: #1B8C8E;
+}
+
+/* line 390, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.react-nav-bar {
+  background-color: #DEDACF;
+  height: auto;
+  min-height: 50px;
+  padding-top: 10px;
+  border-bottom: 1px solid #7a7771;
+}
+
+/* line 398, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.react-nav-bar a {
+  color: #222A2E;
+}
+
+/* line 402, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.react-nav-bar a:hover {
+  color: #d66853;
+}
+
+/* line 406, /Users/Frank/Dropbox/Launch/volunteer-meetup/app/assets/stylesheets/application.scss */
+.bottom {
+  height: 50px;
+  position: fixed;
+  bottom: 0;
+  width: 50%;
+  margin-top: 1px solid #DEDACF;
+}
