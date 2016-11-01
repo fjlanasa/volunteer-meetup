@@ -27,7 +27,7 @@ class VolunteerForm extends Component {
 
   render(){
     let labor = 'I am willing to work on a cleanup crew';
-    let supplies = 'I am willing to bring the following number of supplies for a cleanup crew';
+    let supplies = 'I can bring the following number of supplies for a cleanup crew:';
     let location_input = document.getElementById('volunteer-loc-text');
     if(this.state.location_class == 'volunteer-form-row' && location_input != null){
       location_input.required = true;
@@ -36,6 +36,7 @@ class VolunteerForm extends Component {
     }
     return (
         <div className='small-12 medium-6 large-4 columns form-section callout'>
+          <p>Volunteer your time and/or services</p>
           <form onSubmit={this.props.handleSubmit} id="volunteer-form">
             <div className='small-12'>
               <div className='volunteer-form-row'>
