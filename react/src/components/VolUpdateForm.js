@@ -10,7 +10,7 @@ class VolUpdateForm extends Component {
   render(){
     console.log(this.props.supplies);
     let labor = 'I am willing to work on a cleanup crew';
-    let supplies = 'I am willing to bring the following number of supplies for a cleanup crew';
+    let supplies = 'I can bring the following number of supplies for a cleanup crew';
     let leave_button;
     if(this.props.user_id != this.props.organizer_id){
       leave_button = <div className="input-group-button">

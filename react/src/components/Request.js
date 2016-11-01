@@ -55,7 +55,7 @@ class Request extends Component {
     }).done((data)=>{
       this.getState();
       if(data.message != null){
-        toastr.error(data.message);        
+        toastr.error(data.message);
       }
     })
   }

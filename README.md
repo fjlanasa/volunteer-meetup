@@ -37,3 +37,4 @@ You will need to create a `.env` file in the root directory of the project, incl
 
 ```
 GOOGLE_MAPS_KEY=[YOUR GOOGLE MAPS API KEY]
+```
