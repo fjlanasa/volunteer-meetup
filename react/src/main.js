@@ -12,8 +12,6 @@ import NotFound from './components/NotFound'
 
 $(function() {
   if(document.getElementById('app') != null){
-
-
     ReactDOM.render(
       <Router history={browserHistory}>
         <Route path='/' component={App}>

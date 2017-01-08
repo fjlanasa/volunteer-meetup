@@ -41,6 +41,7 @@ class Request extends Component {
 
   handleSubmit(event){
     event.preventDefault();
+    document.getElementById('sites-text').blur();
     let location = this.state.location;
     if($('#request-form').find("input[name='location']").val() != this.state.location){
       location = $('#request-form').find("input[name='location']").val();

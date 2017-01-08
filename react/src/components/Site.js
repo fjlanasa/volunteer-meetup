@@ -51,12 +51,20 @@ class Site extends Component {
       contentType: 'application/json'
     })
     .done(data=>{
-      if(data.site !== null){
+      if(data.site){
         let labor;
         let supplies;
-        if(data.signup !== null){
+        let meeting_date = '';
+        let meeting_location = '';
+        let meeting_time = '';
+        if(data.signup){
           labor = data.signup.labor;
           supplies = data.signup.supplies;
+        }
+        if(data.team){
+          meeting_date = data.team.meeting_date;
+          meeting_location = data.team.meeting_location;
+          meeting_time = data.team.meeting_time;
         }
         this.setState({current_user: data.user, location: data.site.location,
           contact_name: data.site.contact_name, contact_phone: data.site.contact_phone,
@@ -64,7 +72,9 @@ class Site extends Component {
           team: data.team, map_url: data.site.static_map_url, member: data.member,
           team_members: data.team_members, organizer: data.organizer, creator: data.creator,
           signup: data.signup, labor: labor, supplies: supplies, posts: data.posts,
-          post_text: '', meeting_date: '', meeting_location: ''});
+          post_text: '', meeting_date: meeting_date, meeting_location: meeting_location,
+          meeting_time: meeting_time
+        });
       }
     })
     this.myInterval = setInterval(this.updatePosts, 5000);
@@ -170,6 +180,7 @@ class Site extends Component {
 
   handleTeamUpdate(event){
     event.preventDefault();
+    document.getElementById('team-loc-text').blur();
     $.ajax({
       type: "PATCH",
       url: `/api/teams/${this.state.team.id}`,
@@ -250,6 +261,7 @@ class Site extends Component {
 
 
   render(){
+    let locationLink = `http://maps.google.com/?q=${this.state.location}`
     let button;
     let teamPage;
     let deleteButton;
@@ -298,7 +310,9 @@ class Site extends Component {
           <div className='small-12 columns'>
             <h5>Site Info</h5>
             <ul>
-              <li>Location: {this.state.location}</li>
+              <li>
+                Location: <a href={locationLink} target="_blank">{this.state.location}</a>
+              </li>
               <li>Contact Name: {this.state.contact_name}</li>
               <li>Contact Phone Number:{this.state.contact_phone}</li>
               <li>Square Footage: {this.state.square_footage}</li>

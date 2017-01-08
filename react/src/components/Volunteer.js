@@ -53,6 +53,9 @@ class Volunteer extends Component {
 
   handleSubmit(event){
     event.preventDefault();
+    if(document.getElementById('volunteer-loc-text')){
+      document.getElementById('volunteer-loc-text').blur();
+    }
     const volunteerPath = '/volunteer'
     let location = this.state.location;
     if($('#volunteer-form').find("input[name='location']").val() != this.state.location){
